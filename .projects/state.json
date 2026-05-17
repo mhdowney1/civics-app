@@ -1,0 +1,59 @@
+{
+  "version": 1,
+  "providers": {
+    "clerk": {
+      "name": "Clerk"
+    },
+    "neon": {
+      "name": "Neon"
+    },
+    "posthog": {
+      "name": "PostHog"
+    },
+    "sentry": {
+      "name": "Sentry"
+    }
+  },
+  "resources": {
+    "clerk-auth": {
+      "name": "clerk-auth",
+      "providerName": "Clerk",
+      "serviceId": "auth"
+    },
+    "clerk-plan": {
+      "name": "clerk-plan",
+      "providerName": "Clerk",
+      "serviceId": "hobby"
+    },
+    "neon-plan": {
+      "name": "neon-plan",
+      "providerName": "Neon",
+      "serviceId": "free"
+    },
+    "neon-postgres": {
+      "name": "neon-postgres",
+      "providerName": "Neon",
+      "serviceId": "postgres"
+    },
+    "posthog-analytics": {
+      "name": "posthog-analytics",
+      "providerName": "PostHog",
+      "serviceId": "analytics"
+    },
+    "posthog-plan": {
+      "name": "posthog-plan",
+      "providerName": "PostHog",
+      "serviceId": "free"
+    },
+    "sentry-plan": {
+      "name": "sentry-plan",
+      "providerName": "Sentry",
+      "serviceId": "developer"
+    },
+    "sentry-project": {
+      "name": "sentry-project",
+      "providerName": "Sentry",
+      "serviceId": "project"
+    }
+  }
+}

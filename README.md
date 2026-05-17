@@ -1,36 +1,110 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# US Civics Study App
 
-## Getting Started
+A calm, oral-style study app for the 2025 USCIS naturalization civics test. 128
+official questions, mock test mode, progress tracking, PWA install.
 
-First, run the development server:
+## Stack
+
+- Next.js 16 (App Router, TypeScript, Turbopack)
+- Clerk — authentication
+- Neon Postgres + Drizzle ORM — persistence
+- Tailwind CSS v4 — styling
+- PostHog — product analytics
+- Sentry — error tracking
+- PWA — `app/manifest.ts` + `public/sw.js` (Next.js 16 native)
+
+All third-party services were provisioned with the
+[Stripe Projects CLI](https://docs.stripe.com/stripe-cli). See `AGENTS.md`.
+
+## Local development
 
 ```bash
+# 1. Pull credentials managed by Stripe Projects into .env
+stripe projects env --pull --yes
+
+# 2. Derive Clerk + DATABASE_URL + PostHog + Sentry vars into .env.local
+npm run setup:env
+
+# 3. Push the Drizzle schema to Neon (first time only)
+npm run db:push
+
+# 4. Run the dev server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open <http://localhost:3000>.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Routes
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Route                         | Purpose                                |
+| ----------------------------- | -------------------------------------- |
+| `/`                           | Public landing page                    |
+| `/sign-in`, `/sign-up`        | Clerk auth (catch-all)                 |
+| `/dashboard`                  | Progress summary + study mode picker   |
+| `/study`                      | Core oral-style study session          |
+| `/study?mode=starred`         | 20 starred (65/20) questions only      |
+| `/study?mode=weak`            | Questions you marked needs-practice    |
+| `/study?category=Symbols`     | Specific category                      |
+| `/test`                       | Mock test, 20 random questions, 12+ to pass |
+| `/progress`                   | All 128 with status, filters, reset    |
+| `/api/progress`               | `GET`/`POST`/`DELETE` per-user state   |
 
-## Learn More
+## Database
 
-To learn more about Next.js, take a look at the following resources:
+```sql
+-- db/schema.ts → db/migrations/0000_*.sql
+progress(
+  id serial primary key,
+  user_id text not null,            -- Clerk user id
+  question_id integer not null,     -- 1..128
+  status text not null default 'unseen',  -- confident | needs_practice | unseen
+  times_correct integer not null default 0,
+  times_incorrect integer not null default 0,
+  last_reviewed timestamp,
+  unique(user_id, question_id)
+)
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Deploy (Vercel, manual)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Push this repo to GitHub.
+2. Import it in Vercel and pick the framework as **Next.js**.
+3. In Vercel project settings → Environment Variables, paste:
 
-## Deploy on Vercel
+   ```
+   DATABASE_URL=…                         # from .env.local
+   NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=…
+   CLERK_SECRET_KEY=…
+   NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+   NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+   NEXT_PUBLIC_CLERK_SIGN_IN_FALLBACK_REDIRECT_URL=/dashboard
+   NEXT_PUBLIC_CLERK_SIGN_UP_FALLBACK_REDIRECT_URL=/dashboard
+   NEXT_PUBLIC_POSTHOG_KEY=…
+   NEXT_PUBLIC_POSTHOG_HOST=https://us.i.posthog.com
+   NEXT_PUBLIC_SENTRY_DSN=…
+   SENTRY_DSN=…
+   SENTRY_ORG=…
+   SENTRY_PROJECT=…
+   SENTRY_AUTH_TOKEN=…   # Vercel-only secret, used by source map upload
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Trigger a deploy.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+For Clerk production keys (pk_live\_…), provision a Clerk app with a
+`production_domain` via `stripe projects add clerk/auth --config '{"production_domain":"yourdomain.com"}'`
+and use those values instead.
+
+## Analytics events
+
+| Event                    | Properties                          |
+| ------------------------ | ----------------------------------- |
+| `study_session_started`  | `mode`, `count`                     |
+| `question_answered`      | `question_id`, `status`, `category` |
+| `mock_test_completed`    | `total`, `correct`, `passed`        |
+
+## Offline support
+
+`/data/questions.json` is precached by the service worker, so study sessions
+work without a network connection. Progress updates fall back to `localStorage`
+and replay to `/api/progress` next time you're online (see
+`components/offline-sync.tsx`).

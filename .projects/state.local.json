@@ -1,0 +1,148 @@
+{
+  "version": 1,
+  "project": {
+    "initializedAt": "2026-05-16T18:37:08.926Z",
+    "merchantDisplayName": null,
+    "merchantId": "acct_1TXmLCLsuASY4ZWi",
+    "projectId": "project_61UhB2afVmSMlDEFi16UhAIY6nSQ3q6J7SLUMf4xEOeO",
+    "projectName": "civics-app"
+  },
+  "providers": {
+    "clerk": {
+      "accountRequestId": "fprvcnn_61UhAsOErPFpJC9US16UhAIY6nSQ3q6J7SLUMf4xE3FQ",
+      "configuration": {},
+      "linkedAt": "2026-05-16T18:26:36.525Z",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "redirectUrl": null,
+      "requestedAt": "2026-05-16T18:26:36.525Z",
+      "status": "complete"
+    },
+    "neon": {
+      "accountRequestId": "fprvcnn_61UhAt4ktJ5ULLhys16UhAIY6nSQ3q6J7SLUMf4xELWy",
+      "configuration": {},
+      "linkedAt": "2026-05-16T18:27:18.399Z",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "redirectUrl": null,
+      "requestedAt": "2026-05-16T18:27:18.399Z",
+      "status": "complete"
+    },
+    "posthog": {
+      "accountRequestId": "facctrq_61UhBaQyhYozuRYN516UhAIY6nSQ3q6J7SLUMf4xEAhM",
+      "configuration": {
+        "region": "US"
+      },
+      "linkedAt": "2026-05-16T19:12:12.659Z",
+      "providerId": "prvdr_61UGMHNyOleb3A55m5Pg8",
+      "providerName": "PostHog",
+      "redirectUrl": null,
+      "requestedAt": "2026-05-16T19:12:12.658Z",
+      "status": "complete"
+    },
+    "sentry": {
+      "accountRequestId": "fprvcnn_61UhAwXKt6ruBO99S16UhAIY6nSQ3q6J7SLUMf4xEOCm",
+      "configuration": {},
+      "linkedAt": "2026-05-16T18:30:53.373Z",
+      "providerId": "prvdr_61UWhMpOMGYc7qQhs53su",
+      "providerName": "Sentry",
+      "redirectUrl": null,
+      "requestedAt": "2026-05-16T18:30:53.373Z",
+      "status": "complete"
+    }
+  },
+  "resources": {
+    "clerk-auth": {
+      "configuration": {
+        "app_name": "civics-app"
+      },
+      "createdAt": "2026-05-16T19:10:08.144Z",
+      "lastRevealedAt": "2026-05-16T19:10:08.721Z",
+      "lastStatus": "complete",
+      "name": "clerk-auth",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "resourceId": "fres_61UhBYThSGIntme3J16UhAIY6nSQ3q6J7SLUMf4xE7SS",
+      "serviceId": "auth"
+    },
+    "clerk-plan": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:09:41.436Z",
+      "lastRevealedAt": "2026-05-16T19:09:41.963Z",
+      "lastStatus": "complete",
+      "name": "clerk-plan",
+      "providerId": "prvdr_61UGOeSW4e0T9Etwn537w",
+      "providerName": "Clerk",
+      "resourceId": "fres_61UhBY2wQP5qILZag16UhAIY6nSQ3q6J7SLUMf4xEEYS",
+      "serviceId": "hobby"
+    },
+    "neon-plan": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:10:35.810Z",
+      "lastRevealedAt": "2026-05-16T19:10:36.347Z",
+      "lastStatus": "complete",
+      "name": "neon-plan",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61UhBYwSxNzSfGaer16UhAIY6nSQ3q6J7SLUMf4xEVS4",
+      "serviceId": "free"
+    },
+    "neon-postgres": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:11:01.225Z",
+      "lastRevealedAt": "2026-05-16T19:11:01.763Z",
+      "lastStatus": "complete",
+      "name": "neon-postgres",
+      "providerId": "prvdr_61UH8uNXFdoJUJOtT54AC",
+      "providerName": "Neon",
+      "resourceId": "fres_61UhBZLZdHfXG68fq16UhAIY6nSQ3q6J7SLUMf4xEMZU",
+      "serviceId": "postgres"
+    },
+    "posthog-analytics": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:13:00.712Z",
+      "lastRevealedAt": "2026-05-16T19:13:01.378Z",
+      "lastStatus": "complete",
+      "name": "posthog-analytics",
+      "providerId": "prvdr_61UGMHNyOleb3A55m5Pg8",
+      "providerName": "PostHog",
+      "resourceId": "fres_61UhBbIveO6PZE4H716UhAIY6nSQ3q6J7SLUMf4xEFaa",
+      "serviceId": "analytics"
+    },
+    "posthog-plan": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:12:15.028Z",
+      "lastRevealedAt": "2026-05-16T19:12:15.697Z",
+      "lastStatus": "complete",
+      "name": "posthog-plan",
+      "providerId": "prvdr_61UGMHNyOleb3A55m5Pg8",
+      "providerName": "PostHog",
+      "resourceId": "fres_61UhBaXTtOKZH7HlM16UhAIY6nSQ3q6J7SLUMf4xEVBo",
+      "serviceId": "free"
+    },
+    "sentry-plan": {
+      "configuration": {},
+      "createdAt": "2026-05-16T19:11:15.896Z",
+      "lastRevealedAt": "2026-05-16T19:11:16.398Z",
+      "lastStatus": "complete",
+      "name": "sentry-plan",
+      "providerId": "prvdr_61UWhMpOMGYc7qQhs53su",
+      "providerName": "Sentry",
+      "resourceId": "fres_61UhBZa07biirS1rU16UhAIY6nSQ3q6J7SLUMf4xE8AS",
+      "serviceId": "developer"
+    },
+    "sentry-project": {
+      "configuration": {
+        "project_name": "civics-app"
+      },
+      "createdAt": "2026-05-16T19:11:31.831Z",
+      "lastRevealedAt": "2026-05-16T19:11:32.372Z",
+      "lastStatus": "complete",
+      "name": "sentry-project",
+      "providerId": "prvdr_61UWhMpOMGYc7qQhs53su",
+      "providerName": "Sentry",
+      "resourceId": "fres_61UhBZqVNuMXqGJEB16UhAIY6nSQ3q6J7SLUMf4xEQXg",
+      "serviceId": "project"
+    }
+  }
+}
