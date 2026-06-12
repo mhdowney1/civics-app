@@ -42,5 +42,6 @@ next-env.d.ts
 
 .projects/cache
 .projects/vault
+.projects/state.local.json
 .env
 .env.local
