@@ -134,7 +134,19 @@ export default async function LandingPage() {
       </section>
 
       <footer className="mx-auto max-w-3xl px-5 pb-12 text-xs text-muted">
-        Built for studying. Not affiliated with USCIS.
+        <span>Built for studying. Not affiliated with USCIS.</span>
+        <span className="mx-2">·</span>
+        <span>
+          Built by{' '}
+          <a
+            href="https://vampcreatives.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-foreground underline underline-offset-2"
+          >
+            Vamp Creatives
+          </a>
+        </span>
       </footer>
     </main>
   )
