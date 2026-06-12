@@ -41,7 +41,7 @@ export default async function LandingPage() {
 
       <section className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:pt-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          2025 USCIS Civics Test
+          2026 USCIS Civics Test
         </p>
         <h1 className="mt-4 font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
           Calm, oral-style practice for the US citizenship test.

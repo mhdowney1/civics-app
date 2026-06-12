@@ -187,7 +187,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
       </section>
 
       <footer className="mt-4 flex justify-between text-xs text-muted">
-        <Link href="/dashboard" className="hover:text-foreground">
+        <Link href={isSignedIn ? '/dashboard' : '/'} className="hover:text-foreground">
           ← Exit
         </Link>
         <span>

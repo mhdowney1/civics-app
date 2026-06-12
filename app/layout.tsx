@@ -21,10 +21,22 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'US Civics Study — 2025 Naturalization Test',
+  title: 'US Civics Study — 2026 Naturalization Test',
   description:
-    'A calm, distraction-free study app for the 2025 USCIS civics test. 128 official questions, mock tests, and progress tracking.',
+    'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
   applicationName: 'US Civics Study',
+  openGraph: {
+    title: 'US Civics Study — 2026 Naturalization Test',
+    description:
+      'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary',
+    title: 'US Civics Study — 2026 Naturalization Test',
+    description:
+      'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+  },
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
