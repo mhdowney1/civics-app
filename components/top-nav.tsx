@@ -33,7 +33,32 @@ export function TopNav() {
             Mock test
           </Link>
           <UserButton
-            appearance={{ elements: { userButtonAvatarBox: 'h-8 w-8' } }}
+            appearance={{
+              variables: {
+                colorBackground: '#1a1a1a',
+                colorNeutral: 'white',
+                colorPrimary: '#ffffff',
+                colorForeground: 'white',
+                colorInput: '#2a2a2a',
+                colorInputForeground: 'white',
+              },
+              elements: {
+                userButtonAvatarBox: 'h-8 w-8',
+                userButtonPopoverCard: 'border border-[#2a2a2a]',
+              },
+            }}
+            userProfileProps={{
+              appearance: {
+                variables: {
+                  colorBackground: '#1a1a1a',
+                  colorNeutral: 'white',
+                  colorPrimary: '#ffffff',
+                  colorForeground: 'white',
+                  colorInput: '#2a2a2a',
+                  colorInputForeground: 'white',
+                },
+              },
+            }}
           />
         </div>
       </nav>
