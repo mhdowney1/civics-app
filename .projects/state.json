@@ -15,8 +15,8 @@
     }
   },
   "resources": {
-    "clerk-auth": {
-      "name": "clerk-auth",
+    "civics-app": {
+      "name": "civics-app",
       "providerName": "Clerk",
       "serviceId": "auth"
     },
@@ -44,11 +44,6 @@
       "name": "posthog-plan",
       "providerName": "PostHog",
       "serviceId": "free"
-    },
-    "sentry-plan": {
-      "name": "sentry-plan",
-      "providerName": "Sentry",
-      "serviceId": "developer"
     },
     "sentry-project": {
       "name": "sentry-project",
