@@ -8,6 +8,7 @@ type EventName =
   | 'mock_test_completed'
   | 'progress_reset'
   | 'checkout_initiated'
+  | 'user_feedback_submitted'
 
 type EventProperties = Record<string, unknown>
 

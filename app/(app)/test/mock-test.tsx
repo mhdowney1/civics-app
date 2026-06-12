@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { Question } from '@/lib/types'
 import { track } from '@/lib/analytics'
+import { FeedbackPrompt } from '@/components/feedback-prompt'
 
 interface Result {
   question: Question
@@ -199,6 +200,7 @@ function TestSummary({
           Back to dashboard
         </Link>
       </div>
+      <FeedbackPrompt trigger="mock_test" />
     </div>
   )
 }
