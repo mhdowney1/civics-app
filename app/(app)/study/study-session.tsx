@@ -95,7 +95,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   }
 
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-2xl flex-col px-5 py-6 sm:py-10">
+    <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
       {!isSignedIn && !bannerDismissed && (
         <div className="mb-4 flex items-center justify-between rounded-xl border border-border bg-card px-4 py-2.5 text-sm">
           <span className="text-muted">
@@ -295,7 +295,7 @@ function SessionSummary({
   isSignedIn: boolean
 }) {
   return (
-    <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-xl flex-col items-center justify-center px-5 py-12 text-center">
+    <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-xl flex-col items-center justify-center px-5 pt-12 pb-[calc(3rem+env(safe-area-inset-bottom))] text-center">
       <p className="text-sm uppercase tracking-[0.18em] text-muted">Session complete</p>
       <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight">
         {correct}/{total}
