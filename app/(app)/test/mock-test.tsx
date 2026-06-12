@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import type { Question } from '@/lib/types'
@@ -21,6 +21,11 @@ export function MockTest({ questions }: { questions: Question[] }) {
 
   const total = questions.length
   const current = questions[index]
+
+  useEffect(() => {
+    track('mock_test_started', { total })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   function record(correct: boolean) {
     if (!current) return

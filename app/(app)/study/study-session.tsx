@@ -58,6 +58,15 @@ export function StudySession({ initialQuestions, modeLabel, mode }: Props) {
       if (advanceTimer.current) clearTimeout(advanceTimer.current)
       advanceTimer.current = setTimeout(() => {
         if (index + 1 >= total) {
+          const correct = [...results, { questionId: current.id, status }].filter(
+            (r) => r.status === 'confident',
+          ).length
+          track('study_session_completed', {
+            mode,
+            total,
+            correct,
+            needs_practice: total - correct,
+          })
           setFinished(true)
         } else {
           setIndex((i) => i + 1)
@@ -65,6 +74,7 @@ export function StudySession({ initialQuestions, modeLabel, mode }: Props) {
         }
       }, ADVANCE_MS)
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [current, index, total],
   )
 
@@ -199,13 +209,12 @@ function AnswerPanel({ question }: { question: Question }) {
 }
 
 function SpeakerButton({ text }: { text: string }) {
-  const [supported, setSupported] = useState(false)
+  const [supported] = useState(
+    () => typeof window !== 'undefined' && 'speechSynthesis' in window,
+  )
   const [speaking, setSpeaking] = useState(false)
 
   useEffect(() => {
-    setSupported(
-      typeof window !== 'undefined' && 'speechSynthesis' in window,
-    )
     return () => {
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel()

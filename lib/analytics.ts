@@ -2,8 +2,12 @@ import posthog from 'posthog-js'
 
 type EventName =
   | 'study_session_started'
+  | 'study_session_completed'
   | 'question_answered'
+  | 'mock_test_started'
   | 'mock_test_completed'
+  | 'progress_reset'
+  | 'checkout_initiated'
 
 type EventProperties = Record<string, unknown>
 

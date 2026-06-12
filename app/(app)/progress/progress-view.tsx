@@ -4,6 +4,7 @@ import { useMemo, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { CATEGORIES, type CategoryName, type ProgressRecord, type Question, type Status } from '@/lib/types'
 import { resetProgress } from '@/lib/progress-client'
+import { track } from '@/lib/analytics'
 
 type StatusFilter = 'all' | Status
 type CategoryFilter = 'all' | CategoryName
@@ -63,6 +64,7 @@ export function ProgressView({
     setResetting(true)
     try {
       await resetProgress()
+      track('progress_reset')
       setConfirming(false)
       router.refresh()
     } finally {
