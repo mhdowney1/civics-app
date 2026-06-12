@@ -31,3 +31,23 @@ export const progress = pgTable(
 
 export type ProgressRow = typeof progress.$inferSelect
 export type ProgressInsert = typeof progress.$inferInsert
+
+export const payments = pgTable(
+  'payments',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id').notNull(),
+    stripePaymentIntentId: text('stripe_payment_intent_id'),
+    stripeCustomerId: text('stripe_customer_id'),
+    amountCents: integer('amount_cents'),
+    status: text('status').notNull().default('pending'), // pending | paid
+    freeTestUsedAt: timestamp('free_test_used_at'),
+    paidAt: timestamp('paid_at'),
+    createdAt: timestamp('created_at').defaultNow(),
+  },
+  (table) => ({
+    userUnique: uniqueIndex('payments_user_idx').on(table.userId),
+  }),
+)
+
+export type PaymentRow = typeof payments.$inferSelect
