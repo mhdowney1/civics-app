@@ -1,4 +1,5 @@
 import { redirect } from 'next/navigation'
+import { auth } from '@clerk/nextjs/server'
 import {
   QUESTIONS,
   STARRED_QUESTIONS,
@@ -22,7 +23,8 @@ export default async function StudyPage({
 }: {
   searchParams: SearchParams
 }) {
-  const params = await searchParams
+  const [{ userId }, params] = await Promise.all([auth(), searchParams])
+  const isSignedIn = Boolean(userId)
   const mode = params.mode
   const category = params.category
 
@@ -62,6 +64,7 @@ export default async function StudyPage({
       initialQuestions={session}
       modeLabel={label}
       mode={mode ?? (category ? 'category' : 'all')}
+      isSignedIn={isSignedIn}
     />
   )
 }

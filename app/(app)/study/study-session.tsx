@@ -5,11 +5,13 @@ import Link from 'next/link'
 import type { Question, Status } from '@/lib/types'
 import { saveProgress } from '@/lib/progress-client'
 import { track } from '@/lib/analytics'
+import { FeedbackPrompt } from '@/components/feedback-prompt'
 
 interface Props {
   initialQuestions: Question[]
   modeLabel: string
   mode: string
+  isSignedIn?: boolean
 }
 
 interface SessionResult {
@@ -19,12 +21,13 @@ interface SessionResult {
 
 const ADVANCE_MS = 800
 
-export function StudySession({ initialQuestions, modeLabel, mode }: Props) {
+export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = true }: Props) {
   const [questions] = useState(initialQuestions)
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
   const [results, setResults] = useState<SessionResult[]>([])
   const [finished, setFinished] = useState(false)
+  const [bannerDismissed, setBannerDismissed] = useState(false)
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
 
   useEffect(() => {
@@ -80,7 +83,7 @@ export function StudySession({ initialQuestions, modeLabel, mode }: Props) {
 
   if (finished) {
     const correct = results.filter((r) => r.status === 'confident').length
-    return <SessionSummary correct={correct} total={results.length} />
+    return <SessionSummary correct={correct} total={results.length} isSignedIn={isSignedIn} />
   }
 
   if (!current) {
@@ -93,6 +96,24 @@ export function StudySession({ initialQuestions, modeLabel, mode }: Props) {
 
   return (
     <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-2xl flex-col px-5 py-6 sm:py-10">
+      {!isSignedIn && !bannerDismissed && (
+        <div className="mb-4 flex items-center justify-between rounded-xl border border-border bg-card px-4 py-2.5 text-sm">
+          <span className="text-muted">
+            Progress won&apos;t be saved.{' '}
+            <Link href="/sign-up" className="text-confident hover:underline">
+              Sign up free to track it
+            </Link>
+            .
+          </span>
+          <button
+            onClick={() => setBannerDismissed(true)}
+            className="ml-3 shrink-0 text-xs text-muted hover:text-foreground"
+            aria-label="Dismiss"
+          >
+            ×
+          </button>
+        </div>
+      )}
       <header className="mb-4">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-muted">
           <span>
@@ -264,7 +285,15 @@ function SpeakerButton({ text }: { text: string }) {
   )
 }
 
-function SessionSummary({ correct, total }: { correct: number; total: number }) {
+function SessionSummary({
+  correct,
+  total,
+  isSignedIn,
+}: {
+  correct: number
+  total: number
+  isSignedIn: boolean
+}) {
   return (
     <div className="mx-auto flex min-h-[calc(100vh-64px)] max-w-xl flex-col items-center justify-center px-5 py-12 text-center">
       <p className="text-sm uppercase tracking-[0.18em] text-muted">Session complete</p>
@@ -288,6 +317,15 @@ function SessionSummary({ correct, total }: { correct: number; total: number }) 
           Back to dashboard
         </Link>
       </div>
+      {total === 128 && <FeedbackPrompt trigger="all_128" />}
+      {!isSignedIn && (
+        <p className="mt-6 text-sm text-muted">
+          <Link href="/sign-up" className="text-confident hover:underline">
+            Sign up free
+          </Link>{' '}
+          to save your progress and track it over time.
+        </p>
+      )}
     </div>
   )
 }

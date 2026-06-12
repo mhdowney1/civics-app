@@ -74,6 +74,12 @@ export default async function LandingPage() {
               >
                 I already have an account
               </Link>
+              <Link
+                href="/study"
+                className="w-full pt-1 text-center text-sm text-muted underline underline-offset-2 hover:text-foreground sm:w-auto"
+              >
+                Try it without an account
+              </Link>
             </>
           )}
         </div>
