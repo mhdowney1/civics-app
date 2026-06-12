@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { currentUser } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { CATEGORIES } from '@/lib/types'
 import {
   QUESTIONS,
@@ -7,14 +7,17 @@ import {
   TOTAL_QUESTIONS,
 } from '@/lib/questions'
 import { getServerProgress } from '@/lib/server-progress'
+import { isPaid } from '@/lib/server-access'
 
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Dashboard · US Civics Study' }
 
 export default async function DashboardPage() {
-  const [user, progress] = await Promise.all([
+  const { userId } = await auth()
+  const [user, progress, paid] = await Promise.all([
     currentUser(),
     getServerProgress(),
+    userId ? isPaid(userId) : Promise.resolve(false),
   ])
 
   const byId = new Map(progress.map((p) => [p.questionId, p]))
@@ -33,9 +36,16 @@ export default async function DashboardPage() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-10">
       <div className="mb-10">
-        <p className="text-sm uppercase tracking-[0.18em] text-muted">
-          Welcome back
-        </p>
+        <div className="flex items-center gap-3">
+          <p className="text-sm uppercase tracking-[0.18em] text-muted">
+            Welcome back
+          </p>
+          {paid && (
+            <span className="inline-flex items-center gap-1 rounded-full border border-confident/30 bg-confident/10 px-2.5 py-0.5 text-xs font-medium text-confident">
+              ✓ Full access
+            </span>
+          )}
+        </div>
         <h1 className="mt-2 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
           Hi, {firstName}.
         </h1>
@@ -56,7 +66,7 @@ export default async function DashboardPage() {
 
       <section className="mb-8">
         <h2 className="mb-3 font-display text-xl font-semibold">Study modes</h2>
-        <div className="space-y-3">
+        <div className="flex flex-col gap-4">
           <StudyCard
             href="/study"
             title="All 128 questions"
