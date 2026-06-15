@@ -49,6 +49,8 @@ export default function Image() {
         </div>
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
             color: '#ffffff',
             fontSize: '72px',
             fontWeight: 700,
@@ -57,9 +59,8 @@ export default function Image() {
             marginBottom: '32px',
           }}
         >
-          US Citizenship
-          <br />
-          Test Prep
+          <span>US Citizenship</span>
+          <span>Test Prep</span>
         </div>
         <div
           style={{
