@@ -1,0 +1,20 @@
+# US Civics Study — civicsstudy.com
+
+A free web app for studying the 128 official USCIS civics questions required for US naturalization.
+
+## What it is
+
+An oral-style practice tool for the USCIS civics test. Users see one question at a time, think their answer, then self-mark as confident or needs practice. No multiple choice — designed to match the real interview format.
+
+## Features
+
+- All 128 official USCIS civics questions across 6 categories: Principles of American Government, System of Government, Rights and Responsibilities, Colonial Period and Independence, 1800s, Recent American History, Symbols, and Holidays
+- Mock test mode: 20 random questions, pass with 12 correct — mirrors the real test
+- Progress tracking: marks questions as confident or needs practice
+- 65/20 rule mode: dedicated study set of 20 starred questions for applicants aged 65+ with 20+ years as a permanent resident
+- Works offline (PWA)
+- Free to use
+
+## Not affiliated with USCIS
+
+This is an independent study tool. It is not produced by or affiliated with US Citizenship and Immigration Services (USCIS) or any government agency.

@@ -21,21 +21,26 @@ const dmSans = DM_Sans({
 })
 
 export const metadata: Metadata = {
-  title: 'US Civics Study — 2026 Naturalization Test',
+  metadataBase: new URL('https://civicsstudy.com'),
+  title: 'US Civics Study — 2026 Citizenship Test Prep',
   description:
     'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
   applicationName: 'US Civics Study',
+  alternates: { canonical: '/' },
   openGraph: {
-    title: 'US Civics Study — 2026 Naturalization Test',
+    title: 'US Civics Study — 2026 Citizenship Test Prep',
     description:
       'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
     type: 'website',
+    url: 'https://civicsstudy.com',
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'US Civics Study — Citizenship Test Prep' }],
   },
   twitter: {
-    card: 'summary',
-    title: 'US Civics Study — 2026 Naturalization Test',
+    card: 'summary_large_image',
+    title: 'US Civics Study — 2026 Citizenship Test Prep',
     description:
       'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+    images: ['/opengraph-image'],
   },
   appleWebApp: {
     capable: true,

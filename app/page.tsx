@@ -1,11 +1,68 @@
 import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebApplication',
+      name: 'US Civics Study',
+      url: 'https://civicsstudy.com',
+      applicationCategory: 'EducationalApplication',
+      operatingSystem: 'Web',
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      description:
+        'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking.',
+    },
+    {
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How many questions are on the USCIS civics test?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'There are 128 official USCIS civics questions. During your naturalization interview, the officer will ask up to 20 of them.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'How many questions do I need to answer correctly to pass?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'You need to answer 12 out of 20 questions correctly to pass the civics test during your naturalization interview.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'What is the 65/20 rule for the citizenship test?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'If you are 65 years or older and have been a lawful permanent resident for 20 or more years, you only need to study 20 specially marked civics questions. The officer asks 10, and you need 6 correct to pass.',
+          },
+        },
+        {
+          '@type': 'Question',
+          name: 'Is the USCIS civics test oral or written?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'The USCIS civics test is oral. A USCIS officer asks you questions and you answer them out loud. This app is designed to practice the oral format — one question at a time, no multiple choice.',
+          },
+        },
+      ],
+    },
+  ],
+}
+
 export default async function LandingPage() {
   const { userId } = await auth()
   const isSignedIn = Boolean(userId)
   return (
     <main className="relative isolate min-h-screen overflow-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[80vh] opacity-60"

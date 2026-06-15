@@ -5,7 +5,7 @@ export default function manifest(): MetadataRoute.Manifest {
     name: 'US Civics Study',
     short_name: 'US Civics',
     description:
-      'A calm, distraction-free study app for the 2025 USCIS civics test.',
+      'A calm, distraction-free study app for the 2026 USCIS civics test.',
     start_url: '/dashboard',
     scope: '/',
     display: 'standalone',
