@@ -8,6 +8,7 @@ import {
 } from '@/lib/questions'
 import { getServerProgress } from '@/lib/server-progress'
 import { isPaid } from '@/lib/server-access'
+import { ProcessReferral } from '@/components/share-score'
 
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Dashboard · US Civics Study' }
@@ -35,6 +36,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-10">
+      <ProcessReferral />
       <div className="mb-10">
         <div className="flex items-center gap-3">
           <p className="text-sm uppercase tracking-[0.18em] text-muted">

@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
+import { CaptureRefParam } from '@/components/share-score'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -59,6 +60,7 @@ export default async function LandingPage() {
   const isSignedIn = Boolean(userId)
   return (
     <main className="relative isolate min-h-screen overflow-hidden">
+      <CaptureRefParam />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

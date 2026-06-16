@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation'
 import type { Question } from '@/lib/types'
 import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
+import { ShareScore } from '@/components/share-score'
 
 interface Result {
   question: Question
@@ -199,6 +200,9 @@ function TestSummary({
         >
           Back to dashboard
         </Link>
+      </div>
+      <div className="mt-3">
+        <ShareScore score={score} total={results.length} />
       </div>
       <FeedbackPrompt trigger="mock_test" />
     </div>
