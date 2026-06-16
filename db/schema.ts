@@ -3,6 +3,7 @@ import {
   serial,
   text,
   integer,
+  boolean,
   timestamp,
   uniqueIndex,
 } from 'drizzle-orm/pg-core'
@@ -43,6 +44,7 @@ export const payments = pgTable(
     status: text('status').notNull().default('pending'), // pending | paid
     freeTestUsedAt: timestamp('free_test_used_at'),
     paidAt: timestamp('paid_at'),
+    bonusTests: integer('bonus_tests').notNull().default(0),
     createdAt: timestamp('created_at').defaultNow(),
   },
   (table) => ({
@@ -51,3 +53,50 @@ export const payments = pgTable(
 )
 
 export type PaymentRow = typeof payments.$inferSelect
+
+export const usersMeta = pgTable(
+  'users_meta',
+  {
+    id: serial('id').primaryKey(),
+    userId: text('user_id').notNull(),
+    email: text('email').notNull(),
+    firstName: text('first_name'),
+    referralCode: text('referral_code').notNull(),
+    createdAt: timestamp('created_at').defaultNow(),
+  },
+  (table) => ({
+    userUnique: uniqueIndex('users_meta_user_idx').on(table.userId),
+    referralCodeUnique: uniqueIndex('users_meta_referral_code_idx').on(table.referralCode),
+  }),
+)
+
+export type UsersMetaRow = typeof usersMeta.$inferSelect
+
+export const emailSequences = pgTable('email_sequences', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  // welcome | nudge | re_engagement | study_tip | payment_receipt
+  type: text('type').notNull(),
+  scheduledFor: timestamp('scheduled_for').notNull(),
+  sentAt: timestamp('sent_at'),
+  createdAt: timestamp('created_at').defaultNow(),
+})
+
+export type EmailSequenceRow = typeof emailSequences.$inferSelect
+
+export const referrals = pgTable(
+  'referrals',
+  {
+    id: serial('id').primaryKey(),
+    referrerUserId: text('referrer_user_id').notNull(),
+    referredUserId: text('referred_user_id').notNull(),
+    referralCode: text('referral_code').notNull(),
+    bonusGranted: boolean('bonus_granted').notNull().default(false),
+    createdAt: timestamp('created_at').defaultNow(),
+  },
+  (table) => ({
+    referredUnique: uniqueIndex('referrals_referred_idx').on(table.referredUserId),
+  }),
+)
+
+export type ReferralRow = typeof referrals.$inferSelect

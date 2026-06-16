@@ -1,9 +1,10 @@
 import Stripe from 'stripe'
 import { NextResponse } from 'next/server'
 import { db } from '@/db/client'
-import { payments } from '@/db/schema'
+import { payments, usersMeta } from '@/db/schema'
 import { eq } from 'drizzle-orm'
 import { getPostHogClient } from '@/lib/posthog-server'
+import { sendEmail, paymentReceiptEmail } from '@/lib/email'
 
 export async function POST(req: Request) {
   const secretKey = process.env.STRIPE_SECRET_KEY
@@ -69,6 +70,20 @@ export async function POST(req: Request) {
         stripe_session_id: session.id,
       },
     })
+
+    const userRow = await db
+      .select({ email: usersMeta.email, firstName: usersMeta.firstName })
+      .from(usersMeta)
+      .where(eq(usersMeta.userId, userId))
+      .limit(1)
+
+    if (userRow[0]) {
+      await sendEmail(
+        userRow[0].email,
+        'You\'re unlocked — unlimited mock tests on civicsstudy.com',
+        paymentReceiptEmail(userRow[0].firstName),
+      )
+    }
   }
 
   return NextResponse.json({ received: true })

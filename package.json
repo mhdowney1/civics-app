@@ -25,7 +25,9 @@
     "posthog-node": "^5.34.2",
     "react": "19.2.4",
     "react-dom": "19.2.4",
-    "stripe": "^22.2.0"
+    "resend": "^6.12.4",
+    "stripe": "^22.2.0",
+    "svix": "^1.95.2"
   },
   "devDependencies": {
     "@next/env": "^16.2.6",
