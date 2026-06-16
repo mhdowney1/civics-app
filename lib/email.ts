@@ -1,6 +1,6 @@
 import { Resend } from 'resend'
 
-const FROM = 'US Civics Study <hello@civicsstudy.com>'
+const FROM = 'US Civics Study <hello@mail.civicsstudy.com>'
 const BASE_URL = 'https://civicsstudy.com'
 
 function getResend() {
