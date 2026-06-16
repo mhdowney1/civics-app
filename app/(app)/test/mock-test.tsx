@@ -34,10 +34,12 @@ export function MockTest({ questions }: { questions: Question[] }) {
     const next = [...results, { question: current, correct }]
     if (index + 1 >= total) {
       const score = next.filter((r) => r.correct).length
-      track('mock_test_completed', {
-        total,
-        correct: score,
-        passed: score >= PASS_THRESHOLD,
+      const passed = score >= PASS_THRESHOLD
+      track('mock_test_completed', { total, correct: score, passed })
+      fetch('/api/tests', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ score, total }),
       })
       setResults(next)
       setFinished(true)
@@ -48,7 +50,17 @@ export function MockTest({ questions }: { questions: Question[] }) {
   }
 
   if (finished) {
-    return <TestSummary results={results} onRetake={() => router.refresh()} />
+    return (
+      <TestSummary
+        results={results}
+        onRetake={() => {
+          setIndex(0)
+          setResults([])
+          setFinished(false)
+          router.refresh()
+        }}
+      />
+    )
   }
 
   if (!current) {

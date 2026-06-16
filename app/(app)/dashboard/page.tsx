@@ -7,6 +7,7 @@ import {
   TOTAL_QUESTIONS,
 } from '@/lib/questions'
 import { getServerProgress } from '@/lib/server-progress'
+import { getRecentTests, type TestRun } from '@/lib/server-tests'
 import { isPaid } from '@/lib/server-access'
 import { ProcessReferral } from '@/components/share-score'
 
@@ -15,10 +16,11 @@ export const metadata = { title: 'Dashboard · US Civics Study' }
 
 export default async function DashboardPage() {
   const { userId } = await auth()
-  const [user, progress, paid] = await Promise.all([
+  const [user, progress, paid, recentTests] = await Promise.all([
     currentUser(),
     getServerProgress(),
     userId ? isPaid(userId) : Promise.resolve(false),
+    getRecentTests(3),
   ])
 
   const byId = new Map(progress.map((p) => [p.questionId, p]))
@@ -122,6 +124,27 @@ export default async function DashboardPage() {
         <p className="mt-2 text-center text-xs text-muted">
           20 random questions, oral-style. Pass with 12+.
         </p>
+
+        {recentTests.length > 0 && (
+          <div className="mt-6">
+            <div className="mb-3 flex items-center justify-between">
+              <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-muted">
+                Recent tests
+              </h3>
+              <Link
+                href="/test/history"
+                className="text-xs text-muted hover:text-foreground"
+              >
+                View all →
+              </Link>
+            </div>
+            <ul className="space-y-2">
+              {recentTests.map((run) => (
+                <TestRunRow key={run.id} run={run} />
+              ))}
+            </ul>
+          </div>
+        )}
       </section>
     </div>
   )
@@ -145,6 +168,31 @@ function Stat({
         {label}
       </div>
     </div>
+  )
+}
+
+function TestRunRow({ run }: { run: TestRun }) {
+  const date = new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(run.takenAt))
+
+  return (
+    <li className="flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3">
+      <span className="text-sm text-muted">{date}</span>
+      <span className="font-display text-sm font-semibold">
+        {run.score} / {run.total}
+      </span>
+      <span
+        className={`rounded-full px-2.5 py-0.5 text-xs font-medium ${
+          run.passed
+            ? 'bg-confident/10 text-confident'
+            : 'bg-needs-practice/10 text-needs-practice'
+        }`}
+      >
+        {run.passed ? 'Pass' : 'Fail'}
+      </span>
+    </li>
   )
 }
 

@@ -100,3 +100,14 @@ export const referrals = pgTable(
 )
 
 export type ReferralRow = typeof referrals.$inferSelect
+
+export const mockTests = pgTable('mock_tests', {
+  id: serial('id').primaryKey(),
+  userId: text('user_id').notNull(),
+  score: integer('score').notNull(),
+  total: integer('total').notNull(),
+  passed: boolean('passed').notNull(),
+  takenAt: timestamp('taken_at').defaultNow().notNull(),
+})
+
+export type MockTestRow = typeof mockTests.$inferSelect
