@@ -24,18 +24,33 @@ No code changes needed. Turn off the `payment_enabled` feature flag in the PostH
 
 ---
 
-## PostHog surveys
+## Feedback collection
 
-Two surveys created in PostHog dashboard, triggered programmatically:
+### In-app FeedbackPrompt (custom component — `components/feedback-prompt.tsx`)
 
-**Survey 1 — after first mock test completed** (`app/(app)/test/mock-test.tsx`)
-- Question: "Did this app help you feel ready for your test? What would make it better?"
-- Type: open text + 1–5 rating
+Three triggers, each showing a 1–5 star rating + open text comment. Fires `user_feedback_submitted` event to PostHog with `rating`, `comment`, and `trigger` properties.
 
-**Survey 2 — after all 128 questions answered** (`app/(app)/study/study-session.tsx`)
-- Triggered in `SessionSummary` when `total === 128`
-- Question: "You just went through all 128 questions — what did you think? Anything missing?"
-- Type: open text
+| Trigger | When | File |
+|---|---|---|
+| `session_end` | After any study session with ≥10 questions answered. Gated by `localStorage` flag `feedback_session_shown` — shows once per device. | `app/(app)/study/study-session.tsx` |
+| `all_128` | After all 128 questions have been answered in a session. | `app/(app)/study/study-session.tsx` |
+| `mock_test` | After mock test completes (pass or fail). | `app/(app)/test/mock-test.tsx` |
+
+Each trigger uses distinct prompt text — see `PROMPTS` map in `feedback-prompt.tsx`.
+
+### PostHog native surveys (dashboard — live)
+
+Two floating modal surveys built and launched in PostHog:
+
+**Survey A — Returning user NPS**
+- Targeting: users who have triggered `study_session_started` ≥ 2 times
+- Display: floating modal, 30s delay into session, shown once per user
+- Questions: NPS 0–10 + "What's one thing we should improve?" (open text)
+
+**Survey B — Feature-specific (post mock test)**
+- Targeting: users who have triggered `mock_test_completed` at least once
+- Display: floating modal, shown once per user
+- Questions: "How was the audio voice?" (multiple choice) + "What would make this app a must-have before your test?" (open text)
 
 ---
 

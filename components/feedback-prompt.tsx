@@ -3,7 +3,22 @@
 import { useState } from 'react'
 import { track } from '@/lib/analytics'
 
-export function FeedbackPrompt({ trigger }: { trigger: 'mock_test' | 'all_128' }) {
+const PROMPTS: Record<'mock_test' | 'all_128' | 'session_end', { title: string; placeholder: string }> = {
+  mock_test: {
+    title: 'How did it go?',
+    placeholder: 'Was the mock test a fair reflection of the real exam? (optional)',
+  },
+  all_128: {
+    title: 'How did it go?',
+    placeholder: "You've seen all 128 — what's missing or confusing? (optional)",
+  },
+  session_end: {
+    title: "Quick question — how's the study experience so far?",
+    placeholder: 'Anything confusing or missing? (optional)',
+  },
+}
+
+export function FeedbackPrompt({ trigger }: { trigger: 'mock_test' | 'all_128' | 'session_end' }) {
   const [rating, setRating] = useState<number | null>(null)
   const [comment, setComment] = useState('')
   const [submitted, setSubmitted] = useState(false)
@@ -27,10 +42,12 @@ export function FeedbackPrompt({ trigger }: { trigger: 'mock_test' | 'all_128' }
     setSubmitted(true)
   }
 
+  const { title, placeholder } = PROMPTS[trigger]
+
   return (
     <div className="mt-6 w-full rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center justify-between">
-        <p className="font-display text-sm font-semibold">How did it go?</p>
+        <p className="font-display text-sm font-semibold">{title}</p>
         <button
           onClick={() => setDismissed(true)}
           className="text-xs text-muted hover:text-foreground"
@@ -57,7 +74,7 @@ export function FeedbackPrompt({ trigger }: { trigger: 'mock_test' | 'all_128' }
       <textarea
         value={comment}
         onChange={(e) => setComment(e.target.value)}
-        placeholder="What would make it better? (optional)"
+        placeholder={placeholder}
         rows={2}
         className="mt-3 w-full resize-none rounded-xl border border-border bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted focus:outline-none focus:ring-1 focus:ring-confident/40"
       />

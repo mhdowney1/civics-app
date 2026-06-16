@@ -294,6 +294,15 @@ function SessionSummary({
   total: number
   isSignedIn: boolean
 }) {
+  const [showSessionFeedback] = useState(() => {
+    if (typeof window === 'undefined') return false
+    return total >= 10 && total !== 128 && !localStorage.getItem('feedback_session_shown')
+  })
+
+  useEffect(() => {
+    if (showSessionFeedback) localStorage.setItem('feedback_session_shown', '1')
+  }, [showSessionFeedback])
+
   return (
     <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-xl flex-col items-center justify-center px-5 pt-12 pb-[calc(3rem+env(safe-area-inset-bottom))] text-center">
       <p className="text-sm uppercase tracking-[0.18em] text-muted">Session complete</p>
@@ -318,6 +327,7 @@ function SessionSummary({
         </Link>
       </div>
       {total === 128 && <FeedbackPrompt trigger="all_128" />}
+      {showSessionFeedback && <FeedbackPrompt trigger="session_end" />}
       {!isSignedIn && (
         <p className="mt-6 text-sm text-muted">
           <Link href="/sign-up" className="text-confident hover:underline">
