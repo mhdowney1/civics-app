@@ -84,7 +84,7 @@ const stripeWebhookSecret = env.STRIPE_WEBHOOK_SECRET ?? ''
 const stripePriceId = env.STRIPE_PRICE_ID ?? ''
 
 const elevenLabsApiKey = env.ELEVENLABS_API_KEY ?? ''
-const elevenLabsVoiceId = env.ELEVENLABS_VOICE_ID ?? '21m00Tcm4TlvDq8ikWAM'
+const elevenLabsVoiceId = env.ELEVENLABS_VOICE_ID ?? 'nPczCjzI2devNBz1zQrb'
 
 const googleCivicApiKey = env.GOOGLE_CIVIC_API_KEY ?? ''
 

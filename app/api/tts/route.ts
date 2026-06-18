@@ -10,7 +10,7 @@ export async function GET(req: NextRequest) {
   }
 
   const apiKey = process.env.ELEVENLABS_API_KEY
-  const voiceId = process.env.ELEVENLABS_VOICE_ID ?? '21m00Tcm4TlvDq8ikWAM'
+  const voiceId = process.env.ELEVENLABS_VOICE_ID ?? 'nPczCjzI2devNBz1zQrb'
 
   if (!apiKey) {
     return NextResponse.json({ error: 'tts not configured' }, { status: 503 })
@@ -30,7 +30,9 @@ export async function GET(req: NextRequest) {
   })
 
   if (!res.ok) {
-    return NextResponse.json({ error: 'tts failed' }, { status: 502 })
+    const body = await res.text()
+    console.error(`ElevenLabs ${res.status}:`, body)
+    return NextResponse.json({ error: 'tts failed', detail: body }, { status: 502 })
   }
 
   const audio = await res.arrayBuffer()
