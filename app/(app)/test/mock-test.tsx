@@ -7,6 +7,7 @@ import type { Question } from '@/lib/types'
 import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
 import { ShareScore } from '@/components/share-score'
+import { SpeakerButton } from '@/components/speaker-button'
 
 interface Result {
   question: Question
@@ -94,9 +95,12 @@ export function MockTest({ questions }: { questions: Question[] }) {
         key={current.id}
         className="flex flex-1 flex-col rounded-3xl border border-border bg-card p-6 sm:p-8"
       >
-        <p className="text-xs uppercase tracking-wider text-muted">
-          {current.category}
-        </p>
+        <div className="flex items-start justify-between gap-3">
+          <p className="text-xs uppercase tracking-wider text-muted">
+            {current.category}
+          </p>
+          <SpeakerButton text={current.question} />
+        </div>
         <h2 className="mt-3 font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
           {current.question}
         </h2>
@@ -144,6 +148,15 @@ function TestSummary({
   const score = results.filter((r) => r.correct).length
   const passed = score >= PASS_THRESHOLD
   const wrong = results.filter((r) => !r.correct)
+
+  useEffect(() => {
+    if (passed) {
+      void import('canvas-confetti').then(({ default: confetti }) => {
+        confetti({ colors: ['#4ade80', '#ffffff', '#000000'], particleCount: 120, spread: 90, origin: { y: 0.6 } })
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="mx-auto max-w-2xl px-5 py-10">

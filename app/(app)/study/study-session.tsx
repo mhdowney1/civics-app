@@ -6,6 +6,8 @@ import type { Question, Status } from '@/lib/types'
 import { saveProgress } from '@/lib/progress-client'
 import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
+import { SpeakerButton } from '@/components/speaker-button'
+import { getStoredLocation, setStoredLocation, clearStoredLocation, type LocationData } from '@/lib/location'
 
 interface Props {
   initialQuestions: Question[]
@@ -28,7 +30,26 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   const [results, setResults] = useState<SessionResult[]>([])
   const [finished, setFinished] = useState(false)
   const [bannerDismissed, setBannerDismissed] = useState(false)
+  const [showAllAnswers, setShowAllAnswers] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return false
+    return localStorage.getItem('civics:show-all-answers') === 'true'
+  })
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const toggleShowAllAnswers = useCallback(() => {
+    setShowAllAnswers((prev) => {
+      const next = !prev
+      localStorage.setItem('civics:show-all-answers', String(next))
+      return next
+    })
+  }, [])
+
+  const [location, setLocation] = useState<LocationData | null>(() => getStoredLocation())
+  const handleLocationSaved = useCallback((data: LocationData) => setLocation(data), [])
+  const handleClearLocation = useCallback(() => {
+    clearStoredLocation()
+    setLocation(null)
+  }, [])
 
   useEffect(() => {
     track('study_session_started', {
@@ -157,7 +178,14 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
               Think of your answer, then tap below.
             </div>
           ) : (
-            <AnswerPanel question={current} />
+            <AnswerPanel
+              question={current}
+              showAll={showAllAnswers}
+              onToggleShowAll={toggleShowAllAnswers}
+              location={location}
+              onLocationSaved={handleLocationSaved}
+              onClearLocation={handleClearLocation}
+            />
           )}
         </div>
 
@@ -200,17 +228,55 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   )
 }
 
-function AnswerPanel({ question }: { question: Question }) {
+const LOCATION_QUESTION_IDS = new Set([23, 29, 61, 62])
+
+function getPersonalizedAnswers(questionId: number, location: LocationData): string[] | null {
+  if (questionId === 23) return location.senators.length ? location.senators : null
+  if (questionId === 29) return location.representative ? [location.representative] : null
+  if (questionId === 61) return location.governor ? [location.governor] : null
+  if (questionId === 62) return location.stateCapital ? [location.stateCapital] : null
+  return null
+}
+
+function AnswerPanel({
+  question,
+  showAll,
+  onToggleShowAll,
+  location,
+  onLocationSaved,
+  onClearLocation,
+}: {
+  question: Question
+  showAll: boolean
+  onToggleShowAll: () => void
+  location: LocationData | null
+  onLocationSaved: (data: LocationData) => void
+  onClearLocation: () => void
+}) {
+  const isLocationQuestion = question.variable && LOCATION_QUESTION_IDS.has(question.id)
+  const personalizedAnswers = isLocationQuestion && location
+    ? getPersonalizedAnswers(question.id, location)
+    : null
+
   const multiple = question.answers.length > 1
+  const baseAnswers = multiple && !showAll ? [question.answers[0]] : question.answers
+  const displayed = personalizedAnswers ?? baseAnswers
+  const isPersonalized = personalizedAnswers !== null
+
   return (
     <div className="animate-fade-in">
-      {multiple && (
+      {multiple && showAll && !isPersonalized && (
         <p className="mb-3 text-xs uppercase tracking-wider text-muted">
           Any of these answers is acceptable
         </p>
       )}
+      {isPersonalized && question.id === 23 && displayed.length > 1 && (
+        <p className="mb-3 text-xs uppercase tracking-wider text-muted">
+          Either senator is acceptable
+        </p>
+      )}
       <ul className="space-y-2">
-        {question.answers.map((a, i) => (
+        {displayed.map((a, i) => (
           <li
             key={i}
             className="rounded-xl border border-confident/20 bg-confident/5 px-4 py-3 text-base text-foreground sm:text-lg"
@@ -219,69 +285,87 @@ function AnswerPanel({ question }: { question: Question }) {
           </li>
         ))}
       </ul>
-      {question.variable && (
+      {isLocationQuestion && !location && (
+        <ZipPrompt onSaved={onLocationSaved} />
+      )}
+      {isLocationQuestion && location && (
+        <button
+          onClick={onClearLocation}
+          className="mt-3 text-xs text-muted hover:text-foreground"
+        >
+          Change ZIP ↺
+        </button>
+      )}
+      {multiple && !isPersonalized && (
+        <button
+          onClick={onToggleShowAll}
+          className="mt-3 text-xs text-muted hover:text-foreground"
+        >
+          {showAll
+            ? 'Show first answer only ↑'
+            : `Show all ${question.answers.length} answers ↓`}
+        </button>
+      )}
+      {question.variable && !isLocationQuestion && (
         <p className="mt-3 text-xs text-muted">
-          This answer changes by current officeholder or location. Check the
-          USCIS site for the latest answer.
+          This answer changes with the current officeholder.
         </p>
       )}
     </div>
   )
 }
 
-function SpeakerButton({ text }: { text: string }) {
-  const [supported] = useState(
-    () => typeof window !== 'undefined' && 'speechSynthesis' in window,
-  )
-  const [speaking, setSpeaking] = useState(false)
+function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
+  const [zip, setZip] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState('')
 
-  useEffect(() => {
-    return () => {
-      if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel()
-      }
+  async function handleSubmit() {
+    if (!/^\d{5}$/.test(zip)) {
+      setError('Enter a valid 5-digit ZIP code.')
+      return
     }
-  }, [])
-
-  const speak = useCallback(() => {
-    if (!supported) return
-    window.speechSynthesis.cancel()
-    const u = new SpeechSynthesisUtterance(text)
-    u.rate = 0.95
-    u.pitch = 1
-    u.lang = 'en-US'
-    u.onend = () => setSpeaking(false)
-    u.onerror = () => setSpeaking(false)
-    setSpeaking(true)
-    window.speechSynthesis.speak(u)
-  }, [supported, text])
-
-  if (!supported) return <span />
+    setLoading(true)
+    setError('')
+    try {
+      const res = await fetch(`/api/officials?zip=${zip}`)
+      if (!res.ok) throw new Error('lookup failed')
+      const data = await res.json() as Omit<LocationData, 'zip'>
+      const locationData: LocationData = { zip, ...data }
+      setStoredLocation(locationData)
+      onSaved(locationData)
+    } catch {
+      setError('Could not look up your officials. Try again.')
+    } finally {
+      setLoading(false)
+    }
+  }
 
   return (
-    <button
-      type="button"
-      onClick={speak}
-      aria-label="Read question aloud"
-      className={`rounded-full border border-border bg-background p-2 text-muted transition hover:text-foreground ${
-        speaking ? 'animate-pulse-soft text-confident' : ''
-      }`}
-    >
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className="h-5 w-5"
-      >
-        <path d="M11 5 6 9H2v6h4l5 4z" />
-        <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
-        <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
-      </svg>
-    </button>
+    <div className="mt-4">
+      <p className="mb-2 text-xs text-muted">
+        Enter your ZIP code to see your actual answer.
+      </p>
+      <div className="flex gap-2">
+        <input
+          type="text"
+          inputMode="numeric"
+          maxLength={5}
+          value={zip}
+          onChange={(e) => setZip(e.target.value.replace(/\D/g, ''))}
+          placeholder="ZIP code"
+          className="flex-1 rounded-xl border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-confident/40"
+        />
+        <button
+          onClick={() => void handleSubmit()}
+          disabled={loading || zip.length !== 5}
+          className="rounded-xl bg-confident/10 px-4 py-2 text-sm font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 disabled:opacity-40"
+        >
+          {loading ? '…' : 'Lookup →'}
+        </button>
+      </div>
+      {error && <p className="mt-1 text-xs text-needs-practice">{error}</p>}
+    </div>
   )
 }
 
@@ -302,6 +386,15 @@ function SessionSummary({
   useEffect(() => {
     if (showSessionFeedback) localStorage.setItem('feedback_session_shown', '1')
   }, [showSessionFeedback])
+
+  useEffect(() => {
+    if (correct > 0) {
+      void import('canvas-confetti').then(({ default: confetti }) => {
+        confetti({ colors: ['#4ade80', '#ffffff', '#000000'], particleCount: 100, spread: 80, origin: { y: 0.6 } })
+      })
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-xl flex-col items-center justify-center px-5 pt-12 pb-[calc(3rem+env(safe-area-inset-bottom))] text-center">

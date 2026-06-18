@@ -326,7 +326,7 @@
     "id": 30,
     "question": "What is the name of the Speaker of the House of Representatives now?",
     "answers": [
-      "Visit uscis.gov/citizenship/testupdates for the current answer"
+      "Mike Johnson"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -412,7 +412,7 @@
     "id": 38,
     "question": "What is the name of the President of the United States now?",
     "answers": [
-      "Visit uscis.gov/citizenship/testupdates for the current answer"
+      "Donald Trump"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -423,7 +423,7 @@
     "id": 39,
     "question": "What is the name of the Vice President of the United States now?",
     "answers": [
-      "Visit uscis.gov/citizenship/testupdates for the current answer"
+      "JD Vance"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -636,7 +636,7 @@
     "id": 57,
     "question": "Who is the Chief Justice of the United States now?",
     "answers": [
-      "Visit uscis.gov/citizenship/testupdates for the current answer"
+      "John Roberts"
     ],
     "category": "System of Government",
     "section": "American Government",

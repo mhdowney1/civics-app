@@ -4,6 +4,9 @@
     "clerk": {
       "name": "Clerk"
     },
+    "elevenlabs": {
+      "name": "ElevenLabs"
+    },
     "neon": {
       "name": "Neon"
     },
@@ -24,6 +27,11 @@
       "name": "clerk-plan",
       "providerName": "Clerk",
       "serviceId": "hobby"
+    },
+    "elevenlabs-tts": {
+      "name": "elevenlabs-tts",
+      "providerName": "ElevenLabs",
+      "serviceId": "tts"
     },
     "neon-plan": {
       "name": "neon-plan",
