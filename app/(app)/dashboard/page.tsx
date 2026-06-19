@@ -10,12 +10,17 @@ import { getServerProgress } from '@/lib/server-progress'
 import { getRecentTests, type TestRun } from '@/lib/server-tests'
 import { isPaid } from '@/lib/server-access'
 import { ProcessReferral } from '@/components/share-score'
+import { DashboardConfetti } from '@/components/dashboard-confetti'
 
 export const dynamic = 'force-dynamic'
 export const metadata = { title: 'Dashboard · US Civics Study' }
 
-export default async function DashboardPage() {
-  const { userId } = await auth()
+export default async function DashboardPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ paid?: string }>
+}) {
+  const [{ userId }, { paid: paidParam }] = await Promise.all([auth(), searchParams])
   const [user, progress, paid, recentTests] = await Promise.all([
     currentUser(),
     getServerProgress(),
@@ -38,6 +43,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-10">
+      <DashboardConfetti confident={confident} paid={paidParam === '1'} />
       <ProcessReferral />
       <div className="mb-10">
         <div className="flex items-center gap-3">

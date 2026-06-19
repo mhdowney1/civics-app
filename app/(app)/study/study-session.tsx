@@ -8,6 +8,7 @@ import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
 import { SpeakerButton } from '@/components/speaker-button'
 import { getStoredLocation, setStoredLocation, clearStoredLocation, type LocationData } from '@/lib/location'
+import { fireConfetti } from '@/lib/confetti'
 
 interface Props {
   initialQuestions: Question[]
@@ -72,6 +73,9 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   const handleAnswer = useCallback(
     (status: Status) => {
       if (!current) return
+      if (status === 'confident') {
+        fireConfetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, scalar: 0.7 })
+      }
       void saveProgress(current.id, status)
       track('question_answered', {
         question_id: current.id,
@@ -104,7 +108,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
 
   if (finished) {
     const correct = results.filter((r) => r.status === 'confident').length
-    return <SessionSummary correct={correct} total={results.length} isSignedIn={isSignedIn} />
+    return <SessionSummary correct={correct} total={results.length} isSignedIn={isSignedIn} mode={mode} />
   }
 
   if (!current) {
@@ -116,7 +120,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   }
 
   return (
-    <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
       {!isSignedIn && !bannerDismissed && (
         <div className="mb-4 flex items-center justify-between rounded-xl border border-border bg-card px-4 py-2.5 text-sm">
           <span className="text-muted">
@@ -153,7 +157,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
 
       <section
         key={current.id}
-        className="flex flex-1 flex-col rounded-3xl border border-border bg-card p-6 sm:p-8"
+        className="flex flex-1 flex-col rounded-3xl border border-border bg-card p-4 sm:p-8"
       >
         <div className="flex items-start justify-between gap-3">
           {current.starred ? (
@@ -172,9 +176,9 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
           {current.question}
         </h2>
 
-        <div className="mt-6 flex-1">
+        <div className="mt-3 flex-1">
           {!revealed ? (
-            <div className="flex h-full min-h-[120px] items-center justify-center text-sm text-muted animate-pulse-soft">
+            <div className="flex h-full min-h-[60px] items-center justify-center text-sm text-muted animate-pulse-soft">
               Think of your answer, then tap below.
             </div>
           ) : (
@@ -192,21 +196,21 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
         {!revealed ? (
           <button
             onClick={() => setRevealed(true)}
-            className="mt-6 w-full rounded-2xl border border-border bg-background px-6 py-5 font-display text-base font-semibold transition hover:border-foreground/40"
+            className="mt-4 w-full rounded-2xl border border-border bg-background px-6 py-3 font-display text-base font-semibold transition hover:border-foreground/40"
           >
             Show answer
           </button>
         ) : (
-          <div className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
             <button
               onClick={() => handleAnswer('needs_practice')}
-              className="rounded-2xl bg-needs-practice/10 px-6 py-6 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99]"
+              className="rounded-2xl bg-needs-practice/10 px-6 py-4 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99]"
             >
               Need more practice
             </button>
             <button
               onClick={() => handleAnswer('confident')}
-              className="rounded-2xl bg-confident/10 px-6 py-6 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99]"
+              className="rounded-2xl bg-confident/10 px-6 py-4 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99]"
             >
               Got it ✓
             </button>
@@ -373,10 +377,12 @@ function SessionSummary({
   correct,
   total,
   isSignedIn,
+  mode,
 }: {
   correct: number
   total: number
   isSignedIn: boolean
+  mode: string
 }) {
   const [showSessionFeedback] = useState(() => {
     if (typeof window === 'undefined') return false
@@ -388,10 +394,10 @@ function SessionSummary({
   }, [showSessionFeedback])
 
   useEffect(() => {
-    if (correct > 0) {
-      void import('canvas-confetti').then(({ default: confetti }) => {
-        confetti({ colors: ['#4ade80', '#ffffff', '#000000'], particleCount: 100, spread: 80, origin: { y: 0.6 } })
-      })
+    if (mode === 'category' && correct === total) {
+      fireConfetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } })
+    } else if (correct > 0) {
+      fireConfetti({ particleCount: 100, spread: 80, origin: { y: 0.6 } })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

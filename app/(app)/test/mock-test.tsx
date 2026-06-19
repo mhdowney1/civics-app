@@ -8,6 +8,7 @@ import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
 import { ShareScore } from '@/components/share-score'
 import { SpeakerButton } from '@/components/speaker-button'
+import { fireConfetti } from '@/lib/confetti'
 
 interface Result {
   question: Question
@@ -32,6 +33,7 @@ export function MockTest({ questions }: { questions: Question[] }) {
 
   function record(correct: boolean) {
     if (!current) return
+    if (correct) fireConfetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, scalar: 0.7 })
     const next = [...results, { question: current, correct }]
     if (index + 1 >= total) {
       const score = next.filter((r) => r.correct).length
@@ -150,11 +152,7 @@ function TestSummary({
   const wrong = results.filter((r) => !r.correct)
 
   useEffect(() => {
-    if (passed) {
-      void import('canvas-confetti').then(({ default: confetti }) => {
-        confetti({ colors: ['#4ade80', '#ffffff', '#000000'], particleCount: 120, spread: 90, origin: { y: 0.6 } })
-      })
-    }
+    if (passed) fireConfetti({ particleCount: 120, spread: 90, origin: { y: 0.6 } })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
