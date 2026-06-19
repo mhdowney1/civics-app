@@ -29,11 +29,10 @@ export default async function StudyPage({
   const category = params.category
 
   let pool: Question[] = []
-  let label = 'All 128 questions'
+  let resolvedCategory: CategoryName | undefined
 
   if (mode === 'starred') {
     pool = STARRED_QUESTIONS
-    label = 'Starred (65/20)'
   } else if (mode === 'weak') {
     const progress = await getServerProgress()
     const weakIds = new Set(
@@ -42,7 +41,6 @@ export default async function StudyPage({
         .map((p) => p.questionId),
     )
     pool = QUESTIONS.filter((q) => weakIds.has(q.id))
-    label = 'Needs practice'
     if (pool.length === 0) {
       redirect('/dashboard')
     }
@@ -51,8 +49,8 @@ export default async function StudyPage({
       | CategoryName
       | undefined
     if (!cat) redirect('/dashboard')
+    resolvedCategory = cat!
     pool = getByCategory(cat!)
-    label = cat!
   } else {
     pool = QUESTIONS
   }
@@ -62,8 +60,8 @@ export default async function StudyPage({
   return (
     <StudySession
       initialQuestions={session}
-      modeLabel={label}
       mode={mode ?? (category ? 'category' : 'all')}
+      category={resolvedCategory}
       isSignedIn={isSignedIn}
     />
   )

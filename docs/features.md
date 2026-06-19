@@ -17,7 +17,7 @@
 |---|---|---|
 | ElevenLabs TTS — question read-aloud | ✅ Live | Brian voice; blob-cached per session; fallback to browser TTS |
 | TTS in mock test | ✅ Live | Speaker button now present in both study and mock test |
-| Spanish TTS / Spanish question text | ⬜ Not started | P2 — high-value given Mexico = 13% of naturalizations |
+| Spanish TTS | ✅ Live | Set `ELEVENLABS_VOICE_ID_ES` env var to a Latin American Spanish voice; falls back to EN voice if unset |
 
 ## Personalized Answers
 
@@ -36,6 +36,17 @@
 | Progress tracking (per question) | ✅ Live | Stored in Neon/Drizzle via `/api/progress` |
 | Offline-first progress | ✅ Live | Writes to localStorage queue; flushes on reconnect |
 | PWA / service worker | ✅ Live | Precaches questions.json; works offline |
+
+## Localization
+
+| Feature | Status | Notes |
+|---|---|---|
+| EN/ES toggle in nav | ✅ Live | Persisted in `civics:language` cookie; soft RSC refresh on toggle (no full reload) |
+| Spanish question text + answers | ✅ Live | All 128 questions have `questionEs` / `answersEs` in `data/questions.json` |
+| Full app UI in Spanish | ✅ Live | All authenticated pages (dashboard, study, mock test, progress, billing, history) via next-intl v4; Latin American Spanish |
+| Category names translated | ✅ Live | All 8 USCIS category names translated in dashboard, study, mock test, and progress views |
+| Spanish TTS (ElevenLabs) | ✅ Live | Separate voice via `ELEVENLABS_VOICE_ID_ES`; browser TTS fallback uses `es-US` locale |
+| Public pages in Spanish | ⬜ Not started | Landing page, `/civics-questions/*`, `/results` — kept English for SEO |
 
 ## Engagement
 
@@ -64,6 +75,5 @@
 
 | Feature | Priority | Notes |
 |---|---|---|
-| Spanish/English toggle | P2 | Translated question text + Spanish ElevenLabs voice |
 | AI oral coach (voice input + feedback) | P3 | User speaks answer aloud; AI grades accuracy |
 | B2B / institutional licenses | P3 | Bulk access for nonprofits, libraries, legal aid orgs |

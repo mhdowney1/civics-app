@@ -10,7 +10,10 @@ export async function GET(req: NextRequest) {
   }
 
   const apiKey = process.env.ELEVENLABS_API_KEY
-  const voiceId = process.env.ELEVENLABS_VOICE_ID ?? 'nPczCjzI2devNBz1zQrb'
+  const lang = req.nextUrl.searchParams.get('lang') === 'es' ? 'es' : 'en'
+  const enVoiceId = process.env.ELEVENLABS_VOICE_ID ?? 'nPczCjzI2devNBz1zQrb'
+  const esVoiceId = process.env.ELEVENLABS_VOICE_ID_ES ?? enVoiceId
+  const voiceId = lang === 'es' ? esVoiceId : enVoiceId
 
   if (!apiKey) {
     return NextResponse.json({ error: 'tts not configured' }, { status: 503 })

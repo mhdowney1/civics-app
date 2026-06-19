@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 
 const icons = {
   study: (
@@ -27,14 +28,15 @@ const icons = {
   ),
 }
 
-const links = [
-  { href: '/dashboard', label: 'Study', icon: icons.study },
-  { href: '/progress', label: 'Progress', icon: icons.progress },
-  { href: '/test', label: 'Mock test', icon: icons.test },
-]
-
 export function BottomNav() {
   const pathname = usePathname()
+  const t = useTranslations('bottomNav')
+
+  const links = [
+    { href: '/dashboard', label: t('study'), icon: icons.study },
+    { href: '/progress', label: t('progress'), icon: icons.progress },
+    { href: '/test', label: t('mockTest'), icon: icons.test },
+  ]
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-border bg-background/95 backdrop-blur sm:hidden">

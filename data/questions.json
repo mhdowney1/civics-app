@@ -2,10 +2,16 @@
   {
     "id": 1,
     "question": "What is the form of government of the United States?",
+    "questionEs": "¿Cuál es la forma de gobierno de los Estados Unidos?",
     "answers": [
       "Republic",
       "Constitution-based federal republic",
       "Representative democracy"
+    ],
+    "answersEs": [
+      "República",
+      "República federal basada en la Constitución",
+      "Democracia representativa"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -15,7 +21,9 @@
   {
     "id": 2,
     "question": "What is the supreme law of the land?",
+    "questionEs": "¿Cuál es la ley suprema de la nación?",
     "answers": ["(U.S.) Constitution"],
+    "answersEs": ["La Constitución (de los Estados Unidos)"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": true,
@@ -24,11 +32,18 @@
   {
     "id": 3,
     "question": "Name one thing the U.S. Constitution does.",
+    "questionEs": "Nombre una cosa que hace la Constitución de los Estados Unidos.",
     "answers": [
       "Forms the government",
       "Defines powers of government",
       "Defines the parts of government",
       "Protects the rights of the people"
+    ],
+    "answersEs": [
+      "Forma el gobierno",
+      "Define los poderes del gobierno",
+      "Define las partes del gobierno",
+      "Protege los derechos del pueblo"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -38,12 +53,20 @@
   {
     "id": 4,
     "question": "The U.S. Constitution starts with the words \"We the People.\" What does \"We the People\" mean?",
+    "questionEs": "La Constitución de los Estados Unidos comienza con las palabras \"Nosotros el Pueblo\". ¿Qué significa \"Nosotros el Pueblo\"?",
     "answers": [
       "Self-government",
       "Popular sovereignty",
       "Consent of the governed",
       "People should govern themselves",
       "(Example of) social contract"
+    ],
+    "answersEs": [
+      "Autogobierno",
+      "Soberanía popular",
+      "Consentimiento de los gobernados",
+      "El pueblo debe gobernarse a sí mismo",
+      "(Ejemplo de) contrato social"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -53,7 +76,9 @@
   {
     "id": 5,
     "question": "How are changes made to the U.S. Constitution?",
+    "questionEs": "¿Cómo se hacen cambios a la Constitución de los Estados Unidos?",
     "answers": ["Amendments", "The amendment process"],
+    "answersEs": ["Enmiendas", "El proceso de enmienda"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": false,
@@ -62,9 +87,14 @@
   {
     "id": 6,
     "question": "What does the Bill of Rights protect?",
+    "questionEs": "¿Qué protege la Carta de Derechos?",
     "answers": [
       "(The basic) rights of Americans",
       "(The basic) rights of people living in the United States"
+    ],
+    "answersEs": [
+      "Los derechos (básicos) de los estadounidenses",
+      "Los derechos (básicos) de las personas que viven en los Estados Unidos"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -74,7 +104,9 @@
   {
     "id": 7,
     "question": "How many amendments does the U.S. Constitution have?",
+    "questionEs": "¿Cuántas enmiendas tiene la Constitución de los Estados Unidos?",
     "answers": ["Twenty-seven (27)"],
+    "answersEs": ["Veintisiete (27)"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": true,
@@ -83,11 +115,18 @@
   {
     "id": 8,
     "question": "Why is the Declaration of Independence important?",
+    "questionEs": "¿Por qué es importante la Declaración de Independencia?",
     "answers": [
       "It says America is free from British control.",
       "It says all people are created equal.",
       "It identifies inherent rights.",
       "It identifies individual freedoms."
+    ],
+    "answersEs": [
+      "Dice que América es libre del control británico.",
+      "Dice que todas las personas son creadas iguales.",
+      "Identifica los derechos inherentes.",
+      "Identifica las libertades individuales."
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -97,7 +136,9 @@
   {
     "id": 9,
     "question": "What founding document said the American colonies were free from Britain?",
+    "questionEs": "¿Qué documento fundacional declaró que las colonias americanas eran libres de Gran Bretaña?",
     "answers": ["Declaration of Independence"],
+    "answersEs": ["La Declaración de Independencia"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": false,
@@ -106,6 +147,7 @@
   {
     "id": 10,
     "question": "Name two important ideas from the Declaration of Independence and the U.S. Constitution.",
+    "questionEs": "Nombre dos ideas importantes de la Declaración de Independencia y la Constitución de los Estados Unidos.",
     "answers": [
       "Equality",
       "Liberty",
@@ -113,6 +155,14 @@
       "Natural rights",
       "Limited government",
       "Self-government"
+    ],
+    "answersEs": [
+      "Igualdad",
+      "Libertad",
+      "Contrato social",
+      "Derechos naturales",
+      "Gobierno limitado",
+      "Autogobierno"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -122,7 +172,9 @@
   {
     "id": 11,
     "question": "The words \"Life, Liberty, and the pursuit of Happiness\" are in what founding document?",
+    "questionEs": "Las palabras \"Vida, Libertad y la búsqueda de la Felicidad\" están en qué documento fundacional?",
     "answers": ["Declaration of Independence"],
+    "answersEs": ["La Declaración de Independencia"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": false,
@@ -131,7 +183,9 @@
   {
     "id": 12,
     "question": "What is the economic system of the United States?",
+    "questionEs": "¿Cuál es el sistema económico de los Estados Unidos?",
     "answers": ["Capitalism", "Free market economy"],
+    "answersEs": ["Capitalismo", "Economía de libre mercado"],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": true,
@@ -140,11 +194,18 @@
   {
     "id": 13,
     "question": "What is the rule of law?",
+    "questionEs": "¿Qué es el estado de derecho?",
     "answers": [
       "Everyone must follow the law.",
       "Leaders must obey the law.",
       "Government must obey the law.",
       "No one is above the law."
+    ],
+    "answersEs": [
+      "Todos deben seguir la ley.",
+      "Los líderes deben obedecer la ley.",
+      "El gobierno debe obedecer la ley.",
+      "Nadie está por encima de la ley."
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -154,6 +215,7 @@
   {
     "id": 14,
     "question": "Many documents influenced the U.S. Constitution. Name one.",
+    "questionEs": "Muchos documentos influyeron en la Constitución de los Estados Unidos. Nombre uno.",
     "answers": [
       "Declaration of Independence",
       "Articles of Confederation",
@@ -164,6 +226,16 @@
       "Mayflower Compact",
       "Iroquois Great Law of Peace"
     ],
+    "answersEs": [
+      "La Declaración de Independencia",
+      "Los Artículos de la Confederación",
+      "Los Documentos Federalistas",
+      "Los Documentos Antifederalistas",
+      "La Declaración de Derechos de Virginia",
+      "Las Órdenes Fundamentales de Connecticut",
+      "El Pacto del Mayflower",
+      "La Gran Ley de Paz de los Iroqueses"
+    ],
     "category": "Principles of American Government",
     "section": "American Government",
     "starred": false,
@@ -172,10 +244,16 @@
   {
     "id": 15,
     "question": "There are three branches of government. Why?",
+    "questionEs": "Hay tres poderes del gobierno. ¿Por qué?",
     "answers": [
       "So one part does not become too powerful",
       "Checks and balances",
       "Separation of powers"
+    ],
+    "answersEs": [
+      "Para que una parte no se vuelva demasiado poderosa",
+      "Controles y equilibrios",
+      "Separación de poderes"
     ],
     "category": "Principles of American Government",
     "section": "American Government",
@@ -185,9 +263,14 @@
   {
     "id": 16,
     "question": "Name the three branches of government.",
+    "questionEs": "Nombre los tres poderes del gobierno.",
     "answers": [
       "Legislative, executive, and judicial",
       "Congress, president, and the courts"
+    ],
+    "answersEs": [
+      "Legislativo, ejecutivo y judicial",
+      "El Congreso, el presidente y los tribunales"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -197,7 +280,9 @@
   {
     "id": 17,
     "question": "The President of the United States is in charge of which branch of government?",
+    "questionEs": "El Presidente de los Estados Unidos está a cargo de qué poder del gobierno?",
     "answers": ["Executive branch"],
+    "answersEs": ["El poder ejecutivo"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -206,10 +291,16 @@
   {
     "id": 18,
     "question": "What part of the federal government writes laws?",
+    "questionEs": "¿Qué parte del gobierno federal redacta las leyes?",
     "answers": [
       "(U.S.) Congress",
       "(U.S. or national) legislature",
       "Legislative branch"
+    ],
+    "answersEs": [
+      "El Congreso (de los Estados Unidos)",
+      "La legislatura (nacional o de los Estados Unidos)",
+      "El poder legislativo"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -219,7 +310,9 @@
   {
     "id": 19,
     "question": "What are the two parts of the U.S. Congress?",
+    "questionEs": "¿Cuáles son las dos partes del Congreso de los Estados Unidos?",
     "answers": ["Senate and House (of Representatives)"],
+    "answersEs": ["El Senado y la Cámara (de Representantes)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -228,7 +321,9 @@
   {
     "id": 20,
     "question": "Name one power of the U.S. Congress.",
+    "questionEs": "Nombre un poder del Congreso de los Estados Unidos.",
     "answers": ["Writes laws", "Declares war", "Makes the federal budget"],
+    "answersEs": ["Redacta las leyes", "Declara la guerra", "Elabora el presupuesto federal"],
     "category": "System of Government",
     "section": "American Government",
     "starred": true,
@@ -237,7 +332,9 @@
   {
     "id": 21,
     "question": "How many U.S. senators are there?",
+    "questionEs": "¿Cuántos senadores de los Estados Unidos hay?",
     "answers": ["One hundred (100)"],
+    "answersEs": ["Cien (100)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -246,7 +343,9 @@
   {
     "id": 22,
     "question": "How long is a term for a U.S. senator?",
+    "questionEs": "¿Cuánto dura el mandato de un senador de los Estados Unidos?",
     "answers": ["Six (6) years"],
+    "answersEs": ["Seis (6) años"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -255,6 +354,7 @@
   {
     "id": 23,
     "question": "Who is one of your state's U.S. senators now?",
+    "questionEs": "¿Quién es uno de los senadores de los Estados Unidos de su estado ahora?",
     "answers": [
       "Visit uscis.gov/citizenship/testupdates for the current answer"
     ],
@@ -266,7 +366,9 @@
   {
     "id": 24,
     "question": "How many voting members are in the House of Representatives?",
+    "questionEs": "¿Cuántos miembros con derecho a voto hay en la Cámara de Representantes?",
     "answers": ["Four hundred thirty-five (435)"],
+    "answersEs": ["Cuatrocientos treinta y cinco (435)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -275,7 +377,9 @@
   {
     "id": 25,
     "question": "How long is a term for a member of the House of Representatives?",
+    "questionEs": "¿Cuánto dura el mandato de un miembro de la Cámara de Representantes?",
     "answers": ["Two (2) years"],
+    "answersEs": ["Dos (2) años"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -284,7 +388,9 @@
   {
     "id": 26,
     "question": "Why do U.S. representatives serve shorter terms than U.S. senators?",
+    "questionEs": "¿Por qué los representantes de los Estados Unidos sirven mandatos más cortos que los senadores de los Estados Unidos?",
     "answers": ["To more closely follow public opinion"],
+    "answersEs": ["Para seguir más de cerca la opinión pública"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -293,7 +399,9 @@
   {
     "id": 27,
     "question": "How many senators does each state have?",
+    "questionEs": "¿Cuántos senadores tiene cada estado?",
     "answers": ["Two (2)"],
+    "answersEs": ["Dos (2)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -302,9 +410,14 @@
   {
     "id": 28,
     "question": "Why does each state have two senators?",
+    "questionEs": "¿Por qué cada estado tiene dos senadores?",
     "answers": [
       "Equal representation (for small states)",
       "The Great Compromise (Connecticut Compromise)"
+    ],
+    "answersEs": [
+      "Representación igualitaria (para los estados pequeños)",
+      "El Gran Compromiso (Compromiso de Connecticut)"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -314,6 +427,7 @@
   {
     "id": 29,
     "question": "Name your U.S. representative.",
+    "questionEs": "Nombre a su representante de los Estados Unidos.",
     "answers": [
       "Visit uscis.gov/citizenship/testupdates for the current answer"
     ],
@@ -325,6 +439,7 @@
   {
     "id": 30,
     "question": "What is the name of the Speaker of the House of Representatives now?",
+    "questionEs": "¿Cómo se llama el Presidente de la Cámara de Representantes actualmente?",
     "answers": [
       "Mike Johnson"
     ],
@@ -336,7 +451,9 @@
   {
     "id": 31,
     "question": "Who does a U.S. senator represent?",
+    "questionEs": "¿A quién representa un senador de los Estados Unidos?",
     "answers": ["Citizens of their state", "People of their state"],
+    "answersEs": ["Los ciudadanos de su estado", "El pueblo de su estado"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -345,7 +462,9 @@
   {
     "id": 32,
     "question": "Who elects U.S. senators?",
+    "questionEs": "¿Quién elige a los senadores de los Estados Unidos?",
     "answers": ["Citizens from their state"],
+    "answersEs": ["Los ciudadanos de su estado"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -354,11 +473,18 @@
   {
     "id": 33,
     "question": "Who does a member of the House of Representatives represent?",
+    "questionEs": "¿A quién representa un miembro de la Cámara de Representantes?",
     "answers": [
       "Citizens in their (congressional) district",
       "Citizens in their district",
       "People from their (congressional) district",
       "People in their district"
+    ],
+    "answersEs": [
+      "Los ciudadanos de su distrito (congressional)",
+      "Los ciudadanos de su distrito",
+      "Las personas de su distrito (congressional)",
+      "Las personas de su distrito"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -368,7 +494,9 @@
   {
     "id": 34,
     "question": "Who elects members of the House of Representatives?",
+    "questionEs": "¿Quién elige a los miembros de la Cámara de Representantes?",
     "answers": ["Citizens from their (congressional) district"],
+    "answersEs": ["Los ciudadanos de su distrito (congressional)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -377,10 +505,16 @@
   {
     "id": 35,
     "question": "Some states have more representatives than other states. Why?",
+    "questionEs": "Algunos estados tienen más representantes que otros estados. ¿Por qué?",
     "answers": [
       "(Because of) the state's population",
       "(Because) they have more people",
       "(Because) some states have more people"
+    ],
+    "answersEs": [
+      "(Debido a) la población del estado",
+      "(Porque) tienen más personas",
+      "(Porque) algunos estados tienen más personas"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -390,7 +524,9 @@
   {
     "id": 36,
     "question": "The President of the United States is elected for how many years?",
+    "questionEs": "El Presidente de los Estados Unidos es elegido por cuántos años?",
     "answers": ["Four (4) years"],
+    "answersEs": ["Cuatro (4) años"],
     "category": "System of Government",
     "section": "American Government",
     "starred": true,
@@ -399,9 +535,14 @@
   {
     "id": 37,
     "question": "The President of the United States can serve only two terms. Why?",
+    "questionEs": "El Presidente de los Estados Unidos puede servir solo dos mandatos. ¿Por qué?",
     "answers": [
       "(Because of) the 22nd Amendment",
       "To keep the president from becoming too powerful"
+    ],
+    "answersEs": [
+      "(Debido a) la Enmienda 22",
+      "Para evitar que el presidente se vuelva demasiado poderoso"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -411,6 +552,7 @@
   {
     "id": 38,
     "question": "What is the name of the President of the United States now?",
+    "questionEs": "¿Cómo se llama el Presidente de los Estados Unidos actualmente?",
     "answers": [
       "Donald Trump"
     ],
@@ -422,6 +564,7 @@
   {
     "id": 39,
     "question": "What is the name of the Vice President of the United States now?",
+    "questionEs": "¿Cómo se llama el Vicepresidente de los Estados Unidos actualmente?",
     "answers": [
       "JD Vance"
     ],
@@ -433,7 +576,9 @@
   {
     "id": 40,
     "question": "If the president can no longer serve, who becomes president?",
+    "questionEs": "Si el presidente ya no puede servir, ¿quién se convierte en presidente?",
     "answers": ["The Vice President (of the United States)"],
+    "answersEs": ["El Vicepresidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -442,6 +587,7 @@
   {
     "id": 41,
     "question": "Name one power of the president.",
+    "questionEs": "Nombre un poder del presidente.",
     "answers": [
       "Signs bills into law",
       "Vetoes bills",
@@ -449,6 +595,14 @@
       "Commander in Chief (of the military)",
       "Chief diplomat",
       "Appoints federal judges"
+    ],
+    "answersEs": [
+      "Firma proyectos de ley para convertirlos en ley",
+      "Veta proyectos de ley",
+      "Hace cumplir las leyes",
+      "Comandante en Jefe (de las fuerzas militares)",
+      "Principal diplomático",
+      "Nombra a los jueces federales"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -458,7 +612,9 @@
   {
     "id": 42,
     "question": "Who is Commander in Chief of the U.S. military?",
+    "questionEs": "¿Quién es el Comandante en Jefe de las fuerzas militares de los Estados Unidos?",
     "answers": ["The President (of the United States)"],
+    "answersEs": ["El Presidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -467,7 +623,9 @@
   {
     "id": 43,
     "question": "Who signs bills to become laws?",
+    "questionEs": "¿Quién firma los proyectos de ley para que se conviertan en leyes?",
     "answers": ["The President (of the United States)"],
+    "answersEs": ["El Presidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -476,7 +634,9 @@
   {
     "id": 44,
     "question": "Who vetoes bills?",
+    "questionEs": "¿Quién veta los proyectos de ley?",
     "answers": ["The President (of the United States)"],
+    "answersEs": ["El Presidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": true,
@@ -485,7 +645,9 @@
   {
     "id": 45,
     "question": "Who appoints federal judges?",
+    "questionEs": "¿Quién nombra a los jueces federales?",
     "answers": ["The President (of the United States)"],
+    "answersEs": ["El Presidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -494,10 +656,16 @@
   {
     "id": 46,
     "question": "The executive branch has many parts. Name one.",
+    "questionEs": "El poder ejecutivo tiene muchas partes. Nombre una.",
     "answers": [
       "President (of the United States)",
       "Cabinet",
       "Federal departments and agencies"
+    ],
+    "answersEs": [
+      "El Presidente (de los Estados Unidos)",
+      "El Gabinete",
+      "Los departamentos y agencias federales"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -507,7 +675,9 @@
   {
     "id": 47,
     "question": "What does the President's Cabinet do?",
+    "questionEs": "¿Qué hace el Gabinete del Presidente?",
     "answers": ["Advises the President (of the United States)"],
+    "answersEs": ["Asesora al Presidente (de los Estados Unidos)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -516,6 +686,7 @@
   {
     "id": 48,
     "question": "What are two Cabinet-level positions?",
+    "questionEs": "¿Cuáles son dos posiciones a nivel de Gabinete?",
     "answers": [
       "Attorney General",
       "Secretary of Agriculture",
@@ -540,6 +711,30 @@
       "Director of National Intelligence",
       "United States Trade Representative"
     ],
+    "answersEs": [
+      "Fiscal General",
+      "Secretario de Agricultura",
+      "Secretario de Comercio",
+      "Secretario de Educación",
+      "Secretario de Energía",
+      "Secretario de Salud y Servicios Humanos",
+      "Secretario de Seguridad Nacional",
+      "Secretario de Vivienda y Desarrollo Urbano",
+      "Secretario del Interior",
+      "Secretario de Trabajo",
+      "Secretario de Estado",
+      "Secretario de Transporte",
+      "Secretario del Tesoro",
+      "Secretario de Asuntos de Veteranos",
+      "Secretario de Guerra (Defensa)",
+      "Vicepresidente",
+      "Administrador de la Agencia de Protección Ambiental",
+      "Administrador de la Administración de Pequeñas Empresas",
+      "Director de la Agencia Central de Inteligencia",
+      "Director de la Oficina de Administración y Presupuesto",
+      "Director de Inteligencia Nacional",
+      "Representante Comercial de los Estados Unidos"
+    ],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -548,9 +743,14 @@
   {
     "id": 49,
     "question": "Why is the Electoral College important?",
+    "questionEs": "¿Por qué es importante el Colegio Electoral?",
     "answers": [
       "It decides who is elected president.",
       "It provides a compromise between the popular election of the president and congressional selection."
+    ],
+    "answersEs": [
+      "Decide quién es elegido presidente.",
+      "Proporciona un compromiso entre la elección popular del presidente y la selección del Congreso."
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -560,7 +760,9 @@
   {
     "id": 50,
     "question": "What is one part of the judicial branch?",
+    "questionEs": "¿Cuál es una parte del poder judicial?",
     "answers": ["Supreme Court", "Federal Courts"],
+    "answersEs": ["La Corte Suprema", "Los tribunales federales"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -569,11 +771,18 @@
   {
     "id": 51,
     "question": "What does the judicial branch do?",
+    "questionEs": "¿Qué hace el poder judicial?",
     "answers": [
       "Reviews laws",
       "Explains laws",
       "Resolves disputes (disagreements) about the law",
       "Decides if a law goes against the (U.S.) Constitution"
+    ],
+    "answersEs": [
+      "Revisa las leyes",
+      "Explica las leyes",
+      "Resuelve disputas (desacuerdos) sobre la ley",
+      "Decide si una ley va en contra de la Constitución (de los Estados Unidos)"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -583,7 +792,9 @@
   {
     "id": 52,
     "question": "What is the highest court in the United States?",
+    "questionEs": "¿Cuál es el tribunal más alto de los Estados Unidos?",
     "answers": ["Supreme Court"],
+    "answersEs": ["La Corte Suprema"],
     "category": "System of Government",
     "section": "American Government",
     "starred": true,
@@ -592,7 +803,9 @@
   {
     "id": 53,
     "question": "How many seats are on the Supreme Court?",
+    "questionEs": "¿Cuántos asientos hay en la Corte Suprema?",
     "answers": ["Nine (9)"],
+    "answersEs": ["Nueve (9)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -601,7 +814,9 @@
   {
     "id": 54,
     "question": "How many Supreme Court justices are usually needed to decide a case?",
+    "questionEs": "¿Cuántos jueces de la Corte Suprema se necesitan generalmente para decidir un caso?",
     "answers": ["Five (5)"],
+    "answersEs": ["Cinco (5)"],
     "category": "System of Government",
     "section": "American Government",
     "starred": false,
@@ -610,10 +825,16 @@
   {
     "id": 55,
     "question": "How long do Supreme Court justices serve?",
+    "questionEs": "¿Cuánto tiempo sirven los jueces de la Corte Suprema?",
     "answers": [
       "(For) life",
       "Lifetime appointment",
       "(Until) retirement"
+    ],
+    "answersEs": [
+      "(De) por vida",
+      "Nombramiento de por vida",
+      "(Hasta la) jubilación"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -623,9 +844,14 @@
   {
     "id": 56,
     "question": "Supreme Court justices serve for life. Why?",
+    "questionEs": "Los jueces de la Corte Suprema sirven de por vida. ¿Por qué?",
     "answers": [
       "To be independent (of politics)",
       "To limit outside (political) influence"
+    ],
+    "answersEs": [
+      "Para ser independientes (de la política)",
+      "Para limitar la influencia externa (política)"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -635,6 +861,7 @@
   {
     "id": 57,
     "question": "Who is the Chief Justice of the United States now?",
+    "questionEs": "¿Quién es el Presidente de la Corte Suprema de los Estados Unidos actualmente?",
     "answers": [
       "John Roberts"
     ],
@@ -646,6 +873,7 @@
   {
     "id": 58,
     "question": "Name one power that is only for the federal government.",
+    "questionEs": "Nombre un poder que es solo del gobierno federal.",
     "answers": [
       "Print paper money",
       "Mint coins",
@@ -653,6 +881,14 @@
       "Create an army",
       "Make treaties",
       "Set foreign policy"
+    ],
+    "answersEs": [
+      "Imprimir dinero en papel",
+      "Acuñar monedas",
+      "Declarar la guerra",
+      "Crear un ejército",
+      "Celebrar tratados",
+      "Establecer política exterior"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -662,12 +898,20 @@
   {
     "id": 59,
     "question": "Name one power that is only for the states.",
+    "questionEs": "Nombre un poder que es solo de los estados.",
     "answers": [
       "Provide schooling and education",
       "Provide protection (police)",
       "Provide safety (fire departments)",
       "Give a driver's license",
       "Approve zoning and land use"
+    ],
+    "answersEs": [
+      "Proveer educación escolar",
+      "Proveer protección (policía)",
+      "Proveer seguridad (bomberos)",
+      "Otorgar licencias de conducir",
+      "Aprobar zonificación y uso del suelo"
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -677,8 +921,12 @@
   {
     "id": 60,
     "question": "What is the purpose of the 10th Amendment?",
+    "questionEs": "¿Cuál es el propósito de la Décima Enmienda?",
     "answers": [
       "(It states that the) powers not given to the federal government belong to the states or to the people."
+    ],
+    "answersEs": [
+      "(Establece que los) poderes no otorgados al gobierno federal pertenecen a los estados o al pueblo."
     ],
     "category": "System of Government",
     "section": "American Government",
@@ -688,6 +936,7 @@
   {
     "id": 61,
     "question": "Who is the governor of your state now?",
+    "questionEs": "¿Quién es el gobernador de su estado actualmente?",
     "answers": [
       "Visit uscis.gov/citizenship/testupdates for the current answer"
     ],
@@ -699,6 +948,7 @@
   {
     "id": 62,
     "question": "What is the capital of your state?",
+    "questionEs": "¿Cuál es la capital de su estado?",
     "answers": [
       "Visit uscis.gov/citizenship/testupdates for the current answer"
     ],
@@ -710,11 +960,18 @@
   {
     "id": 63,
     "question": "There are four amendments to the U.S. Constitution about who can vote. Describe one of them.",
+    "questionEs": "Hay cuatro enmiendas a la Constitución de los Estados Unidos sobre quién puede votar. Describa una de ellas.",
     "answers": [
       "Citizens eighteen (18) and older (can vote).",
       "You don't have to pay (a poll tax) to vote.",
       "Any citizen can vote. (Women and men can vote.)",
       "A male citizen of any race (can vote)."
+    ],
+    "answersEs": [
+      "Los ciudadanos de dieciocho (18) años o más (pueden votar).",
+      "No tiene que pagar (un impuesto electoral) para votar.",
+      "Cualquier ciudadano puede votar. (Las mujeres y los hombres pueden votar.)",
+      "Un ciudadano varón de cualquier raza (puede votar)."
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -724,10 +981,16 @@
   {
     "id": 64,
     "question": "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?",
+    "questionEs": "¿Quién puede votar en las elecciones federales, postularse para un cargo federal y servir en un jurado en los Estados Unidos?",
     "answers": [
       "Citizens",
       "Citizens of the United States",
       "U.S. citizens"
+    ],
+    "answersEs": [
+      "Los ciudadanos",
+      "Los ciudadanos de los Estados Unidos",
+      "Los ciudadanos estadounidenses"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -737,6 +1000,7 @@
   {
     "id": 65,
     "question": "What are three rights of everyone living in the United States?",
+    "questionEs": "¿Cuáles son tres derechos de todas las personas que viven en los Estados Unidos?",
     "answers": [
       "Freedom of expression",
       "Freedom of speech",
@@ -744,6 +1008,14 @@
       "Freedom to petition the government",
       "Freedom of religion",
       "The right to bear arms"
+    ],
+    "answersEs": [
+      "Libertad de expresión",
+      "Libertad de palabra",
+      "Libertad de reunión",
+      "Libertad de presentar peticiones al gobierno",
+      "Libertad de religión",
+      "El derecho a portar armas"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -753,7 +1025,9 @@
   {
     "id": 66,
     "question": "What do we show loyalty to when we say the Pledge of Allegiance?",
+    "questionEs": "¿A qué mostramos lealtad cuando decimos el Juramento de Lealtad?",
     "answers": ["The United States", "The flag"],
+    "answersEs": ["Los Estados Unidos", "La bandera"],
     "category": "Rights and Responsibilities",
     "section": "American Government",
     "starred": true,
@@ -762,6 +1036,7 @@
   {
     "id": 67,
     "question": "Name two promises that new citizens make in the Oath of Allegiance.",
+    "questionEs": "Nombre dos promesas que hacen los nuevos ciudadanos en el Juramento de Lealtad.",
     "answers": [
       "Give up loyalty to other countries",
       "Defend the (U.S.) Constitution",
@@ -769,6 +1044,14 @@
       "Serve in the military (if needed)",
       "Serve (help, do important work for) the nation (if needed)",
       "Be loyal to the United States"
+    ],
+    "answersEs": [
+      "Renunciar a la lealtad a otros países",
+      "Defender la Constitución (de los Estados Unidos)",
+      "Obedecer las leyes de los Estados Unidos",
+      "Servir en las fuerzas militares (si es necesario)",
+      "Servir (ayudar, hacer trabajo importante para) la nación (si es necesario)",
+      "Ser leal a los Estados Unidos"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -778,10 +1061,16 @@
   {
     "id": 68,
     "question": "How can people become United States citizens?",
+    "questionEs": "¿Cómo pueden las personas convertirse en ciudadanos de los Estados Unidos?",
     "answers": [
       "Be born in the United States, under the conditions set by the 14th Amendment",
       "Naturalize",
       "Derive citizenship (under conditions set by Congress)"
+    ],
+    "answersEs": [
+      "Nacer en los Estados Unidos, bajo las condiciones establecidas por la Enmienda 14",
+      "Naturalizarse",
+      "Obtener la ciudadanía por derivación (bajo las condiciones establecidas por el Congreso)"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -791,6 +1080,7 @@
   {
     "id": 69,
     "question": "What are two examples of civic participation in the United States?",
+    "questionEs": "¿Cuáles son dos ejemplos de participación cívica en los Estados Unidos?",
     "answers": [
       "Vote",
       "Run for office",
@@ -803,6 +1093,18 @@
       "Support or oppose an issue or policy",
       "Write to a newspaper"
     ],
+    "answersEs": [
+      "Votar",
+      "Postularse para un cargo",
+      "Unirse a un partido político",
+      "Ayudar en una campaña",
+      "Unirse a un grupo cívico",
+      "Unirse a un grupo comunitario",
+      "Dar su opinión a un funcionario electo (sobre un tema)",
+      "Contactar a funcionarios electos",
+      "Apoyar u oponerse a un tema o política",
+      "Escribir a un periódico"
+    ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
     "starred": false,
@@ -811,6 +1113,7 @@
   {
     "id": 70,
     "question": "What is one way Americans can serve their country?",
+    "questionEs": "¿Cuál es una forma en que los estadounidenses pueden servir a su país?",
     "answers": [
       "Vote",
       "Pay taxes",
@@ -818,6 +1121,14 @@
       "Serve in the military",
       "Run for office",
       "Work for local, state, or federal government"
+    ],
+    "answersEs": [
+      "Votar",
+      "Pagar impuestos",
+      "Obedecer la ley",
+      "Servir en las fuerzas militares",
+      "Postularse para un cargo",
+      "Trabajar para el gobierno local, estatal o federal"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -827,11 +1138,18 @@
   {
     "id": 71,
     "question": "Why is it important to pay federal taxes?",
+    "questionEs": "¿Por qué es importante pagar impuestos federales?",
     "answers": [
       "Required by law",
       "All people pay to fund the federal government",
       "Required by the (U.S.) Constitution (16th Amendment)",
       "Civic duty"
+    ],
+    "answersEs": [
+      "Requerido por la ley",
+      "Todas las personas pagan para financiar el gobierno federal",
+      "Requerido por la Constitución (de los Estados Unidos) (Enmienda 16)",
+      "Deber cívico"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -841,10 +1159,16 @@
   {
     "id": 72,
     "question": "It is important for all men age 18 through 25 to register for the Selective Service. Name one reason why.",
+    "questionEs": "Es importante que todos los hombres entre 18 y 25 años se registren en el Servicio Selectivo. Nombre una razón por qué.",
     "answers": [
       "Required by law",
       "Civic duty",
       "Makes the draft fair, if needed"
+    ],
+    "answersEs": [
+      "Requerido por la ley",
+      "Deber cívico",
+      "Hace que el reclutamiento sea justo, si es necesario"
     ],
     "category": "Rights and Responsibilities",
     "section": "American Government",
@@ -854,12 +1178,20 @@
   {
     "id": 73,
     "question": "The colonists came to America for many reasons. Name one.",
+    "questionEs": "Los colonos vinieron a América por muchas razones. Nombre una.",
     "answers": [
       "Freedom",
       "Political liberty",
       "Religious freedom",
       "Economic opportunity",
       "Escape persecution"
+    ],
+    "answersEs": [
+      "Libertad",
+      "Libertad política",
+      "Libertad religiosa",
+      "Oportunidad económica",
+      "Escapar de la persecución"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -869,7 +1201,9 @@
   {
     "id": 74,
     "question": "Who lived in America before the Europeans arrived?",
+    "questionEs": "¿Quién vivía en América antes de la llegada de los europeos?",
     "answers": ["American Indians", "Native Americans"],
+    "answersEs": ["Los indios americanos", "Los nativos americanos"],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": true,
@@ -878,7 +1212,9 @@
   {
     "id": 75,
     "question": "What group of people was taken and sold as slaves?",
+    "questionEs": "¿Qué grupo de personas fue tomado y vendido como esclavos?",
     "answers": ["Africans", "People from Africa"],
+    "answersEs": ["Los africanos", "Las personas de África"],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": false,
@@ -887,10 +1223,16 @@
   {
     "id": 76,
     "question": "What war did the Americans fight to win independence from Britain?",
+    "questionEs": "¿Qué guerra libraron los estadounidenses para ganar la independencia de Gran Bretaña?",
     "answers": [
       "American Revolution",
       "The (American) Revolutionary War",
       "War for (American) Independence"
+    ],
+    "answersEs": [
+      "La Revolución Americana",
+      "La Guerra Revolucionaria (Americana)",
+      "La Guerra de Independencia (Americana)"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -900,6 +1242,7 @@
   {
     "id": 77,
     "question": "Name one reason why the Americans declared independence from Britain.",
+    "questionEs": "Nombre una razón por la que los estadounidenses declararon la independencia de Gran Bretaña.",
     "answers": [
       "High taxes",
       "Taxation without representation",
@@ -912,6 +1255,18 @@
       "Townshend Acts",
       "Intolerable (Coercive) Acts"
     ],
+    "answersEs": [
+      "Impuestos altos",
+      "Impuestos sin representación",
+      "Los soldados británicos se alojaron en casas de los americanos (alojamiento, acuartelamiento)",
+      "No tenían autogobierno",
+      "La Masacre de Boston",
+      "El Motín del Té de Boston (Ley del Té)",
+      "La Ley del Timbre",
+      "La Ley del Azúcar",
+      "Las Leyes Townshend",
+      "Las Leyes Intolerables (Coercitivas)"
+    ],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": false,
@@ -920,7 +1275,9 @@
   {
     "id": 78,
     "question": "Who wrote the Declaration of Independence?",
+    "questionEs": "¿Quién escribió la Declaración de Independencia?",
     "answers": ["(Thomas) Jefferson"],
+    "answersEs": ["(Thomas) Jefferson"],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": true,
@@ -929,7 +1286,9 @@
   {
     "id": 79,
     "question": "When was the Declaration of Independence adopted?",
+    "questionEs": "¿Cuándo fue adoptada la Declaración de Independencia?",
     "answers": ["July 4, 1776"],
+    "answersEs": ["El 4 de julio de 1776"],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": false,
@@ -938,6 +1297,7 @@
   {
     "id": 80,
     "question": "The American Revolution had many important events. Name one.",
+    "questionEs": "La Revolución Americana tuvo muchos eventos importantes. Nombre uno.",
     "answers": [
       "(Battle of) Bunker Hill",
       "Declaration of Independence",
@@ -945,6 +1305,14 @@
       "(Battle of) Saratoga",
       "Valley Forge (Encampment)",
       "(Battle of) Yorktown (British surrender at Yorktown)"
+    ],
+    "answersEs": [
+      "(La Batalla de) Bunker Hill",
+      "La Declaración de Independencia",
+      "Washington cruzando el Delaware (Batalla de Trenton)",
+      "(La Batalla de) Saratoga",
+      "Valley Forge (Campamento)",
+      "(La Batalla de) Yorktown (Rendición británica en Yorktown)"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -954,6 +1322,7 @@
   {
     "id": 81,
     "question": "There were 13 original states. Name five.",
+    "questionEs": "Había 13 estados originales. Nombre cinco.",
     "answers": [
       "New Hampshire",
       "Massachusetts",
@@ -969,6 +1338,21 @@
       "South Carolina",
       "Georgia"
     ],
+    "answersEs": [
+      "New Hampshire",
+      "Massachusetts",
+      "Rhode Island",
+      "Connecticut",
+      "Nueva York",
+      "Nueva Jersey",
+      "Pensilvania",
+      "Delaware",
+      "Maryland",
+      "Virginia",
+      "Carolina del Norte",
+      "Carolina del Sur",
+      "Georgia"
+    ],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": false,
@@ -977,7 +1361,9 @@
   {
     "id": 82,
     "question": "What founding document was written in 1787?",
+    "questionEs": "¿Qué documento fundacional fue escrito en 1787?",
     "answers": ["(U.S.) Constitution"],
+    "answersEs": ["La Constitución (de los Estados Unidos)"],
     "category": "Colonial Period and Independence",
     "section": "American History",
     "starred": false,
@@ -986,7 +1372,14 @@
   {
     "id": 83,
     "question": "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
+    "questionEs": "Los Documentos Federalistas apoyaron la aprobación de la Constitución de los Estados Unidos. Nombre uno de los escritores.",
     "answers": [
+      "(James) Madison",
+      "(Alexander) Hamilton",
+      "(John) Jay",
+      "Publius"
+    ],
+    "answersEs": [
       "(James) Madison",
       "(Alexander) Hamilton",
       "(John) Jay",
@@ -1000,9 +1393,14 @@
   {
     "id": 84,
     "question": "Why were the Federalist Papers important?",
+    "questionEs": "¿Por qué fueron importantes los Documentos Federalistas?",
     "answers": [
       "They helped people understand the (U.S.) Constitution.",
       "They supported passing the (U.S.) Constitution."
+    ],
+    "answersEs": [
+      "Ayudaron a las personas a entender la Constitución (de los Estados Unidos).",
+      "Apoyaron la aprobación de la Constitución (de los Estados Unidos)."
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1012,12 +1410,20 @@
   {
     "id": 85,
     "question": "Benjamin Franklin is famous for many things. Name one.",
+    "questionEs": "Benjamin Franklin es famoso por muchas cosas. Nombre una.",
     "answers": [
       "Founded the first free public libraries",
       "First Postmaster General of the United States",
       "Helped write the Declaration of Independence",
       "Inventor",
       "U.S. diplomat"
+    ],
+    "answersEs": [
+      "Fundó las primeras bibliotecas públicas gratuitas",
+      "Primer Director General de Correos de los Estados Unidos",
+      "Ayudó a redactar la Declaración de Independencia",
+      "Inventor",
+      "Diplomático de los Estados Unidos"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1027,11 +1433,18 @@
   {
     "id": 86,
     "question": "George Washington is famous for many things. Name one.",
+    "questionEs": "George Washington es famoso por muchas cosas. Nombre una.",
     "answers": [
       "\"Father of Our Country\"",
       "First president of the United States",
       "General of the Continental Army",
       "President of the Constitutional Convention"
+    ],
+    "answersEs": [
+      "\"Padre de nuestra nación\"",
+      "Primer presidente de los Estados Unidos",
+      "General del Ejército Continental",
+      "Presidente de la Convención Constitucional"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1041,6 +1454,7 @@
   {
     "id": 87,
     "question": "Thomas Jefferson is famous for many things. Name one.",
+    "questionEs": "Thomas Jefferson es famoso por muchas cosas. Nombre una.",
     "answers": [
       "Writer of the Declaration of Independence",
       "Third president of the United States",
@@ -1048,6 +1462,14 @@
       "First Secretary of State",
       "Founded the University of Virginia",
       "Writer of the Virginia Statute on Religious Freedom"
+    ],
+    "answersEs": [
+      "Redactor de la Declaración de Independencia",
+      "Tercer presidente de los Estados Unidos",
+      "Duplicó el tamaño de los Estados Unidos (Compra de Luisiana)",
+      "Primer Secretario de Estado",
+      "Fundó la Universidad de Virginia",
+      "Redactor del Estatuto de Virginia sobre la Libertad Religiosa"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1057,11 +1479,18 @@
   {
     "id": 88,
     "question": "James Madison is famous for many things. Name one.",
+    "questionEs": "James Madison es famoso por muchas cosas. Nombre una.",
     "answers": [
       "\"Father of the Constitution\"",
       "Fourth president of the United States",
       "President during the War of 1812",
       "One of the writers of the Federalist Papers"
+    ],
+    "answersEs": [
+      "\"Padre de la Constitución\"",
+      "Cuarto presidente de los Estados Unidos",
+      "Presidente durante la Guerra de 1812",
+      "Uno de los redactores de los Documentos Federalistas"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1071,12 +1500,20 @@
   {
     "id": 89,
     "question": "Alexander Hamilton is famous for many things. Name one.",
+    "questionEs": "Alexander Hamilton es famoso por muchas cosas. Nombre una.",
     "answers": [
       "First Secretary of the Treasury",
       "One of the writers of the Federalist Papers",
       "Helped establish the First Bank of the United States",
       "Aide to General George Washington",
       "Member of the Continental Congress"
+    ],
+    "answersEs": [
+      "Primer Secretario del Tesoro",
+      "Uno de los redactores de los Documentos Federalistas",
+      "Ayudó a establecer el Primer Banco de los Estados Unidos",
+      "Ayudante del General George Washington",
+      "Miembro del Congreso Continental"
     ],
     "category": "Colonial Period and Independence",
     "section": "American History",
@@ -1086,7 +1523,9 @@
   {
     "id": 90,
     "question": "What territory did the United States buy from France in 1803?",
+    "questionEs": "¿Qué territorio compró los Estados Unidos a Francia en 1803?",
     "answers": ["Louisiana Territory", "Louisiana"],
+    "answersEs": ["El Territorio de Luisiana", "Luisiana"],
     "category": "1800s",
     "section": "American History",
     "starred": false,
@@ -1095,11 +1534,18 @@
   {
     "id": 91,
     "question": "Name one war fought by the United States in the 1800s.",
+    "questionEs": "Nombre una guerra que los Estados Unidos libró en la década de 1800.",
     "answers": [
       "War of 1812",
       "Mexican-American War",
       "Civil War",
       "Spanish-American War"
+    ],
+    "answersEs": [
+      "La Guerra de 1812",
+      "La Guerra México-Americana",
+      "La Guerra Civil",
+      "La Guerra Hispanoamericana"
     ],
     "category": "1800s",
     "section": "American History",
@@ -1109,7 +1555,9 @@
   {
     "id": 92,
     "question": "Name the U.S. war between the North and the South.",
+    "questionEs": "Nombre la guerra de los Estados Unidos entre el Norte y el Sur.",
     "answers": ["The Civil War"],
+    "answersEs": ["La Guerra Civil"],
     "category": "1800s",
     "section": "American History",
     "starred": false,
@@ -1118,6 +1566,7 @@
   {
     "id": 93,
     "question": "The Civil War had many important events. Name one.",
+    "questionEs": "La Guerra Civil tuvo muchos eventos importantes. Nombre uno.",
     "answers": [
       "(Battle of) Fort Sumter",
       "Emancipation Proclamation",
@@ -1128,6 +1577,16 @@
       "(Battle of) Antietam/Sharpsburg",
       "Lincoln was assassinated."
     ],
+    "answersEs": [
+      "(La Batalla de) Fort Sumter",
+      "La Proclamación de Emancipación",
+      "(La Batalla de) Vicksburg",
+      "(La Batalla de) Gettysburg",
+      "La Marcha de Sherman",
+      "(La Rendición en) Appomattox",
+      "(La Batalla de) Antietam/Sharpsburg",
+      "Lincoln fue asesinado."
+    ],
     "category": "1800s",
     "section": "American History",
     "starred": false,
@@ -1136,12 +1595,20 @@
   {
     "id": 94,
     "question": "Abraham Lincoln is famous for many things. Name one.",
+    "questionEs": "Abraham Lincoln es famoso por muchas cosas. Nombre una.",
     "answers": [
       "Freed the slaves (Emancipation Proclamation)",
       "Saved (or preserved) the Union",
       "Led the United States during the Civil War",
       "16th president of the United States",
       "Delivered the Gettysburg Address"
+    ],
+    "answersEs": [
+      "Liberó a los esclavos (Proclamación de Emancipación)",
+      "Salvó (o preservó) la Unión",
+      "Dirigió los Estados Unidos durante la Guerra Civil",
+      "16.º presidente de los Estados Unidos",
+      "Pronunció el Discurso de Gettysburg"
     ],
     "category": "1800s",
     "section": "American History",
@@ -1151,11 +1618,18 @@
   {
     "id": 95,
     "question": "What did the Emancipation Proclamation do?",
+    "questionEs": "¿Qué hizo la Proclamación de Emancipación?",
     "answers": [
       "Freed the slaves",
       "Freed slaves in the Confederacy",
       "Freed slaves in the Confederate states",
       "Freed slaves in most Southern states"
+    ],
+    "answersEs": [
+      "Liberó a los esclavos",
+      "Liberó a los esclavos en la Confederación",
+      "Liberó a los esclavos en los estados confederados",
+      "Liberó a los esclavos en la mayoría de los estados del Sur"
     ],
     "category": "1800s",
     "section": "American History",
@@ -1165,7 +1639,9 @@
   {
     "id": 96,
     "question": "What U.S. war ended slavery?",
+    "questionEs": "¿Qué guerra de los Estados Unidos puso fin a la esclavitud?",
     "answers": ["The Civil War"],
+    "answersEs": ["La Guerra Civil"],
     "category": "1800s",
     "section": "American History",
     "starred": false,
@@ -1174,7 +1650,9 @@
   {
     "id": 97,
     "question": "What amendment says all persons born or naturalized in the United States, and subject to the jurisdiction thereof, are U.S. citizens?",
+    "questionEs": "¿Qué enmienda dice que todas las personas nacidas o naturalizadas en los Estados Unidos, y sujetas a su jurisdicción, son ciudadanos de los Estados Unidos?",
     "answers": ["14th Amendment"],
+    "answersEs": ["La Enmienda 14"],
     "category": "1800s",
     "section": "American History",
     "starred": false,
@@ -1183,10 +1661,17 @@
   {
     "id": 98,
     "question": "When did all men get the right to vote?",
+    "questionEs": "¿Cuándo obtuvieron todos los hombres el derecho a votar?",
     "answers": [
       "After the Civil War",
       "During Reconstruction",
       "(With the) 15th Amendment",
+      "1870"
+    ],
+    "answersEs": [
+      "Después de la Guerra Civil",
+      "Durante la Reconstrucción",
+      "(Con la) Enmienda 15",
       "1870"
     ],
     "category": "1800s",
@@ -1197,7 +1682,16 @@
   {
     "id": 99,
     "question": "Name one leader of the women's rights movement in the 1800s.",
+    "questionEs": "Nombre un líder del movimiento por los derechos de la mujer en la década de 1800.",
     "answers": [
+      "Susan B. Anthony",
+      "Elizabeth Cady Stanton",
+      "Sojourner Truth",
+      "Harriet Tubman",
+      "Lucretia Mott",
+      "Lucy Stone"
+    ],
+    "answersEs": [
       "Susan B. Anthony",
       "Elizabeth Cady Stanton",
       "Sojourner Truth",
@@ -1213,12 +1707,20 @@
   {
     "id": 100,
     "question": "Name one war fought by the United States in the 1900s.",
+    "questionEs": "Nombre una guerra que los Estados Unidos libró en la década de 1900.",
     "answers": [
       "World War I",
       "World War II",
       "Korean War",
       "Vietnam War",
       "(Persian) Gulf War"
+    ],
+    "answersEs": [
+      "La Primera Guerra Mundial",
+      "La Segunda Guerra Mundial",
+      "La Guerra de Corea",
+      "La Guerra de Vietnam",
+      "La Guerra del Golfo (Pérsico)"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1228,10 +1730,16 @@
   {
     "id": 101,
     "question": "Why did the United States enter World War I?",
+    "questionEs": "¿Por qué entró los Estados Unidos en la Primera Guerra Mundial?",
     "answers": [
       "Because Germany attacked U.S. (civilian) ships",
       "To support the Allied Powers (England, France, Italy, and Russia)",
       "To oppose the Central Powers (Germany, Austria-Hungary, the Ottoman Empire, and Bulgaria)"
+    ],
+    "answersEs": [
+      "Porque Alemania atacó barcos (civiles) de los Estados Unidos",
+      "Para apoyar a las Potencias Aliadas (Inglaterra, Francia, Italia y Rusia)",
+      "Para oponerse a las Potencias Centrales (Alemania, Austria-Hungría, el Imperio Otomano y Bulgaria)"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1241,7 +1749,9 @@
   {
     "id": 102,
     "question": "When did all women get the right to vote?",
+    "questionEs": "¿Cuándo obtuvieron todas las mujeres el derecho a votar?",
     "answers": ["1920", "After World War I", "(With the) 19th Amendment"],
+    "answersEs": ["1920", "Después de la Primera Guerra Mundial", "(Con la) Enmienda 19"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1250,7 +1760,9 @@
   {
     "id": 103,
     "question": "What was the Great Depression?",
+    "questionEs": "¿Qué fue la Gran Depresión?",
     "answers": ["Longest economic recession in modern history"],
+    "answersEs": ["La recesión económica más larga de la historia moderna"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1259,7 +1771,9 @@
   {
     "id": 104,
     "question": "When did the Great Depression start?",
+    "questionEs": "¿Cuándo comenzó la Gran Depresión?",
     "answers": ["The Great Crash (1929)", "Stock market crash of 1929"],
+    "answersEs": ["El Gran Colapso (1929)", "El colapso del mercado de valores de 1929"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1268,7 +1782,9 @@
   {
     "id": 105,
     "question": "Who was president during the Great Depression and World War II?",
+    "questionEs": "¿Quién fue presidente durante la Gran Depresión y la Segunda Guerra Mundial?",
     "answers": ["(Franklin) Roosevelt"],
+    "answersEs": ["(Franklin) Roosevelt"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1277,11 +1793,18 @@
   {
     "id": 106,
     "question": "Why did the United States enter World War II?",
+    "questionEs": "¿Por qué entró los Estados Unidos en la Segunda Guerra Mundial?",
     "answers": [
       "(Bombing of) Pearl Harbor",
       "Japanese attacked Pearl Harbor",
       "To support the Allied Powers (England, France, and Russia)",
       "To oppose the Axis Powers (Germany, Italy, and Japan)"
+    ],
+    "answersEs": [
+      "(El bombardeo de) Pearl Harbor",
+      "Los japoneses atacaron Pearl Harbor",
+      "Para apoyar a las Potencias Aliadas (Inglaterra, Francia y Rusia)",
+      "Para oponerse a las Potencias del Eje (Alemania, Italia y Japón)"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1291,11 +1814,18 @@
   {
     "id": 107,
     "question": "Dwight Eisenhower is famous for many things. Name one.",
+    "questionEs": "Dwight Eisenhower es famoso por muchas cosas. Nombre una.",
     "answers": [
       "General during World War II",
       "President at the end of (during) the Korean War",
       "34th president of the United States",
       "Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)"
+    ],
+    "answersEs": [
+      "General durante la Segunda Guerra Mundial",
+      "Presidente al final de (durante) la Guerra de Corea",
+      "34.º presidente de los Estados Unidos",
+      "Firmó la Ley Federal de Ayuda para Carreteras de 1956 (Creó el Sistema de Autopistas Interestatales)"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1305,7 +1835,9 @@
   {
     "id": 108,
     "question": "Who was the United States' main rival during the Cold War?",
+    "questionEs": "¿Quién fue el principal rival de los Estados Unidos durante la Guerra Fría?",
     "answers": ["Soviet Union", "USSR", "Russia"],
+    "answersEs": ["La Unión Soviética", "La URSS", "Rusia"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1314,7 +1846,9 @@
   {
     "id": 109,
     "question": "During the Cold War, what was one main concern of the United States?",
+    "questionEs": "Durante la Guerra Fría, ¿cuál era una de las principales preocupaciones de los Estados Unidos?",
     "answers": ["Communism", "Nuclear war"],
+    "answersEs": ["El comunismo", "La guerra nuclear"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1323,7 +1857,9 @@
   {
     "id": 110,
     "question": "Why did the United States enter the Korean War?",
+    "questionEs": "¿Por qué entró los Estados Unidos en la Guerra de Corea?",
     "answers": ["To stop the spread of communism"],
+    "answersEs": ["Para detener la propagación del comunismo"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1332,7 +1868,9 @@
   {
     "id": 111,
     "question": "Why did the United States enter the Vietnam War?",
+    "questionEs": "¿Por qué entró los Estados Unidos en la Guerra de Vietnam?",
     "answers": ["To stop the spread of communism"],
+    "answersEs": ["Para detener la propagación del comunismo"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1341,7 +1879,9 @@
   {
     "id": 112,
     "question": "What did the civil rights movement do?",
+    "questionEs": "¿Qué hizo el movimiento por los derechos civiles?",
     "answers": ["Fought to end racial discrimination"],
+    "answersEs": ["Luchó para poner fin a la discriminación racial"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1350,10 +1890,16 @@
   {
     "id": 113,
     "question": "Martin Luther King, Jr. is famous for many things. Name one.",
+    "questionEs": "Martin Luther King, Jr. es famoso por muchas cosas. Nombre una.",
     "answers": [
       "Fought for civil rights",
       "Worked for equality for all Americans",
       "Worked to ensure that people would \"not be judged by the color of their skin, but by the content of their character\""
+    ],
+    "answersEs": [
+      "Luchó por los derechos civiles",
+      "Trabajó por la igualdad de todos los estadounidenses",
+      "Trabajó para garantizar que las personas \"no sean juzgadas por el color de su piel, sino por el contenido de su carácter\""
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1363,7 +1909,9 @@
   {
     "id": 114,
     "question": "Why did the United States enter the Persian Gulf War?",
+    "questionEs": "¿Por qué entró los Estados Unidos en la Guerra del Golfo Pérsico?",
     "answers": ["To force the Iraqi military from Kuwait"],
+    "answersEs": ["Para expulsar al ejército iraquí de Kuwait"],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1372,11 +1920,18 @@
   {
     "id": 115,
     "question": "What major event happened on September 11, 2001 in the United States?",
+    "questionEs": "¿Qué evento importante ocurrió el 11 de septiembre de 2001 en los Estados Unidos?",
     "answers": [
       "Terrorists attacked the United States",
       "Terrorists took over two planes and crashed them into the World Trade Center in New York City",
       "Terrorists took over a plane and crashed into the Pentagon in Arlington, Virginia",
       "Terrorists took over a plane originally aimed at Washington, D.C., and crashed in a field in Pennsylvania"
+    ],
+    "answersEs": [
+      "Los terroristas atacaron los Estados Unidos",
+      "Los terroristas tomaron dos aviones y los estrellaron contra el World Trade Center en Nueva York",
+      "Los terroristas tomaron un avión y lo estrellaron contra el Pentágono en Arlington, Virginia",
+      "Los terroristas tomaron un avión originalmente dirigido a Washington, D.C., y se estrelló en un campo en Pensilvania"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1386,10 +1941,16 @@
   {
     "id": 116,
     "question": "Name one U.S. military conflict after the September 11, 2001 attacks.",
+    "questionEs": "Nombre un conflicto militar de los Estados Unidos después de los ataques del 11 de septiembre de 2001.",
     "answers": [
       "(Global) War on Terror",
       "War in Afghanistan",
       "War in Iraq"
+    ],
+    "answersEs": [
+      "La Guerra (Global) contra el Terrorismo",
+      "La Guerra en Afganistán",
+      "La Guerra en Irak"
     ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
@@ -1399,7 +1960,35 @@
   {
     "id": 117,
     "question": "Name one American Indian tribe in the United States.",
+    "questionEs": "Nombre una tribu de indios americanos en los Estados Unidos.",
     "answers": [
+      "Apache",
+      "Blackfeet",
+      "Cayuga",
+      "Cherokee",
+      "Cheyenne",
+      "Chippewa",
+      "Choctaw",
+      "Creek",
+      "Crow",
+      "Hopi",
+      "Huron",
+      "Inupiat",
+      "Lakota",
+      "Mohawk",
+      "Mohegan",
+      "Navajo",
+      "Oneida",
+      "Onondaga",
+      "Pueblo",
+      "Seminole",
+      "Seneca",
+      "Shawnee",
+      "Sioux",
+      "Teton",
+      "Tuscarora"
+    ],
+    "answersEs": [
       "Apache",
       "Blackfeet",
       "Cayuga",
@@ -1434,6 +2023,7 @@
   {
     "id": 118,
     "question": "Name one example of an American innovation.",
+    "questionEs": "Nombre un ejemplo de una innovación americana.",
     "answers": [
       "Light bulb",
       "Automobile (cars, internal combustion engine)",
@@ -1443,6 +2033,15 @@
       "Landing on the moon",
       "Integrated circuit (IC)"
     ],
+    "answersEs": [
+      "La bombilla eléctrica",
+      "El automóvil (carros, motor de combustión interna)",
+      "Los rascacielos",
+      "El avión",
+      "La línea de ensamblaje",
+      "El alunizaje",
+      "El circuito integrado (CI)"
+    ],
     "category": "Recent American History and Other Important Historical Information",
     "section": "American History",
     "starred": false,
@@ -1451,7 +2050,9 @@
   {
     "id": 119,
     "question": "What is the capital of the United States?",
+    "questionEs": "¿Cuál es la capital de los Estados Unidos?",
     "answers": ["Washington, D.C."],
+    "answersEs": ["Washington, D.C."],
     "category": "Symbols",
     "section": "Symbols and Holidays",
     "starred": false,
@@ -1460,12 +2061,20 @@
   {
     "id": 120,
     "question": "Where is the Statue of Liberty?",
+    "questionEs": "¿Dónde está la Estatua de la Libertad?",
     "answers": [
       "New York (Harbor)",
       "Liberty Island",
       "New Jersey",
       "Near New York City",
       "On the Hudson (River)"
+    ],
+    "answersEs": [
+      "Nueva York (Puerto)",
+      "La Isla de la Libertad",
+      "Nueva Jersey",
+      "Cerca de Nueva York",
+      "En el (río) Hudson"
     ],
     "category": "Symbols",
     "section": "Symbols and Holidays",
@@ -1475,9 +2084,14 @@
   {
     "id": 121,
     "question": "Why does the flag have 13 stripes?",
+    "questionEs": "¿Por qué tiene la bandera 13 franjas?",
     "answers": [
       "(Because there were) 13 original colonies",
       "(Because the stripes) represent the original colonies"
+    ],
+    "answersEs": [
+      "(Porque había) 13 colonias originales",
+      "(Porque las franjas) representan las colonias originales"
     ],
     "category": "Symbols",
     "section": "Symbols and Holidays",
@@ -1487,10 +2101,16 @@
   {
     "id": 122,
     "question": "Why does the flag have 50 stars?",
+    "questionEs": "¿Por qué tiene la bandera 50 estrellas?",
     "answers": [
       "(Because there is) one star for each state",
       "(Because) each star represents a state",
       "(Because there are) 50 states"
+    ],
+    "answersEs": [
+      "(Porque hay) una estrella por cada estado",
+      "(Porque) cada estrella representa un estado",
+      "(Porque hay) 50 estados"
     ],
     "category": "Symbols",
     "section": "Symbols and Holidays",
@@ -1500,7 +2120,9 @@
   {
     "id": 123,
     "question": "What is the name of the national anthem?",
+    "questionEs": "¿Cuál es el nombre del himno nacional?",
     "answers": ["The Star-Spangled Banner"],
+    "answersEs": ["The Star-Spangled Banner (La bandera adornada de estrellas)"],
     "category": "Symbols",
     "section": "Symbols and Holidays",
     "starred": false,
@@ -1509,7 +2131,9 @@
   {
     "id": 124,
     "question": "The Nation's first motto was \"E Pluribus Unum.\" What does that mean?",
+    "questionEs": "El primer lema de la Nación fue \"E Pluribus Unum\". ¿Qué significa eso?",
     "answers": ["Out of many, one", "We all become one"],
+    "answersEs": ["De muchos, uno", "Todos nos volvemos uno"],
     "category": "Symbols",
     "section": "Symbols and Holidays",
     "starred": false,
@@ -1518,9 +2142,14 @@
   {
     "id": 125,
     "question": "What is Independence Day?",
+    "questionEs": "¿Qué es el Día de la Independencia?",
     "answers": [
       "A holiday to celebrate U.S. independence (from Britain)",
       "The country's birthday"
+    ],
+    "answersEs": [
+      "Un día festivo para celebrar la independencia de los Estados Unidos (de Gran Bretaña)",
+      "El cumpleaños del país"
     ],
     "category": "Holidays",
     "section": "Symbols and Holidays",
@@ -1530,6 +2159,7 @@
   {
     "id": 126,
     "question": "Name three national U.S. holidays.",
+    "questionEs": "Nombre tres días festivos nacionales de los Estados Unidos.",
     "answers": [
       "New Year's Day",
       "Martin Luther King, Jr. Day",
@@ -1543,6 +2173,19 @@
       "Thanksgiving Day",
       "Christmas Day"
     ],
+    "answersEs": [
+      "El Día de Año Nuevo",
+      "El Día de Martin Luther King, Jr.",
+      "El Día de los Presidentes (El cumpleaños de Washington)",
+      "El Día de los Caídos (Memorial Day)",
+      "Juneteenth",
+      "El Día de la Independencia",
+      "El Día del Trabajo",
+      "El Día de Colón",
+      "El Día de los Veteranos",
+      "El Día de Acción de Gracias",
+      "El Día de Navidad"
+    ],
     "category": "Holidays",
     "section": "Symbols and Holidays",
     "starred": true,
@@ -1551,7 +2194,9 @@
   {
     "id": 127,
     "question": "What is Memorial Day?",
+    "questionEs": "¿Qué es el Día de los Caídos (Memorial Day)?",
     "answers": ["A holiday to honor soldiers who died in military service"],
+    "answersEs": ["Un día festivo para honrar a los soldados que murieron en servicio militar"],
     "category": "Holidays",
     "section": "Symbols and Holidays",
     "starred": false,
@@ -1560,9 +2205,14 @@
   {
     "id": 128,
     "question": "What is Veterans Day?",
+    "questionEs": "¿Qué es el Día de los Veteranos?",
     "answers": [
       "A holiday to honor people in the (U.S.) military",
       "A holiday to honor people who have served (in the U.S. military)"
+    ],
+    "answersEs": [
+      "Un día festivo para honrar a las personas en las fuerzas militares (de los Estados Unidos)",
+      "Un día festivo para honrar a las personas que han servido (en las fuerzas militares de los Estados Unidos)"
     ],
     "category": "Holidays",
     "section": "Symbols and Holidays",

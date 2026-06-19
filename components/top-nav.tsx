@@ -2,9 +2,13 @@
 
 import Link from 'next/link'
 import { UserButton, useUser } from '@clerk/nextjs'
+import { useTranslations } from 'next-intl'
+import { useLanguage } from '@/lib/use-language'
 
 export function TopNav() {
   const { isSignedIn } = useUser()
+  const [lang, toggleLang] = useLanguage()
+  const t = useTranslations('nav')
 
   return (
     <header className="sticky top-0 z-30 w-full border-b border-border bg-background/85 backdrop-blur">
@@ -22,20 +26,28 @@ export function TopNav() {
                 href="/dashboard"
                 className="hidden hover:text-foreground sm:inline"
               >
-                Study
+                {t('study')}
               </Link>
               <Link
                 href="/progress"
                 className="hidden hover:text-foreground sm:inline"
               >
-                Progress
+                {t('progress')}
               </Link>
               <Link
                 href="/test"
                 className="hidden hover:text-foreground sm:inline"
               >
-                Mock test
+                {t('mockTest')}
               </Link>
+              <button
+                type="button"
+                onClick={toggleLang}
+                className="rounded border border-border px-2 py-0.5 text-xs font-semibold tracking-wider hover:border-foreground/40 hover:text-foreground"
+                aria-label={lang === 'en' ? t('switchToSpanish') : t('switchToEnglish')}
+              >
+                {t('langToggle')}
+              </button>
               <UserButton
             appearance={{
               variables: {
@@ -66,12 +78,22 @@ export function TopNav() {
           />
             </>
           ) : (
-            <Link
-              href="/sign-up"
-              className="rounded-full bg-confident px-3 py-1.5 text-xs font-semibold text-black"
-            >
-              Sign up
-            </Link>
+            <>
+              <button
+                type="button"
+                onClick={toggleLang}
+                className="rounded border border-border px-2 py-0.5 text-xs font-semibold tracking-wider hover:border-foreground/40 hover:text-foreground"
+                aria-label={lang === 'en' ? t('switchToSpanish') : t('switchToEnglish')}
+              >
+                {t('langToggle')}
+              </button>
+              <Link
+                href="/sign-up"
+                className="rounded-full bg-confident px-3 py-1.5 text-xs font-semibold text-black"
+              >
+                {t('signUp')}
+              </Link>
+            </>
           )}
         </div>
       </nav>

@@ -1,10 +1,11 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
+import type { Lang } from '@/lib/use-language'
 
 const audioCache = new Map<string, string>()
 
-export function SpeakerButton({ text }: { text: string }) {
+export function SpeakerButton({ text, lang = 'en' }: { text: string; lang?: Lang }) {
   const [state, setState] = useState<'idle' | 'loading' | 'playing'>('idle')
   const audioRef = useRef<HTMLAudioElement | null>(null)
 
@@ -25,14 +26,15 @@ export function SpeakerButton({ text }: { text: string }) {
     }
 
     setState('loading')
+    const cacheKey = `${lang}:${text}`
     try {
-      let url = audioCache.get(text)
+      let url = audioCache.get(cacheKey)
       if (!url) {
-        const res = await fetch(`/api/tts?text=${encodeURIComponent(text)}`)
+        const res = await fetch(`/api/tts?text=${encodeURIComponent(text)}&lang=${lang}`)
         if (!res.ok) throw new Error('tts failed')
         const blob = await res.blob()
         url = URL.createObjectURL(blob)
-        audioCache.set(text, url)
+        audioCache.set(cacheKey, url)
       }
       const audio = new Audio(url)
       audioRef.current = audio
@@ -46,7 +48,7 @@ export function SpeakerButton({ text }: { text: string }) {
         window.speechSynthesis.cancel()
         const u = new SpeechSynthesisUtterance(text)
         u.rate = 0.95
-        u.lang = 'en-US'
+        u.lang = lang === 'es' ? 'es-US' : 'en-US'
         u.onend = () => setState('idle')
         u.onerror = () => setState('idle')
         setState('playing')
@@ -55,13 +57,13 @@ export function SpeakerButton({ text }: { text: string }) {
         setState('idle')
       }
     }
-  }, [text, state])
+  }, [text, lang, state])
 
   return (
     <button
       type="button"
       onClick={() => void speak()}
-      aria-label="Read question aloud"
+      aria-label={lang === 'es' ? 'Leer pregunta en voz alta' : 'Read question aloud'}
       className={`rounded-full border border-border bg-background p-2 text-muted transition hover:text-foreground ${
         state === 'playing' ? 'animate-pulse-soft text-confident' : ''
       }`}

@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl'
 import type { Question, Status } from '@/lib/types'
 import { saveProgress } from '@/lib/progress-client'
 import { track } from '@/lib/analytics'
@@ -9,11 +10,13 @@ import { FeedbackPrompt } from '@/components/feedback-prompt'
 import { SpeakerButton } from '@/components/speaker-button'
 import { getStoredLocation, setStoredLocation, clearStoredLocation, type LocationData } from '@/lib/location'
 import { fireConfetti } from '@/lib/confetti'
+import { useLanguage } from '@/lib/use-language'
+import { getCategoryName } from '@/lib/category-names'
 
 interface Props {
   initialQuestions: Question[]
-  modeLabel: string
   mode: string
+  category?: string
   isSignedIn?: boolean
 }
 
@@ -24,7 +27,16 @@ interface SessionResult {
 
 const ADVANCE_MS = 800
 
-export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = true }: Props) {
+export function StudySession({ initialQuestions, mode, category, isSignedIn = true }: Props) {
+  const t = useTranslations('study')
+  const [lang] = useLanguage()
+  const modeLabel = mode === 'starred'
+    ? t('modeStarred')
+    : mode === 'weak'
+      ? t('modeWeak')
+      : category
+        ? getCategoryName(category, lang)
+        : t('modeAll')
   const [questions] = useState(initialQuestions)
   const [index, setIndex] = useState(0)
   const [revealed, setRevealed] = useState(false)
@@ -114,26 +126,30 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
   if (!current) {
     return (
       <div className="mx-auto max-w-3xl px-5 py-12 text-center text-muted">
-        No questions in this session.
+        {t('noQuestions')}
       </div>
     )
   }
+
+  const questionText = lang === 'es' ? (current.questionEs ?? current.question) : current.question
 
   return (
     <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
       {!isSignedIn && !bannerDismissed && (
         <div className="mb-4 flex items-center justify-between rounded-xl border border-border bg-card px-4 py-2.5 text-sm">
           <span className="text-muted">
-            Progress won&apos;t be saved.{' '}
-            <Link href="/sign-up" className="text-confident hover:underline">
-              Sign up free to track it
-            </Link>
-            .
+            {t.rich('guestBanner', {
+              link: (chunks) => (
+                <Link href="/sign-up" className="text-confident hover:underline">
+                  {chunks}
+                </Link>
+              ),
+            })}
           </span>
           <button
             onClick={() => setBannerDismissed(true)}
             className="ml-3 shrink-0 text-xs text-muted hover:text-foreground"
-            aria-label="Dismiss"
+            aria-label={t('dismiss')}
           >
             ×
           </button>
@@ -141,12 +157,10 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
       )}
       <header className="mb-4">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-muted">
-          <span>
-            Question {index + 1} of {total}
-          </span>
+          <span>{t('questionOf', { n: index + 1, total })}</span>
           <span className="truncate pl-3 text-right">{modeLabel}</span>
         </div>
-        <p className="mt-1 truncate text-xs text-muted">{current.category}</p>
+        <p className="mt-1 truncate text-xs text-muted">{getCategoryName(current.category, lang)}</p>
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-card">
           <div
             className="h-full rounded-full bg-confident transition-all duration-300"
@@ -170,16 +184,16 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
           ) : (
             <span />
           )}
-          <SpeakerButton text={current.question} />
+          <SpeakerButton text={questionText} lang={lang} />
         </div>
         <h2 className="mt-4 font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
-          {current.question}
+          {questionText}
         </h2>
 
         <div className="mt-3 flex-1">
           {!revealed ? (
             <div className="flex h-full min-h-[60px] items-center justify-center text-sm text-muted animate-pulse-soft">
-              Think of your answer, then tap below.
+              {t('thinkPrompt')}
             </div>
           ) : (
             <AnswerPanel
@@ -189,6 +203,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
               location={location}
               onLocationSaved={handleLocationSaved}
               onClearLocation={handleClearLocation}
+              lang={lang}
             />
           )}
         </div>
@@ -198,7 +213,7 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
             onClick={() => setRevealed(true)}
             className="mt-4 w-full rounded-2xl border border-border bg-background px-6 py-3 font-display text-base font-semibold transition hover:border-foreground/40"
           >
-            Show answer
+            {t('showAnswer')}
           </button>
         ) : (
           <div className="mt-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -206,13 +221,13 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
               onClick={() => handleAnswer('needs_practice')}
               className="rounded-2xl bg-needs-practice/10 px-6 py-4 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99]"
             >
-              Need more practice
+              {t('needsPractice')}
             </button>
             <button
               onClick={() => handleAnswer('confident')}
               className="rounded-2xl bg-confident/10 px-6 py-4 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99]"
             >
-              Got it ✓
+              {t('gotIt')}
             </button>
           </div>
         )}
@@ -220,12 +235,13 @@ export function StudySession({ initialQuestions, modeLabel, mode, isSignedIn = t
 
       <footer className="mt-4 flex justify-between text-xs text-muted">
         <Link href={isSignedIn ? '/dashboard' : '/'} className="hover:text-foreground">
-          ← Exit
+          {t('exit')}
         </Link>
         <span>
-          {results.filter((r) => r.status === 'confident').length} got it ·{' '}
-          {results.filter((r) => r.status === 'needs_practice').length} to
-          practice
+          {t('score', {
+            confident: results.filter((r) => r.status === 'confident').length,
+            practice: results.filter((r) => r.status === 'needs_practice').length,
+          })}
         </span>
       </footer>
     </div>
@@ -249,6 +265,7 @@ function AnswerPanel({
   location,
   onLocationSaved,
   onClearLocation,
+  lang,
 }: {
   question: Question
   showAll: boolean
@@ -256,14 +273,17 @@ function AnswerPanel({
   location: LocationData | null
   onLocationSaved: (data: LocationData) => void
   onClearLocation: () => void
+  lang: 'en' | 'es'
 }) {
+  const t = useTranslations('study')
   const isLocationQuestion = question.variable && LOCATION_QUESTION_IDS.has(question.id)
   const personalizedAnswers = isLocationQuestion && location
     ? getPersonalizedAnswers(question.id, location)
     : null
 
-  const multiple = question.answers.length > 1
-  const baseAnswers = multiple && !showAll ? [question.answers[0]] : question.answers
+  const sourceAnswers = lang === 'es' ? (question.answersEs ?? question.answers) : question.answers
+  const multiple = sourceAnswers.length > 1
+  const baseAnswers = multiple && !showAll ? [sourceAnswers[0]] : sourceAnswers
   const displayed = personalizedAnswers ?? baseAnswers
   const isPersonalized = personalizedAnswers !== null
 
@@ -271,12 +291,12 @@ function AnswerPanel({
     <div className="animate-fade-in">
       {multiple && showAll && !isPersonalized && (
         <p className="mb-3 text-xs uppercase tracking-wider text-muted">
-          Any of these answers is acceptable
+          {t('anyAnswer')}
         </p>
       )}
       {isPersonalized && question.id === 23 && displayed.length > 1 && (
         <p className="mb-3 text-xs uppercase tracking-wider text-muted">
-          Either senator is acceptable
+          {t('eitherSenator')}
         </p>
       )}
       <ul className="space-y-2">
@@ -297,7 +317,7 @@ function AnswerPanel({
           onClick={onClearLocation}
           className="mt-3 text-xs text-muted hover:text-foreground"
         >
-          Change ZIP ↺
+          {t('changeZip')}
         </button>
       )}
       {multiple && !isPersonalized && (
@@ -306,13 +326,13 @@ function AnswerPanel({
           className="mt-3 text-xs text-muted hover:text-foreground"
         >
           {showAll
-            ? 'Show first answer only ↑'
-            : `Show all ${question.answers.length} answers ↓`}
+            ? t('showFirstOnly')
+            : t('showAll', { n: sourceAnswers.length })}
         </button>
       )}
       {question.variable && !isLocationQuestion && (
         <p className="mt-3 text-xs text-muted">
-          This answer changes with the current officeholder.
+          {t('variableAnswer')}
         </p>
       )}
     </div>
@@ -320,13 +340,14 @@ function AnswerPanel({
 }
 
 function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
+  const t = useTranslations('study')
   const [zip, setZip] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   async function handleSubmit() {
     if (!/^\d{5}$/.test(zip)) {
-      setError('Enter a valid 5-digit ZIP code.')
+      setError(t('zipError'))
       return
     }
     setLoading(true)
@@ -339,7 +360,7 @@ function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
       setStoredLocation(locationData)
       onSaved(locationData)
     } catch {
-      setError('Could not look up your officials. Try again.')
+      setError(t('zipLookupError'))
     } finally {
       setLoading(false)
     }
@@ -348,7 +369,7 @@ function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
   return (
     <div className="mt-4">
       <p className="mb-2 text-xs text-muted">
-        Enter your ZIP code to see your actual answer.
+        {t('zipPrompt')}
       </p>
       <div className="flex gap-2">
         <input
@@ -357,7 +378,7 @@ function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
           maxLength={5}
           value={zip}
           onChange={(e) => setZip(e.target.value.replace(/\D/g, ''))}
-          placeholder="ZIP code"
+          placeholder={t('zipPlaceholder')}
           className="flex-1 rounded-xl border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-confident/40"
         />
         <button
@@ -365,7 +386,7 @@ function ZipPrompt({ onSaved }: { onSaved: (data: LocationData) => void }) {
           disabled={loading || zip.length !== 5}
           className="rounded-xl bg-confident/10 px-4 py-2 text-sm font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 disabled:opacity-40"
         >
-          {loading ? '…' : 'Lookup →'}
+          {loading ? '…' : t('zipLookup')}
         </button>
       </div>
       {error && <p className="mt-1 text-xs text-needs-practice">{error}</p>}
@@ -384,6 +405,7 @@ function SessionSummary({
   isSignedIn: boolean
   mode: string
 }) {
+  const t = useTranslations('study')
   const [showSessionFeedback] = useState(() => {
     if (typeof window === 'undefined') return false
     return total >= 10 && total !== 128 && !localStorage.getItem('feedback_session_shown')
@@ -404,35 +426,38 @@ function SessionSummary({
 
   return (
     <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-xl flex-col items-center justify-center px-5 pt-12 pb-[calc(3rem+env(safe-area-inset-bottom))] text-center">
-      <p className="text-sm uppercase tracking-[0.18em] text-muted">Session complete</p>
+      <p className="text-sm uppercase tracking-[0.18em] text-muted">{t('sessionComplete')}</p>
       <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight">
         {correct}/{total}
       </h1>
       <p className="mt-3 text-muted">
-        You marked yourself confident on {correct} of {total} questions.
+        {t('sessionSummary', { confident: correct, total })}
       </p>
       <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
         <Link
           href="/study"
           className="rounded-2xl border border-border bg-card px-5 py-4 font-display font-semibold transition hover:border-confident/40"
         >
-          Study again
+          {t('studyAgain')}
         </Link>
         <Link
           href="/dashboard"
           className="rounded-2xl border border-confident/40 bg-confident/10 px-5 py-4 font-display font-semibold text-confident transition hover:bg-confident/15"
         >
-          Back to dashboard
+          {t('backToDashboard')}
         </Link>
       </div>
       {total === 128 && <FeedbackPrompt trigger="all_128" />}
       {showSessionFeedback && <FeedbackPrompt trigger="session_end" />}
       {!isSignedIn && (
         <p className="mt-6 text-sm text-muted">
-          <Link href="/sign-up" className="text-confident hover:underline">
-            Sign up free
-          </Link>{' '}
-          to save your progress and track it over time.
+          {t.rich('signUpPrompt', {
+            link: (chunks) => (
+              <Link href="/sign-up" className="text-confident hover:underline">
+                {chunks}
+              </Link>
+            ),
+          })}
         </p>
       )}
     </div>

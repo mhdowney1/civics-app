@@ -16,7 +16,9 @@ export type CategoryName =
 export interface Question {
   id: number
   question: string
+  questionEs?: string
   answers: string[]
+  answersEs?: string[]
   category: CategoryName
   section: SectionName
   starred: boolean

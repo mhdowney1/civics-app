@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
 import { CaptureRefParam } from '@/components/share-score'
@@ -13,7 +14,7 @@ const jsonLd = {
       operatingSystem: 'Web',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       description:
-        'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking.',
+        'Oral-style practice for the 2026 USCIS naturalization civics test. 128 official questions, mock interview, audio playback, and progress tracking.',
     },
     {
       '@type': 'FAQPage',
@@ -52,12 +53,62 @@ const jsonLd = {
         },
       ],
     },
+    {
+      '@type': 'Person',
+      name: 'Michael Downey',
+      url: 'https://vampcreatives.com',
+      description:
+        'Built this app while studying for his own USCIS naturalization interview. Passed 12/12 on May 20, 2026.',
+    },
   ],
 }
+
+const features = [
+  {
+    title: 'Oral format, not multiple choice',
+    body: 'See the question, say your answer out loud, then check yourself. No options to tap. This is how the real interview works.',
+  },
+  {
+    title: 'Hear the question spoken',
+    body: 'Tap the speaker on any question to hear it read aloud. Train your ear for the exact phrasing a USCIS officer uses.',
+  },
+  {
+    title: 'Track what you know',
+    body: 'Mark each answer confident or needs practice. Your progress is saved and synced so you always know where you stand.',
+  },
+  {
+    title: 'Mock interview',
+    body: '20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'How many questions are on the USCIS civics test?',
+    a: 'There are 128 official USCIS civics questions. During your naturalization interview, the officer will ask up to 20 of them.',
+  },
+  {
+    q: 'How many do I need to get right to pass?',
+    a: 'You need to answer 12 out of 20 questions correctly to pass.',
+  },
+  {
+    q: 'Is the civics test oral or written?',
+    a: 'It is oral. A USCIS officer asks you questions and you answer out loud. There are no multiple choice options.',
+  },
+  {
+    q: 'What is the 65/20 rule?',
+    a: 'If you are 65 or older and have been a permanent resident for 20+ years, you only need to study 20 specially marked questions. The officer asks 10, and you need 6 correct to pass. The app has a dedicated mode for this.',
+  },
+  {
+    q: 'Do I need to create an account?',
+    a: 'No. You can try the app without an account. Creating a free account lets you save your progress and track which questions you have mastered.',
+  },
+]
 
 export default async function LandingPage() {
   const { userId } = await auth()
   const isSignedIn = Boolean(userId)
+
   return (
     <main className="relative isolate min-h-screen overflow-hidden">
       <CaptureRefParam />
@@ -73,6 +124,8 @@ export default async function LandingPage() {
             'radial-gradient(60% 50% at 50% 0%, rgba(74,222,128,0.18) 0%, rgba(15,15,15,0) 70%)',
         }}
       />
+
+      {/* Header */}
       <header className="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
         <div className="font-display text-lg font-semibold tracking-tight">
           US Civics
@@ -91,27 +144,29 @@ export default async function LandingPage() {
                 href="/sign-up"
                 className="rounded-full bg-confident px-3 py-1.5 text-xs font-semibold text-black"
               >
-                Sign up
+                Sign up free
               </Link>
             </>
           )}
         </nav>
       </header>
 
+      {/* Hero */}
       <section className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:pt-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          2026 USCIS Civics Test
+          2026 USCIS Naturalization Test
         </p>
         <h1 className="mt-4 font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-          Calm, oral-style practice for the US citizenship test.
+          The civics test is oral.{' '}
+          <span className="text-confident">Practice like it.</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted">
-          See the question, think your answer, then check yourself. No multiple
-          choice. No clutter. Just the 128 official questions, paced like the
-          real interview.
+          All 128 official questions, one at a time — no multiple choice, no
+          clutter. Say your answer out loud, then check yourself. Free to use,
+          no credit card required.
         </p>
 
-        <div className="mt-8 flex flex-wrap gap-3">
+        <div className="mt-8 flex flex-wrap items-center gap-3">
           {isSignedIn ? (
             <Link
               href="/dashboard"
@@ -125,33 +180,132 @@ export default async function LandingPage() {
                 href="/sign-up"
                 className="rounded-2xl bg-confident px-6 py-3.5 font-display text-base font-semibold text-black transition hover:opacity-90"
               >
-                Start studying →
-              </Link>
-              <Link
-                href="/sign-in"
-                className="rounded-2xl border border-border bg-card px-6 py-3.5 font-display text-base font-semibold transition hover:border-foreground/40"
-              >
-                I already have an account
+                Start studying — it&apos;s free →
               </Link>
               <Link
                 href="/study"
-                className="w-full pt-1 text-center text-sm text-muted underline underline-offset-2 hover:text-foreground sm:w-auto"
+                className="rounded-2xl border border-border bg-card px-6 py-3.5 font-display text-base font-semibold transition hover:border-foreground/40"
               >
-                Try it without an account
+                Try without an account
               </Link>
             </>
           )}
         </div>
+        {!isSignedIn && (
+          <p className="mt-4 text-xs text-muted">
+            Already have an account?{' '}
+            <Link
+              href="/sign-in"
+              className="underline underline-offset-2 hover:text-foreground"
+            >
+              Sign in
+            </Link>
+          </p>
+        )}
       </section>
 
+      {/* The problem */}
       <section className="mx-auto max-w-3xl px-5 pb-16">
-        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-          <Fact value="128" label="Official questions" />
-          <Fact value="Up to 20" label="Asked by the officer" />
-          <Fact value="12+" label="To pass" />
+        <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+          <div className="grid grid-cols-2 gap-6 sm:gap-16">
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-muted">
+                Most apps
+              </p>
+              <ul className="mt-4 space-y-2.5 text-sm text-muted">
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-red-500/60">✕</span>
+                  Multiple choice options
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-red-500/60">✕</span>
+                  Tap to select an answer
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-red-500/60">✕</span>
+                  Nothing like the real test
+                </li>
+              </ul>
+            </div>
+            <div>
+              <p className="text-xs uppercase tracking-[0.22em] text-confident">
+                Your USCIS interview
+              </p>
+              <ul className="mt-4 space-y-2.5 text-sm text-foreground">
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-confident">✓</span>
+                  Officer asks a question
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-confident">✓</span>
+                  You answer out loud
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="mt-px shrink-0 text-confident">✓</span>
+                  No options. No hints.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <p className="mt-6 border-t border-border pt-5 text-sm font-medium text-foreground">
+            This app is built for the second column.
+          </p>
         </div>
       </section>
 
+      {/* Stats */}
+      <section className="mx-auto max-w-3xl px-5 pb-16">
+        <div className="grid grid-cols-3 gap-3">
+          <Fact value="128" label="Official questions" />
+          <Fact value="Up to 20" label="Asked by the officer" />
+          <Fact value="12 / 20" label="Needed to pass" />
+        </div>
+      </section>
+
+      {/* How it works */}
+      <section className="mx-auto max-w-3xl px-5 pb-20">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted">
+          How it works
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          Four steps. Just like the real interview.
+        </h2>
+        <ol className="mt-8 space-y-4 text-muted">
+          <Step n={1} title="See the question.">
+            One civics question at a time, big and clear — exactly the way a
+            USCIS officer reads it.
+          </Step>
+          <Step n={2} title="Say your answer out loud.">
+            No options to tap. Speak your answer — or tap the speaker to hear
+            the question first. The real test is oral, so practice that way.
+          </Step>
+          <Step n={3} title="Reveal and self-mark.">
+            Tap to reveal the answer. Got it? Mark it confident. Still shaky?
+            Mark it needs practice. Your progress is saved automatically.
+          </Step>
+          <Step n={4} title="Take a mock interview.">
+            20 random questions, oral-style, with a pass/fail result at the end
+            — the same format as your naturalization interview.
+          </Step>
+        </ol>
+      </section>
+
+      {/* Features */}
+      <section className="mx-auto max-w-3xl px-5 pb-20">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted">
+          Features
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          Built around the real exam format.
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {features.map((f) => (
+            <FeatureCard key={f.title} title={f.title} body={f.body} />
+          ))}
+        </div>
+      </section>
+
+      {/* 65/20 */}
       <section className="mx-auto max-w-3xl px-5 pb-20">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">
@@ -168,32 +322,85 @@ export default async function LandingPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-3xl px-5 pb-24">
-        <h2 className="font-display text-2xl font-semibold tracking-tight">
-          How it works
-        </h2>
-        <ol className="mt-5 space-y-4 text-muted">
-          <Step n={1} title="See the question.">
-            We show one civics question at a time, big and clear, exactly the
-            way a USCIS officer would ask it.
-          </Step>
-          <Step n={2} title="Think your answer out loud.">
-            Optionally tap the speaker to hear it. The real test is oral, so
-            practice that way.
-          </Step>
-          <Step n={3} title="Reveal and self-mark.">
-            Got it? Tap green. Need more practice? Tap amber. Your progress is
-            saved automatically.
-          </Step>
-          <Step n={4} title="Take a mock test.">
-            20 random questions, oral-style, pass/fail at the end — just like
-            the real thing.
-          </Step>
-        </ol>
+      {/* Founder story */}
+      <section className="mx-auto max-w-3xl px-5 pb-20">
+        <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
+          <div className="flex items-center gap-4">
+            <Image src="/michael.jpg" alt="Michael Downey" width={56} height={56} className="rounded-full shrink-0" />
+            <div>
+              <p className="font-display text-base font-semibold leading-tight">
+                Michael Downey
+              </p>
+              <p className="text-xs text-muted">Creator, CivicsStudy.com</p>
+            </div>
+          </div>
+          <blockquote className="mt-5 leading-relaxed text-muted">
+            &ldquo;In April 2026 I was studying for my own citizenship
+            interview. Every app I downloaded was multiple choice — that&apos;s
+            not how the test works. I found a YouTube channel where someone
+            would ask the question, pause, then give the answer. That was the
+            closest thing to real oral practice I could find. So I built
+            something better. I passed 12 out of 12 on May 20.&rdquo;
+          </blockquote>
+        </div>
       </section>
 
+      {/* Testimonials — add this section once you have real quotes from users */}
+
+      {/* FAQ */}
+      <section className="mx-auto max-w-3xl px-5 pb-20">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted">
+          Common questions
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          FAQ
+        </h2>
+        <dl className="mt-8 space-y-3">
+          {faqs.map((faq) => (
+            <div
+              key={faq.q}
+              className="rounded-2xl border border-border bg-card p-5"
+            >
+              <dt className="font-display text-base font-semibold">{faq.q}</dt>
+              <dd className="mt-2 text-sm leading-relaxed text-muted">
+                {faq.a}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      {/* Final CTA */}
+      {!isSignedIn && (
+        <section className="mx-auto max-w-3xl px-5 pb-24">
+          <div className="rounded-3xl border border-confident/30 bg-confident/5 p-8 text-center sm:p-12">
+            <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+              Ready to practice?
+            </h2>
+            <p className="mt-3 text-muted">
+              Free to use. No credit card. No subscription.
+            </p>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <Link
+                href="/sign-up"
+                className="rounded-2xl bg-confident px-8 py-4 font-display text-base font-semibold text-black transition hover:opacity-90"
+              >
+                Start studying — it&apos;s free →
+              </Link>
+              <Link
+                href="/study"
+                className="text-sm text-muted underline underline-offset-2 hover:text-foreground"
+              >
+                Try without an account
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Footer */}
       <footer className="mx-auto max-w-3xl px-5 pb-12 text-xs text-muted">
-        <span>Built for studying. Not affiliated with USCIS. </span>
+        <span>Built for studying. Not affiliated with USCIS.</span>
         <span className="mx-2">·</span>
         <span>
           Built by{' '}
@@ -201,7 +408,7 @@ export default async function LandingPage() {
             href="https://vampcreatives.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:text-foreground underline underline-offset-2"
+            className="underline underline-offset-2 hover:text-foreground"
           >
             Vamp Creatives
           </a>
@@ -245,5 +452,15 @@ function Step({
         <p className="mt-1 text-sm text-muted">{children}</p>
       </div>
     </li>
+  )
+}
+
+function FeatureCard({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-5">
+      <div className="h-1 w-8 rounded-full bg-confident" />
+      <p className="mt-4 font-display text-base font-semibold">{title}</p>
+      <p className="mt-1.5 text-sm leading-relaxed text-muted">{body}</p>
+    </div>
   )
 }

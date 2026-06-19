@@ -1,9 +1,11 @@
 'use client'
 
 import { useState } from 'react'
+import { useTranslations } from 'next-intl'
 import { track } from '@/lib/analytics'
 
 export function CheckoutButton() {
+  const t = useTranslations('billing')
   const [loading, setLoading] = useState(false)
 
   async function handleClick() {
@@ -28,7 +30,7 @@ export function CheckoutButton() {
       disabled={loading}
       className="w-full rounded-2xl bg-confident px-6 py-5 font-display text-lg font-semibold text-white transition hover:opacity-90 active:scale-[0.99] disabled:opacity-60"
     >
-      {loading ? 'Redirecting…' : 'Unlock for $10'}
+      {loading ? t('redirecting') : t('unlockButton')}
     </button>
   )
 }

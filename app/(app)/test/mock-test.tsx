@@ -3,12 +3,15 @@
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
 import type { Question } from '@/lib/types'
 import { track } from '@/lib/analytics'
 import { FeedbackPrompt } from '@/components/feedback-prompt'
 import { ShareScore } from '@/components/share-score'
 import { SpeakerButton } from '@/components/speaker-button'
 import { fireConfetti } from '@/lib/confetti'
+import { useLanguage } from '@/lib/use-language'
+import { getCategoryName } from '@/lib/category-names'
 
 interface Result {
   question: Question
@@ -19,6 +22,8 @@ const PASS_THRESHOLD = 12
 
 export function MockTest({ questions }: { questions: Question[] }) {
   const router = useRouter()
+  const t = useTranslations('test')
+  const [lang] = useLanguage()
   const [index, setIndex] = useState(0)
   const [results, setResults] = useState<Result[]>([])
   const [finished, setFinished] = useState(false)
@@ -75,15 +80,14 @@ export function MockTest({ questions }: { questions: Question[] }) {
   }
 
   const progressPct = Math.round((index / total) * 100)
+  const questionText = lang === 'es' ? (current.questionEs ?? current.question) : current.question
 
   return (
     <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
       <header className="mb-4">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-muted">
-          <span>
-            Mock test · {index + 1} of {total}
-          </span>
-          <span>Pass with {PASS_THRESHOLD}+</span>
+          <span>{t('progressLabel', { n: index + 1, total })}</span>
+          <span>{t('passHint', { threshold: PASS_THRESHOLD })}</span>
         </div>
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-card">
           <div
@@ -99,16 +103,16 @@ export function MockTest({ questions }: { questions: Question[] }) {
       >
         <div className="flex items-start justify-between gap-3">
           <p className="text-xs uppercase tracking-wider text-muted">
-            {current.category}
+            {getCategoryName(current.category, lang)}
           </p>
-          <SpeakerButton text={current.question} />
+          <SpeakerButton text={questionText} lang={lang} />
         </div>
         <h2 className="mt-3 font-display text-2xl font-semibold leading-snug tracking-tight sm:text-3xl">
-          {current.question}
+          {questionText}
         </h2>
 
         <div className="flex flex-1 items-center justify-center py-10 text-sm text-muted">
-          Say your answer out loud. Then mark yourself.
+          {t('instruction')}
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -116,24 +120,26 @@ export function MockTest({ questions }: { questions: Question[] }) {
             onClick={() => record(false)}
             className="rounded-2xl bg-needs-practice/10 px-6 py-6 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99]"
           >
-            Got it wrong
+            {t('wrong')}
           </button>
           <button
             onClick={() => record(true)}
             className="rounded-2xl bg-confident/10 px-6 py-6 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99]"
           >
-            Got it right ✓
+            {t('right')}
           </button>
         </div>
       </section>
 
       <footer className="mt-4 flex justify-between text-xs text-muted">
         <Link href="/dashboard" className="hover:text-foreground">
-          ← Exit
+          {t('exit')}
         </Link>
         <span>
-          {results.filter((r) => r.correct).length} right ·{' '}
-          {results.filter((r) => !r.correct).length} wrong
+          {t('score', {
+            right: results.filter((r) => r.correct).length,
+            wrong: results.filter((r) => !r.correct).length,
+          })}
         </span>
       </footer>
     </div>
@@ -147,6 +153,8 @@ function TestSummary({
   results: Result[]
   onRetake: () => void
 }) {
+  const t = useTranslations('test')
+  const [lang] = useLanguage()
   const score = results.filter((r) => r.correct).length
   const passed = score >= PASS_THRESHOLD
   const wrong = results.filter((r) => !r.correct)
@@ -160,7 +168,7 @@ function TestSummary({
     <div className="mx-auto max-w-2xl px-5 py-10">
       <div className="rounded-3xl border border-border bg-card p-8 text-center">
         <p className="text-sm uppercase tracking-[0.18em] text-muted">
-          Mock test complete
+          {t('complete')}
         </p>
         <h1 className="mt-3 font-display text-5xl font-semibold tracking-tight">
           {score} / {results.length}
@@ -170,17 +178,17 @@ function TestSummary({
             passed ? 'text-confident' : 'text-needs-practice'
           }`}
         >
-          {passed ? 'Pass' : 'Fail'}
+          {passed ? t('pass') : t('fail')}
         </p>
         <p className="mt-1 text-sm text-muted">
-          Pass requires {PASS_THRESHOLD} out of {results.length}.
+          {t('passThreshold', { threshold: PASS_THRESHOLD, total: results.length })}
         </p>
       </div>
 
       {wrong.length > 0 && (
         <section className="mt-8">
           <h2 className="mb-3 font-display text-lg font-semibold">
-            Review these
+            {t('reviewThese')}
           </h2>
           <ul className="space-y-3">
             {wrong.map((r) => (
@@ -189,13 +197,13 @@ function TestSummary({
                 className="rounded-2xl border border-border bg-card p-4"
               >
                 <p className="text-xs text-muted">
-                  #{r.question.id} · {r.question.category}
+                  #{r.question.id} · {getCategoryName(r.question.category, lang)}
                 </p>
                 <p className="mt-1 font-display text-base font-semibold">
-                  {r.question.question}
+                  {lang === 'es' ? (r.question.questionEs ?? r.question.question) : r.question.question}
                 </p>
                 <ul className="mt-3 space-y-1 text-sm text-muted">
-                  {r.question.answers.map((a, i) => (
+                  {(lang === 'es' ? (r.question.answersEs ?? r.question.answers) : r.question.answers).map((a, i) => (
                     <li
                       key={i}
                       className="rounded-md border border-confident/20 bg-confident/5 px-3 py-2 text-foreground"
@@ -215,13 +223,13 @@ function TestSummary({
           onClick={onRetake}
           className="rounded-2xl border border-border bg-card px-5 py-4 font-display font-semibold transition hover:border-confident/40"
         >
-          Take another
+          {t('retake')}
         </button>
         <Link
           href="/dashboard"
           className="rounded-2xl border border-confident/40 bg-confident/10 px-5 py-4 text-center font-display font-semibold text-confident transition hover:bg-confident/15"
         >
-          Back to dashboard
+          {t('backToDashboard')}
         </Link>
       </div>
       <div className="mt-3">

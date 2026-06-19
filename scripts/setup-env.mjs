@@ -85,6 +85,7 @@ const stripePriceId = env.STRIPE_PRICE_ID ?? ''
 
 const elevenLabsApiKey = env.ELEVENLABS_API_KEY ?? ''
 const elevenLabsVoiceId = env.ELEVENLABS_VOICE_ID ?? 'nPczCjzI2devNBz1zQrb'
+const elevenLabsVoiceIdEs = env.ELEVENLABS_VOICE_ID_ES ?? ''
 
 const googleCivicApiKey = env.GOOGLE_CIVIC_API_KEY ?? ''
 
@@ -122,6 +123,7 @@ const out = [
   '# ElevenLabs',
   ...(elevenLabsApiKey ? [`ELEVENLABS_API_KEY=${elevenLabsApiKey}`] : []),
   `ELEVENLABS_VOICE_ID=${elevenLabsVoiceId}`,
+  ...(elevenLabsVoiceIdEs ? [`ELEVENLABS_VOICE_ID_ES=${elevenLabsVoiceIdEs}`] : []),
   '',
   '# Google',
   ...(googleCivicApiKey ? [`GOOGLE_CIVIC_API_KEY=${googleCivicApiKey}`] : []),
