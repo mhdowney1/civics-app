@@ -6,12 +6,15 @@
     "langToggle": "EN",
     "switchToSpanish": "Cambiar a español",
     "switchToEnglish": "Cambiar a inglés",
+    "switchToLight": "Cambiar a modo claro",
+    "switchToDark": "Cambiar a modo oscuro",
     "signUp": "Registrarse"
   },
   "bottomNav": {
-    "study": "Estudiar",
+    "study": "Inicio",
     "progress": "Progreso",
-    "mockTest": "Examen"
+    "mockTest": "Examen",
+    "settings": "Ajustes"
   },
   "study": {
     "guestBanner": "El progreso no se guardará. <link>Regístrate gratis para seguirlo</link>.",
@@ -22,6 +25,16 @@
     "needsPractice": "Necesito más práctica",
     "gotIt": "Lo tengo ✓",
     "exit": "← Salir",
+    "exitConfirm": "¿Salir?",
+    "exitYes": "Sí, salir",
+    "exitNo": "Seguir",
+    "keyboardHint": "Espacio: revelar · 1: necesita práctica · 2: lo sé",
+    "masteredThis": "dominadas esta sesión",
+    "resumeLabel": "Sesión en curso",
+    "resumeTitle": "Te quedaste en la pregunta {n} de {total}",
+    "resumeDesc": "Continúa donde lo dejaste o empieza de nuevo con un orden diferente.",
+    "resumeStartOver": "Empezar de nuevo",
+    "resumeContinue": "Continuar →",
     "score": "{confident} correctas · {practice} para practicar",
     "anyAnswer": "Cualquiera de estas respuestas es aceptable",
     "eitherSenator": "Cualquier senador es aceptable",
@@ -51,6 +64,9 @@
     "wrong": "Me equivoqué",
     "right": "Lo sé ✓",
     "exit": "← Salir",
+    "keyboardHint": "1: incorrecto · 2: correcto",
+    "answers": "Respuestas aceptadas",
+    "revealAnswer": "Ver respuesta",
     "score": "{right} correctas · {wrong} incorrectas",
     "complete": "Examen completado",
     "passThreshold": "Se requieren {threshold} de {total} para aprobar.",
@@ -99,7 +115,12 @@
     "recentTests": "Pruebas recientes",
     "viewAll": "Ver todas →",
     "pass": "Aprobado",
-    "fail": "Reprobado"
+    "fail": "Reprobado",
+    "onboardingTitle": "Cómo funciona",
+    "onboardingStep1": "Lee la pregunta y di tu respuesta en voz alta, igual que en la entrevista real.",
+    "onboardingStep2": "Toca 'Mostrar respuesta' para ver la respuesta correcta y evaluarte.",
+    "onboardingStep3": "Tu progreso se guarda automáticamente. Vuelve cuando quieras para continuar.",
+    "onboardingCta": "Comenzar tu primera sesión →"
   },
   "progress": {
     "sectionLabel": "Tu progreso",
@@ -113,6 +134,7 @@
     "confident": "Seguro",
     "needsPractice": "Necesita práctica",
     "notStudied": "Sin estudiar",
+    "byCategory": "Por categoría",
     "noMatch": "No hay preguntas que coincidan con estos filtros.",
     "resetTitle": "¿Restablecer todo el progreso?",
     "resetDesc": "Esto borrará tu historial de estudio de las 128 preguntas. No puedes deshacerlo.",
@@ -152,5 +174,46 @@
     "text": "Obtuve {score}/{total} en el examen de civismo de EE.UU. — {result}. ¿Crees que puedes superarme? Inténtalo gratis:",
     "pass": "aprobado",
     "fail": "reprobado"
+  },
+  "settings": {
+    "title": "Ajustes",
+    "save": "Guardar",
+    "locationTitle": "Tu ubicación",
+    "zipDesc": "Usado para mostrar tus senadores, gobernador y representante locales.",
+    "zipPlaceholder": "Código ZIP",
+    "zipError": "Ingresa un código ZIP válido de 5 dígitos.",
+    "zipLookupError": "No se pudieron obtener tus funcionarios. Intenta de nuevo.",
+    "dailyGoalTitle": "Meta de estudio diario",
+    "dailyGoalDesc": "¿Cuántas preguntas quieres estudiar cada día?",
+    "dailyGoalSet": "{n} preguntas por día",
+    "fontSizeTitle": "Tamaño del texto",
+    "fontSizeDesc": "Ajusta el tamaño del texto en toda la app.",
+    "interviewDateTitle": "Fecha de entrevista",
+    "interviewDateNone": "No hay fecha de entrevista establecida.",
+    "interviewDateChange": "Cambiar fecha",
+    "interviewDateSet": "Establecer fecha de entrevista"
+  },
+  "interview": {
+    "setDatePrompt": "¿Sabes la fecha de tu entrevista? Agrégala para ver tu cuenta regresiva.",
+    "setDate": "Agregar fecha",
+    "setDateLabel": "Fecha de entrevista",
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "pastInterview": "La fecha de entrevista ya pasó — ¿cómo te fue?",
+    "interviewToday": "¡Hoy es tu entrevista! Tú puedes.",
+    "daysUntil": "{n} días para tu entrevista",
+    "change": "Cambiar",
+    "ready": "listas",
+    "toReview": "para repasar",
+    "unseen": "sin estudiar",
+    "readiness": {
+      "starting": "Estás comenzando — cada pregunta que estudias te acerca más a tu meta.",
+      "foundation": "¡Buena base! Enfócate en las categorías que aún no has tocado.",
+      "momentum": "¡Vas bien! Ya tienes la mitad de las preguntas dominadas.",
+      "strong": "¡Gran progreso! Sigue con las preguntas que te faltan.",
+      "almost": "¡Casi listo! Solo faltan unas pocas preguntas por dominar.",
+      "ready": "Estás listo. Tienes confianza en las 128 preguntas.",
+      "interview-soon": "La entrevista se acerca — prioriza tus preguntas más difíciles ahora."
+    }
   }
 }

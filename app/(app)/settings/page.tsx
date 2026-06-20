@@ -1,0 +1,26 @@
+import { auth } from '@clerk/nextjs/server'
+import { getUserSettings } from '@/lib/server-settings'
+import { getInterviewDate } from '@/lib/server-interview'
+import { SettingsUI } from './settings-ui'
+
+export const dynamic = 'force-dynamic'
+export const metadata = { title: 'Settings · US Civics Study' }
+
+export default async function SettingsPage() {
+  const { userId } = await auth()
+  if (!userId) return null
+
+  const [settings, interviewDate] = await Promise.all([
+    getUserSettings(userId),
+    getInterviewDate(userId),
+  ])
+
+  return (
+    <SettingsUI
+      zip={settings.zip}
+      dailyGoal={settings.dailyGoal}
+      fontSize={settings.fontSize}
+      interviewDate={interviewDate}
+    />
+  )
+}

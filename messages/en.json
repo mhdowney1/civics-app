@@ -6,12 +6,15 @@
     "langToggle": "ES",
     "switchToSpanish": "Switch to Spanish",
     "switchToEnglish": "Switch to English",
+    "switchToLight": "Switch to light mode",
+    "switchToDark": "Switch to dark mode",
     "signUp": "Sign up"
   },
   "bottomNav": {
-    "study": "Study",
+    "study": "Home",
     "progress": "Progress",
-    "mockTest": "Mock test"
+    "mockTest": "Mock test",
+    "settings": "Settings"
   },
   "study": {
     "guestBanner": "Progress won't be saved. <link>Sign up free to track it</link>.",
@@ -22,6 +25,16 @@
     "needsPractice": "Need more practice",
     "gotIt": "Got it ✓",
     "exit": "← Exit",
+    "exitConfirm": "Exit?",
+    "exitYes": "Yes, exit",
+    "exitNo": "Keep going",
+    "keyboardHint": "Space: reveal · 1: needs practice · 2: got it",
+    "masteredThis": "mastered this session",
+    "resumeLabel": "Session in progress",
+    "resumeTitle": "You left off at question {n} of {total}",
+    "resumeDesc": "Pick up where you left off, or start fresh with a new shuffle.",
+    "resumeStartOver": "Start over",
+    "resumeContinue": "Continue →",
     "score": "{confident} got it · {practice} to practice",
     "anyAnswer": "Any of these answers is acceptable",
     "eitherSenator": "Either senator is acceptable",
@@ -51,6 +64,9 @@
     "wrong": "Got it wrong",
     "right": "Got it right ✓",
     "exit": "← Exit",
+    "keyboardHint": "1: wrong · 2: right",
+    "answers": "Accepted answers",
+    "revealAnswer": "See answer",
     "score": "{right} right · {wrong} wrong",
     "complete": "Mock test complete",
     "passThreshold": "Pass requires {threshold} out of {total}.",
@@ -99,7 +115,12 @@
     "recentTests": "Recent tests",
     "viewAll": "View all →",
     "pass": "Pass",
-    "fail": "Fail"
+    "fail": "Fail",
+    "onboardingTitle": "Here's how it works",
+    "onboardingStep1": "Read the question and say your answer out loud — just like the real interview.",
+    "onboardingStep2": "Tap 'Show answer' to reveal the correct answer and mark yourself.",
+    "onboardingStep3": "Your progress saves automatically. Come back anytime to continue.",
+    "onboardingCta": "Start your first session →"
   },
   "progress": {
     "sectionLabel": "Your progress",
@@ -113,6 +134,7 @@
     "confident": "Confident",
     "needsPractice": "Needs practice",
     "notStudied": "Not studied",
+    "byCategory": "By category",
     "noMatch": "No questions match these filters.",
     "resetTitle": "Reset all progress?",
     "resetDesc": "This clears your study history for all 128 questions. You can't undo this.",
@@ -152,5 +174,46 @@
     "text": "I scored {score}/{total} on the US civics test — {result}. Think you can beat me? Try it free:",
     "pass": "pass",
     "fail": "fail"
+  },
+  "settings": {
+    "title": "Settings",
+    "save": "Save",
+    "locationTitle": "Your location",
+    "zipDesc": "Used to show your local senators, governor, and representative.",
+    "zipPlaceholder": "ZIP code",
+    "zipError": "Enter a valid 5-digit ZIP code.",
+    "zipLookupError": "Could not look up your officials. Try again.",
+    "dailyGoalTitle": "Daily study goal",
+    "dailyGoalDesc": "How many questions do you want to study each day?",
+    "dailyGoalSet": "{n} questions per day",
+    "fontSizeTitle": "Text size",
+    "fontSizeDesc": "Adjust the text size across the app.",
+    "interviewDateTitle": "Interview date",
+    "interviewDateNone": "No interview date set.",
+    "interviewDateChange": "Change date",
+    "interviewDateSet": "Set interview date"
+  },
+  "interview": {
+    "setDatePrompt": "Know your interview date? Add it to see your readiness countdown.",
+    "setDate": "Set date",
+    "setDateLabel": "Interview date",
+    "save": "Save",
+    "cancel": "Cancel",
+    "pastInterview": "Interview date has passed — how did it go?",
+    "interviewToday": "Interview day! You've got this.",
+    "daysUntil": "{n} days until your interview",
+    "change": "Change",
+    "ready": "ready",
+    "toReview": "to review",
+    "unseen": "unseen",
+    "readiness": {
+      "starting": "You're just getting started — every question you study brings you closer.",
+      "foundation": "Good foundation! Focus on the categories you haven't touched yet.",
+      "momentum": "You're building momentum — half the questions are solid.",
+      "strong": "Strong progress! Push through the remaining questions.",
+      "almost": "Almost there — just a few questions left to master.",
+      "ready": "You're ready. Confidence is high across all 128 questions.",
+      "interview-soon": "Interview is close — prioritize your weakest questions now."
+    }
   }
 }

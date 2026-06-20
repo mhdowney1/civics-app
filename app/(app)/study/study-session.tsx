@@ -12,6 +12,7 @@ import { getStoredLocation, setStoredLocation, clearStoredLocation, type Locatio
 import { fireConfetti } from '@/lib/confetti'
 import { useLanguage } from '@/lib/use-language'
 import { getCategoryName } from '@/lib/category-names'
+import { saveSession, loadSession, clearSession, type SavedSession } from '@/lib/session-state'
 
 interface Props {
   initialQuestions: Question[]
@@ -37,17 +38,44 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
       : category
         ? getCategoryName(category, lang)
         : t('modeAll')
-  const [questions] = useState(initialQuestions)
-  const [index, setIndex] = useState(0)
+
+  // Build ordered questions: resume from saved session if available, else use server-shuffled order
+  const [questions] = useState<Question[]>(() => {
+    const saved = loadSession(mode, category)
+    if (saved && saved.index > 0) {
+      const byId = new Map(initialQuestions.map((q) => [q.id, q]))
+      const reordered = saved.questionIds.map((id) => byId.get(id)).filter(Boolean) as Question[]
+      if (reordered.length === initialQuestions.length) return reordered
+    }
+    return initialQuestions
+  })
+
+  const [savedSession] = useState<SavedSession | null>(() => {
+    const s = loadSession(mode, category)
+    return s && s.index > 0 ? s : null
+  })
+
+  const [resumePrompt, setResumePrompt] = useState<boolean>(() => {
+    const s = loadSession(mode, category)
+    return Boolean(s && s.index > 0)
+  })
+
+  const [index, setIndex] = useState(() => {
+    // Don't restore index yet — wait for resume prompt response
+    return 0
+  })
   const [revealed, setRevealed] = useState(false)
   const [results, setResults] = useState<SessionResult[]>([])
   const [finished, setFinished] = useState(false)
   const [bannerDismissed, setBannerDismissed] = useState(false)
+  const [exitConfirm, setExitConfirm] = useState(false)
+  const exitHref = isSignedIn ? '/dashboard' : '/'
   const [showAllAnswers, setShowAllAnswers] = useState<boolean>(() => {
     if (typeof window === 'undefined') return false
     return localStorage.getItem('civics:show-all-answers') === 'true'
   })
   const advanceTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const firedMilestones = useRef<Set<number>>(new Set())
 
   const toggleShowAllAnswers = useCallback(() => {
     setShowAllAnswers((prev) => {
@@ -85,9 +113,6 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
   const handleAnswer = useCallback(
     (status: Status) => {
       if (!current) return
-      if (status === 'confident') {
-        fireConfetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, scalar: 0.7 })
-      }
       void saveProgress(current.id, status)
       track('question_answered', {
         question_id: current.id,
@@ -97,7 +122,16 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
       setResults((r) => [...r, { questionId: current.id, status }])
       if (advanceTimer.current) clearTimeout(advanceTimer.current)
       advanceTimer.current = setTimeout(() => {
-        if (index + 1 >= total) {
+        const nextIndex = index + 1
+        const completedFraction = nextIndex / total
+        for (const threshold of [0.25, 0.5, 0.75]) {
+          if (completedFraction >= threshold && !firedMilestones.current.has(threshold)) {
+            firedMilestones.current.add(threshold)
+            fireConfetti({ particleCount: 60, spread: 70, origin: { y: 0.7 } })
+          }
+        }
+        if (nextIndex >= total) {
+          clearSession(mode, category)
           const correct = [...results, { questionId: current.id, status }].filter(
             (r) => r.status === 'confident',
           ).length
@@ -109,6 +143,7 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
           })
           setFinished(true)
         } else {
+          saveSession(mode, category, questions.map((q) => q.id), nextIndex)
           setIndex((i) => i + 1)
           setRevealed(false)
         }
@@ -117,6 +152,57 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [current, index, total],
   )
+
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (finished) return
+      if ((e.target as HTMLElement).tagName === 'INPUT') return
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault()
+        if (!revealed) setRevealed(true)
+      } else if (revealed) {
+        if (e.key === '1' || e.key === 'ArrowLeft') {
+          handleAnswer('needs_practice')
+        } else if (e.key === '2' || e.key === 'ArrowRight') {
+          handleAnswer('confident')
+        }
+      }
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [revealed, finished, handleAnswer])
+
+  if (resumePrompt && savedSession) {
+    return (
+      <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-xl flex-col items-center justify-center px-5 text-center">
+        <p className="text-sm uppercase tracking-[0.18em] text-muted">{t('resumeLabel')}</p>
+        <h1 className="mt-3 font-display text-3xl font-semibold tracking-tight">
+          {t('resumeTitle', { n: savedSession.index + 1, total: questions.length })}
+        </h1>
+        <p className="mt-3 text-muted">{t('resumeDesc')}</p>
+        <div className="mt-8 grid w-full grid-cols-1 gap-3 sm:grid-cols-2">
+          <button
+            onClick={() => {
+              clearSession(mode, category)
+              setResumePrompt(false)
+            }}
+            className="rounded-2xl border border-border bg-card px-5 py-4 font-display font-semibold transition hover:border-confident/40"
+          >
+            {t('resumeStartOver')}
+          </button>
+          <button
+            onClick={() => {
+              setIndex(savedSession.index)
+              setResumePrompt(false)
+            }}
+            className="rounded-2xl border border-confident/40 bg-confident/10 px-5 py-4 font-display font-semibold text-confident transition hover:bg-confident/15"
+          >
+            {t('resumeContinue')}
+          </button>
+        </div>
+      </div>
+    )
+  }
 
   if (finished) {
     const correct = results.filter((r) => r.status === 'confident').length
@@ -160,7 +246,14 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
           <span>{t('questionOf', { n: index + 1, total })}</span>
           <span className="truncate pl-3 text-right">{modeLabel}</span>
         </div>
-        <p className="mt-1 truncate text-xs text-muted">{getCategoryName(current.category, lang)}</p>
+        <div className="mt-1 flex items-center justify-between text-xs text-muted">
+          <p className="truncate">{getCategoryName(current.category, lang)}</p>
+          {mode === 'category' && (
+            <span className="shrink-0 pl-3 text-confident">
+              {results.filter((r) => r.status === 'confident').length} {t('masteredThis')}
+            </span>
+          )}
+        </div>
         <div className="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-card">
           <div
             className="h-full rounded-full bg-confident transition-all duration-300"
@@ -233,10 +326,28 @@ export function StudySession({ initialQuestions, mode, category, isSignedIn = tr
         )}
       </section>
 
-      <footer className="mt-4 flex justify-between text-xs text-muted">
-        <Link href={isSignedIn ? '/dashboard' : '/'} className="hover:text-foreground">
-          {t('exit')}
-        </Link>
+      <footer className="mt-4 flex items-center justify-between text-xs text-muted">
+        {exitConfirm ? (
+          <span className="flex items-center gap-2">
+            <span>{t('exitConfirm')}</span>
+            <Link href={exitHref} className="font-semibold text-needs-practice hover:underline">
+              {t('exitYes')}
+            </Link>
+            <button onClick={() => setExitConfirm(false)} className="hover:text-foreground">
+              {t('exitNo')}
+            </button>
+          </span>
+        ) : (
+          <button
+            onClick={() => { if (index > 0) setExitConfirm(true); else window.location.href = exitHref }}
+            className="hover:text-foreground"
+          >
+            {t('exit')}
+          </button>
+        )}
+        <span className="hidden sm:inline opacity-50">
+          {t('keyboardHint')}
+        </span>
         <span>
           {t('score', {
             confident: results.filter((r) => r.status === 'confident').length,

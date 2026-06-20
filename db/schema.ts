@@ -62,6 +62,10 @@ export const usersMeta = pgTable(
     email: text('email').notNull(),
     firstName: text('first_name'),
     referralCode: text('referral_code').notNull(),
+    interviewDate: text('interview_date'), // YYYY-MM-DD, user-supplied
+    zip: text('zip'),
+    dailyGoal: integer('daily_goal').default(10),
+    fontSize: text('font_size'),
     createdAt: timestamp('created_at').defaultNow(),
   },
   (table) => ({

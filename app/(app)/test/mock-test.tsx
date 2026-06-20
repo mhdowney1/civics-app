@@ -27,6 +27,7 @@ export function MockTest({ questions }: { questions: Question[] }) {
   const [index, setIndex] = useState(0)
   const [results, setResults] = useState<Result[]>([])
   const [finished, setFinished] = useState(false)
+  const [answerRevealed, setAnswerRevealed] = useState(false)
 
   const total = questions.length
   const current = questions[index]
@@ -36,9 +37,19 @@ export function MockTest({ questions }: { questions: Question[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  useEffect(() => {
+    if (finished) return
+    function onKey(e: KeyboardEvent) {
+      if (e.key === '1' || e.key === 'ArrowLeft') record(false)
+      else if (e.key === '2' || e.key === 'ArrowRight') record(true)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, finished])
+
   function record(correct: boolean) {
     if (!current) return
-    if (correct) fireConfetti({ particleCount: 30, spread: 50, origin: { y: 0.8 }, scalar: 0.7 })
     const next = [...results, { question: current, correct }]
     if (index + 1 >= total) {
       const score = next.filter((r) => r.correct).length
@@ -54,6 +65,7 @@ export function MockTest({ questions }: { questions: Question[] }) {
     } else {
       setResults(next)
       setIndex(index + 1)
+      setAnswerRevealed(false)
     }
   }
 
@@ -111,8 +123,29 @@ export function MockTest({ questions }: { questions: Question[] }) {
           {questionText}
         </h2>
 
-        <div className="flex flex-1 items-center justify-center py-10 text-sm text-muted">
-          {t('instruction')}
+        <div className="flex-1 py-6">
+          {answerRevealed ? (
+            <div className="animate-fade-in">
+              <p className="mb-2 text-xs uppercase tracking-wider text-muted">{t('answers')}</p>
+              <ul className="space-y-2">
+                {(lang === 'es' ? (current.answersEs ?? current.answers) : current.answers).map((a, i) => (
+                  <li key={i} className="rounded-xl border border-confident/20 bg-confident/5 px-4 py-3 text-base text-foreground">
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-4">
+              <p className="text-sm text-muted">{t('instruction')}</p>
+              <button
+                onClick={() => setAnswerRevealed(true)}
+                className="rounded-xl border border-border px-4 py-2 text-xs text-muted transition hover:border-foreground/40 hover:text-foreground"
+              >
+                {t('revealAnswer')}
+              </button>
+            </div>
+          )}
         </div>
 
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -131,10 +164,13 @@ export function MockTest({ questions }: { questions: Question[] }) {
         </div>
       </section>
 
-      <footer className="mt-4 flex justify-between text-xs text-muted">
+      <footer className="mt-4 flex items-center justify-between text-xs text-muted">
         <Link href="/dashboard" className="hover:text-foreground">
           {t('exit')}
         </Link>
+        <span className="hidden sm:inline opacity-50">
+          {t('keyboardHint')}
+        </span>
         <span>
           {t('score', {
             right: results.filter((r) => r.correct).length,

@@ -8,6 +8,8 @@ import {
 import { getServerProgress } from '@/lib/server-progress'
 import { getRecentTests } from '@/lib/server-tests'
 import { isPaid } from '@/lib/server-access'
+import { getServerStreak } from '@/lib/server-streak'
+import { getInterviewDate } from '@/lib/server-interview'
 import { DashboardUI } from './dashboard-ui'
 
 export const dynamic = 'force-dynamic'
@@ -19,11 +21,13 @@ export default async function DashboardPage({
   searchParams: Promise<{ paid?: string }>
 }) {
   const [{ userId }, { paid: paidParam }] = await Promise.all([auth(), searchParams])
-  const [user, progress, paid, recentTests] = await Promise.all([
+  const [user, progress, paid, recentTests, streak, interviewDate] = await Promise.all([
     currentUser(),
     getServerProgress(),
     userId ? isPaid(userId) : Promise.resolve(false),
     getRecentTests(3),
+    userId ? getServerStreak(userId) : Promise.resolve({ streak: 0, lastStudied: null }),
+    userId ? getInterviewDate(userId) : Promise.resolve(null),
   ])
 
   const byId = new Map(progress.map((p) => [p.questionId, p]))
@@ -33,10 +37,11 @@ export default async function DashboardPage({
   const unseen = TOTAL_QUESTIONS - confident - needsPractice
   const weakCount = QUESTIONS.filter((q) => byId.get(q.id)?.status === 'needs_practice').length
   const firstName = user?.firstName ?? user?.username ?? 'there'
-  const categories = CATEGORIES.map((c) => ({
-    name: c,
-    total: QUESTIONS.filter((q) => q.category === c).length,
-  }))
+  const categories = CATEGORIES.map((c) => {
+    const qs = QUESTIONS.filter((q) => q.category === c)
+    const catConfident = qs.filter((q) => byId.get(q.id)?.status === 'confident').length
+    return { name: c, total: qs.length, confident: catConfident }
+  })
 
   return (
     <DashboardUI
@@ -52,6 +57,9 @@ export default async function DashboardPage({
       totalQuestions={TOTAL_QUESTIONS}
       starredCount={STARRED_QUESTIONS.length}
       categories={categories}
+      streak={streak.streak}
+      lastStudied={streak.lastStudied}
+      interviewDate={interviewDate}
     />
   )
 }

@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Syne, DM_Sans } from 'next/font/google'
+import { cookies } from 'next/headers'
 import { ClerkProvider } from '@clerk/nextjs'
 import { PostHogProvider } from '@/components/posthog-provider'
 import { OfflineSync } from '@/components/offline-sync'
@@ -66,9 +67,14 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const cookieStore = await cookies()
+  const isLight = cookieStore.get('civics:theme')?.value === 'light'
+  const fontSizeCookie = cookieStore.get('civics:font-size')?.value
+  const fontSizeClass = fontSizeCookie === 'larger' ? ' font-larger' : fontSizeCookie === 'large' ? ' font-large' : ''
+
   return (
     <ClerkProvider
       appearance={{
@@ -89,7 +95,8 @@ export default function RootLayout({
     >
       <html
         lang="en"
-        className={`${syne.variable} ${dmSans.variable} h-full antialiased`}
+        className={`${syne.variable} ${dmSans.variable} h-full antialiased${isLight ? ' light' : ''}${fontSizeClass}`}
+        suppressHydrationWarning
       >
         <body className="min-h-full bg-background text-foreground">
           <PostHogProvider>
