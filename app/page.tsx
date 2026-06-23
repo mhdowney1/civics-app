@@ -162,8 +162,8 @@ export default async function LandingPage() {
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted">
           All 128 official questions, one at a time — no multiple choice, no
-          clutter. Say your answer out loud, then check yourself. Free to use,
-          no credit card required.
+          clutter. Say your answer out loud, then check yourself. Free to start,
+          no subscription ever.
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -305,6 +305,72 @@ export default async function LandingPage() {
         </div>
       </section>
 
+      {/* Pricing */}
+      <section className="mx-auto max-w-3xl px-5 pb-20">
+        <p className="text-xs uppercase tracking-[0.22em] text-muted">
+          Pricing
+        </p>
+        <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+          Free to study. One-time to unlock.
+        </h2>
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          {/* Free tier */}
+          <div className="rounded-3xl border border-border bg-card p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-muted">Free</p>
+            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">$0</p>
+            <p className="mt-1 text-sm text-muted">No account required</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              {[
+                'All 128 official USCIS questions',
+                'Oral study mode',
+                '1 free mock test',
+                'Spanish language support',
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-3">
+                  <span className="text-confident">✓</span>
+                  <span className="text-muted">{f}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/study"
+              className="mt-8 block rounded-2xl border border-border px-6 py-3.5 text-center font-display text-base font-semibold transition hover:border-foreground/40"
+            >
+              Start studying free
+            </Link>
+          </div>
+
+          {/* Paid tier */}
+          <div className="rounded-3xl border border-confident/40 bg-confident/5 p-6">
+            <p className="text-xs uppercase tracking-[0.18em] text-confident">Unlock</p>
+            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">$12.99</p>
+            <p className="mt-1 text-sm text-muted">One-time · not a subscription</p>
+            <ul className="mt-6 space-y-3 text-sm">
+              {[
+                'Everything in free',
+                'Unlimited mock tests',
+                'Detailed progress analytics',
+                'Works offline',
+              ].map((f) => (
+                <li key={f} className="flex items-center gap-3">
+                  <span className="text-confident">✓</span>
+                  <span>{f}</span>
+                </li>
+              ))}
+            </ul>
+            <Link
+              href="/sign-up"
+              className="mt-8 block rounded-2xl bg-confident px-6 py-3.5 text-center font-display text-base font-semibold text-black transition hover:opacity-90"
+            >
+              Get started →
+            </Link>
+          </div>
+        </div>
+        <p className="mt-4 text-center text-xs text-muted">
+          Citizenry charges $10 / month for the same thing. You pay once here and you&apos;re done.
+        </p>
+      </section>
+
       {/* 65/20 */}
       <section className="mx-auto max-w-3xl px-5 pb-20">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
@@ -378,7 +444,7 @@ export default async function LandingPage() {
               Ready to practice?
             </h2>
             <p className="mt-3 text-muted">
-              Free to use. No credit card. No subscription.
+              Start free. Unlock unlimited mock tests for $12.99 — one time, no subscription.
             </p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <Link
