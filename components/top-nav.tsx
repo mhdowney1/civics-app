@@ -22,7 +22,7 @@ export function TopNav() {
   }
 
   return (
-    <header className="sticky top-0 z-30 w-full border-b border-border bg-background/85 backdrop-blur">
+    <header className="sticky top-0 z-30 w-full border-b border-border bg-background/85 backdrop-blur pt-[env(safe-area-inset-top)]">
       <nav className="mx-auto flex w-full max-w-3xl items-center justify-between px-5 py-3">
         <Link
           href={isSignedIn ? '/dashboard' : '/'}
