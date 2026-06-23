@@ -64,6 +64,9 @@
     "wrong": "Got it wrong",
     "right": "Got it right ✓",
     "exit": "← Exit",
+    "exitConfirm": "Exit?",
+    "exitYes": "Yes, exit",
+    "exitNo": "Keep going",
     "keyboardHint": "1: wrong · 2: right",
     "answers": "Accepted answers",
     "revealAnswer": "See answer",
@@ -192,6 +195,12 @@
     "interviewDateNone": "No interview date set.",
     "interviewDateChange": "Change date",
     "interviewDateSet": "Set interview date"
+  },
+  "streak": {
+    "dayStreak": "{streak} day streak",
+    "studiedToday": "Studied today",
+    "lastStudiedYesterday": "Last studied yesterday",
+    "lastStudiedDaysAgo": "Last studied {ago} days ago"
   },
   "interview": {
     "setDatePrompt": "Know your interview date? Add it to see your readiness countdown.",

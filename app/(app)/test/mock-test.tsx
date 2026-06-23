@@ -28,6 +28,7 @@ export function MockTest({ questions }: { questions: Question[] }) {
   const [results, setResults] = useState<Result[]>([])
   const [finished, setFinished] = useState(false)
   const [answerRevealed, setAnswerRevealed] = useState(false)
+  const [exitConfirm, setExitConfirm] = useState(false)
 
   const total = questions.length
   const current = questions[index]
@@ -165,9 +166,24 @@ export function MockTest({ questions }: { questions: Question[] }) {
       </section>
 
       <footer className="mt-4 flex items-center justify-between text-xs text-muted">
-        <Link href="/dashboard" className="hover:text-foreground">
-          {t('exit')}
-        </Link>
+        {exitConfirm ? (
+          <span className="flex items-center gap-2">
+            <span>{t('exitConfirm')}</span>
+            <Link href="/dashboard" className="font-semibold text-needs-practice hover:underline">
+              {t('exitYes')}
+            </Link>
+            <button onClick={() => setExitConfirm(false)} className="hover:text-foreground">
+              {t('exitNo')}
+            </button>
+          </span>
+        ) : (
+          <button
+            onClick={() => { if (index > 0) setExitConfirm(true); else window.location.href = '/dashboard' }}
+            className="hover:text-foreground"
+          >
+            {t('exit')}
+          </button>
+        )}
         <span className="hidden sm:inline opacity-50">
           {t('keyboardHint')}
         </span>

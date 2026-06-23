@@ -16,21 +16,70 @@ const STATE_CAPITALS: Record<string, string> = {
   WI: 'Madison', WY: 'Cheyenne', DC: 'Washington D.C.',
 }
 
-interface CivicOffice {
-  name: string
-  levels?: string[]
-  roles?: string[]
-  officialIndices: number[]
+// Update this map when governors change after elections.
+const GOVERNORS: Record<string, string> = {
+  AL: 'Kay Ivey',
+  AK: 'Mike Dunleavy',
+  AZ: 'Katie Hobbs',
+  AR: 'Sarah Huckabee Sanders',
+  CA: 'Gavin Newsom',
+  CO: 'Jared Polis',
+  CT: 'Ned Lamont',
+  DE: 'Matt Meyer',
+  FL: 'Ron DeSantis',
+  GA: 'Brian Kemp',
+  HI: 'Josh Green',
+  ID: 'Brad Little',
+  IL: 'JB Pritzker',
+  IN: 'Mike Braun',
+  IA: 'Kim Reynolds',
+  KS: 'Laura Kelly',
+  KY: 'Andy Beshear',
+  LA: 'Jeff Landry',
+  ME: 'Janet Mills',
+  MD: 'Wes Moore',
+  MA: 'Maura Healey',
+  MI: 'Gretchen Whitmer',
+  MN: 'Tim Walz',
+  MS: 'Tate Reeves',
+  MO: 'Mike Kehoe',
+  MT: 'Greg Gianforte',
+  NE: 'Jim Pillen',
+  NV: 'Joe Lombardo',
+  NH: 'Kelly Ayotte',
+  NM: 'Michelle Lujan Grisham',
+  NY: 'Kathy Hochul',
+  NC: 'Josh Stein',
+  ND: 'Kelly Armstrong',
+  OH: 'Mike DeWine',
+  OK: 'Kevin Stitt',
+  OR: 'Tina Kotek',
+  PA: 'Josh Shapiro',
+  RI: 'Dan McKee',
+  SC: 'Henry McMaster',
+  SD: 'Kristi Noem',
+  TN: 'Bill Lee',
+  TX: 'Greg Abbott',
+  UT: 'Spencer Cox',
+  VT: 'Phil Scott',
+  WA: 'Bob Ferguson',
+  WV: 'Patrick Morrisey',
+  WI: 'Tony Evers',
+  WY: 'Mark Gordon',
 }
 
-interface CivicOfficial {
+interface WimrMember {
   name: string
+  party: string
+  state: string
+  district: string
+  phone: string
+  office: string
+  link: string
 }
 
-interface CivicResponse {
-  normalizedInput?: { state?: string }
-  offices?: CivicOffice[]
-  officials?: CivicOfficial[]
+interface WimrResponse {
+  results: WimrMember[]
 }
 
 export async function GET(req: NextRequest) {
@@ -39,45 +88,23 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ error: 'invalid zip' }, { status: 400 })
   }
 
-  const apiKey = process.env.GOOGLE_CIVIC_API_KEY
-  if (!apiKey) {
-    return NextResponse.json({ error: 'not configured' }, { status: 503 })
-  }
-
   const res = await fetch(
-    `https://civicinfo.googleapis.com/civicinfo/v2/representatives?address=${zip}&key=${apiKey}`,
+    `https://whoismyrepresentative.com/getall_mems.php?zip=${zip}&output=json`,
   )
 
   if (!res.ok) {
+    const body = await res.text()
+    console.error('[officials] whoismyrepresentative error', res.status, body)
     return NextResponse.json({ error: 'lookup failed' }, { status: 502 })
   }
 
-  const data = (await res.json()) as CivicResponse
-  const officialsList = data.officials ?? []
-  const offices = data.offices ?? []
+  const data = (await res.json()) as WimrResponse
+  const members = data.results ?? []
 
-  const nameAt = (indices: number[]) =>
-    indices.map((i) => officialsList[i]?.name).filter((n): n is string => Boolean(n))
-
-  let senators: string[] = []
-  let representative = ''
-  let governor = ''
-
-  for (const office of offices) {
-    const roles = office.roles ?? []
-    const levels = office.levels ?? []
-    const names = nameAt(office.officialIndices)
-
-    if (roles.includes('legislatorUpperBody')) {
-      senators = names
-    } else if (roles.includes('legislatorLowerBody')) {
-      representative = names[0] ?? ''
-    } else if (roles.includes('headOfGovernment') && levels.includes('administrativeArea1')) {
-      governor = names[0] ?? ''
-    }
-  }
-
-  const state = data.normalizedInput?.state ?? ''
+  const senators = members.filter((m) => m.district === '').map((m) => m.name)
+  const representative = members.find((m) => m.district !== '')?.name ?? ''
+  const state = members[0]?.state ?? ''
+  const governor = GOVERNORS[state] ?? ''
   const stateCapital = STATE_CAPITALS[state] ?? ''
 
   return NextResponse.json({ senators, representative, governor, stateCapital, state })

@@ -1,3 +1,7 @@
+'use client'
+
+import { useTranslations } from 'next-intl'
+
 interface StreakBadgeProps {
   streak: number
   lastStudied: string | null // YYYY-MM-DD
@@ -12,6 +16,8 @@ function daysAgo(dateStr: string): number {
 }
 
 export function StreakBadge({ streak, lastStudied }: StreakBadgeProps) {
+  const t = useTranslations('streak')
+
   if (!streak && !lastStudied) return null
 
   const ago = lastStudied ? daysAgo(lastStudied) : null
@@ -20,16 +26,16 @@ export function StreakBadge({ streak, lastStudied }: StreakBadgeProps) {
     <div className="mt-3 flex flex-wrap items-center gap-2 text-xs text-muted">
       {streak > 1 && (
         <span className="inline-flex items-center gap-1 rounded-full border border-confident/30 bg-confident/10 px-2.5 py-1 font-medium text-confident">
-          {streak} day streak
+          {t('dayStreak', { streak })}
         </span>
       )}
       {ago !== null && (
         <span>
           {ago === 0
-            ? 'Studied today'
+            ? t('studiedToday')
             : ago === 1
-              ? 'Last studied yesterday'
-              : `Last studied ${ago} days ago`}
+              ? t('lastStudiedYesterday')
+              : t('lastStudiedDaysAgo', { ago })}
         </span>
       )}
     </div>

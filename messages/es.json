@@ -64,6 +64,9 @@
     "wrong": "Me equivoqué",
     "right": "Lo sé ✓",
     "exit": "← Salir",
+    "exitConfirm": "¿Salir?",
+    "exitYes": "Sí, salir",
+    "exitNo": "Seguir",
     "keyboardHint": "1: incorrecto · 2: correcto",
     "answers": "Respuestas aceptadas",
     "revealAnswer": "Ver respuesta",
@@ -192,6 +195,12 @@
     "interviewDateNone": "No hay fecha de entrevista establecida.",
     "interviewDateChange": "Cambiar fecha",
     "interviewDateSet": "Establecer fecha de entrevista"
+  },
+  "streak": {
+    "dayStreak": "{streak} días seguidos",
+    "studiedToday": "Estudiaste hoy",
+    "lastStudiedYesterday": "Último estudio ayer",
+    "lastStudiedDaysAgo": "Último estudio hace {ago} días"
   },
   "interview": {
     "setDatePrompt": "¿Sabes la fecha de tu entrevista? Agrégala para ver tu cuenta regresiva.",

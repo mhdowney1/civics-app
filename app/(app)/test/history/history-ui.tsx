@@ -96,7 +96,7 @@ function ScoreChart({ runs, label, oldest, latest }: { runs: TestRun[]; label: s
           return (
             <div
               key={run.id}
-              className="group relative flex flex-1 flex-col items-center justify-end"
+              className="group relative flex flex-1 flex-col items-center justify-end h-full"
             >
               <div
                 className={`w-full rounded-t-md transition-all ${
@@ -104,7 +104,7 @@ function ScoreChart({ runs, label, oldest, latest }: { runs: TestRun[]; label: s
                 }`}
                 style={{ height: `${pct}%` }}
               />
-              <span className="absolute -top-5 hidden text-[10px] text-muted group-hover:block">
+              <span className="absolute -top-5 text-[10px] text-muted">
                 {run.score}
               </span>
             </div>
