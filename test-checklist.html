@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Test Checklist</title>
+<style>
+  body { font-family: system-ui, sans-serif; padding: 2rem; background: #0f172a; color: #e2e8f0; }
+  h1 { font-size: 1.25rem; margin-bottom: 1rem; color: #f8fafc; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.875rem; }
+  th { background: #1e293b; color: #94a3b8; text-align: left; padding: 0.5rem 0.75rem; border-bottom: 2px solid #334155; }
+  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #1e293b; vertical-align: top; }
+  tr:hover td { background: #1e293b; }
+  .badge { display: inline-block; padding: 0.1rem 0.4rem; border-radius: 4px; font-size: 0.7rem; font-weight: 600; }
+  .high { background: #7f1d1d; color: #fca5a5; }
+  .med { background: #1c1917; color: #d6d3d1; }
+  input[type=checkbox] { width: 1rem; height: 1rem; cursor: pointer; accent-color: #6366f1; }
+  .done td { opacity: 0.4; text-decoration: line-through; }
+</style>
+</head>
+<body>
+<h1>Civics App — Test Checklist (week of 2026-06-18)</h1>
+<table>
+  <thead>
+    <tr><th>✓</th><th>#</th><th>Feature</th><th>What to Test</th><th>Where</th><th>Priority</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>1</td><td>Stripe payment ($10)</td><td>Checkout button works; payment succeeds; webhook grants access</td><td>Billing page — Stripe test card 4242…</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>2</td><td>Full access badge</td><td>Paid users see "Full access" badge on dashboard</td><td>Dashboard — log in as paid test user</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>3</td><td>PostHog feature flag gate</td><td>Free users blocked from mock test; paid users can access</td><td>Test page — test both states</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>4</td><td>Anonymous study</td><td>/study loads without sign-in; progress not persisted</td><td>/study — open in incognito</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>5</td><td>Mock test persistence</td><td>Test results saved; visible on dashboard after finishing</td><td>Dashboard — complete a test first</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>6</td><td>Test history page</td><td>Past scores and dates show correctly</td><td>/test/history — run 2+ tests first</td><td><span class="badge high">HIGH</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>7</td><td>ElevenLabs TTS</td><td>Speaker button reads question aloud; error state graceful</td><td>Study session &amp; mock test</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>8</td><td>Answer toggle</td><td>Tap to reveal/hide answer on question card</td><td>Study session</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>9</td><td>Personalized officials</td><td>Official questions show your actual reps based on location</td><td>Study session — allow location</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>10</td><td>Confetti</td><td>Confetti fires on test completion</td><td>Complete a mock test</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>11</td><td>Feedback prompts</td><td>Prompt appears at key study milestones</td><td>Study through several questions</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>12</td><td>Bottom nav icons</td><td>Icons render on all nav links</td><td>Mobile viewport</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>13</td><td>Referral system</td><td>Share link generates referral URL; landing handles ?ref= param</td><td>Dashboard share flow</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>14</td><td>Shareable score card</td><td>Share button after test generates OG score card image</td><td>/results + /api/og/result</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>15</td><td>128 SEO question pages</td><td>Index loads; spot-check /civics-questions/1 and /civics-questions/128</td><td>/civics-questions</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>16</td><td>Sitemap / robots.txt</td><td>/sitemap.xml lists SEO pages; /robots.txt is correct</td><td>Browser — check both URLs</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>17</td><td>Clerk dark theme — auth</td><td>Sign-in and sign-up pages render with dark theme</td><td>/sign-in, /sign-up</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>18</td><td>Clerk dark theme — UserButton</td><td>Avatar popup and account modal are dark-themed</td><td>Click avatar while logged in</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>19</td><td>Mobile Safari bottom bar</td><td>Study and test layouts not clipped by iOS Safari bottom bar</td><td>iPhone Safari</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>20</td><td>Email drip sequence</td><td>New signup triggers welcome email; /api/cron/email-sequences returns 200</td><td>Clerk webhook logs + cron endpoint</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>21</td><td>Re-engagement cron</td><td>/api/cron/re-engagement responds correctly</td><td>Vercel cron logs or manual trigger</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>22</td><td>Landing page OG image</td><td>opengraph-image renders when URL is shared</td><td>Twitter card validator</td><td><span class="badge med">MED</span></td></tr>
+    <tr><td><input type=checkbox onclick="toggle(this)"></td><td>23</td><td>PostHog events</td><td>study_session_started, question_answered, mock_test_completed fire</td><td>PostHog Live Events while studying</td><td><span class="badge med">MED</span></td></tr>
+  </tbody>
+</table>
+<script>
+  function toggle(cb) {
+    cb.closest('tr').classList.toggle('done', cb.checked);
+  }
+</script>
+</body>
+</html>

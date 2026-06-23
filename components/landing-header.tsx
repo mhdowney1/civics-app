@@ -18,7 +18,8 @@ export function LandingHeader() {
   }, [])
 
   return (
-    <header className="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
+    <header className="w-full pt-[env(safe-area-inset-top)]">
+    <div className="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
       <div className="font-display text-lg font-semibold tracking-tight">
         Civics Study
       </div>
@@ -52,6 +53,7 @@ export function LandingHeader() {
           </>
         )}
       </nav>
+    </div>
     </header>
   )
 }
