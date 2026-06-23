@@ -47,7 +47,7 @@ export function BottomNav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-30 border-t border-border bg-background/95 backdrop-blur sm:hidden">
-      <div className="flex">
+      <div className="flex pb-[env(safe-area-inset-bottom)]">
         {links.map(({ href, label, icon }) => {
           const active = pathname === href
           return (
