@@ -367,7 +367,7 @@ export default async function LandingPage() {
           </div>
         </div>
         <p className="mt-4 text-center text-xs text-muted">
-          Citizenry charges $10 / month for the same thing. You pay once here and you&apos;re done.
+          Most civics apps charge $10+ / month. You pay $12.99 once here — then you&apos;re done.
         </p>
       </section>
 
