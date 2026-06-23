@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import Stripe from 'stripe'
 import { NextResponse } from 'next/server'
 import { getPostHogClient } from '@/lib/posthog-server'
@@ -9,7 +9,7 @@ function getBaseUrl(): string {
   return 'http://localhost:3000'
 }
 
-export async function POST() {
+export async function POST(req: Request) {
   const { userId } = await auth()
   if (!userId) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
@@ -31,15 +31,29 @@ export async function POST() {
     )
   }
 
+  const body = await req.json().catch(() => ({})) as { referralCode?: string }
+  const referralCode = typeof body.referralCode === 'string' ? body.referralCode : undefined
+
   const stripe = new Stripe(secretKey)
   const base = getBaseUrl()
+  const user = await currentUser()
+  const email = user?.emailAddresses?.[0]?.emailAddress
+
+  const referralCouponId = process.env.STRIPE_REFERRAL_COUPON_ID
+  const discountOptions = referralCouponId && referralCode
+    ? { discounts: [{ coupon: referralCouponId }] }
+    : { allow_promotion_codes: true }
 
   const session = await stripe.checkout.sessions.create({
     mode: 'payment',
     line_items: [{ price: priceId, quantity: 1 }],
     success_url: `${base}/dashboard?paid=1`,
     cancel_url: `${base}/billing`,
-    metadata: { userId },
+    metadata: { userId, ...(referralCode && { referralCode }) },
+    ...discountOptions,
+    automatic_tax: { enabled: true },
+    ...(email && { customer_email: email }),
+    locale: 'auto',
   })
 
   getPostHogClient().capture({

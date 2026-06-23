@@ -65,6 +65,28 @@ progress(
 )
 ```
 
+## Local Stripe webhook
+
+Stripe webhooks don't reach `localhost` on their own. Use the Stripe CLI to forward them during development:
+
+```bash
+# 1. Authenticate (one-time)
+stripe login
+
+# 2. Forward webhook events to the local handler
+stripe listen --forward-to localhost:3000/api/webhooks/stripe
+
+# The CLI prints a signing secret — copy it into .env.local:
+# STRIPE_WEBHOOK_SECRET=whsec_...
+
+# 3. In a separate terminal, trigger a test payment to verify the full flow
+stripe trigger payment_intent.succeeded
+```
+
+The webhook handler at `/api/webhooks/stripe` listens for `checkout.session.completed`, updates the `payments` table, and sends the receipt email.
+
+To test the full checkout flow end-to-end in the browser, use Stripe's test card `4242 4242 4242 4242` with any future expiry and any 3-digit CVC.
+
 ## Deploy (Vercel, manual)
 
 1. Push this repo to GitHub.

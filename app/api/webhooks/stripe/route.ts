@@ -1,8 +1,8 @@
 import Stripe from 'stripe'
 import { NextResponse } from 'next/server'
 import { db } from '@/db/client'
-import { payments, usersMeta } from '@/db/schema'
-import { eq } from 'drizzle-orm'
+import { payments, usersMeta, referrals } from '@/db/schema'
+import { eq, sql } from 'drizzle-orm'
 import { getPostHogClient } from '@/lib/posthog-server'
 import { sendEmail, paymentReceiptEmail } from '@/lib/email'
 
@@ -83,6 +83,45 @@ export async function POST(req: Request) {
         'You\'re unlocked — unlimited mock tests on civicsstudy.com',
         paymentReceiptEmail(userRow[0].firstName),
       )
+    }
+
+    const referralCode = session.metadata?.referralCode
+    if (referralCode) {
+      const referrer = await db
+        .select({ userId: usersMeta.userId })
+        .from(usersMeta)
+        .where(eq(usersMeta.referralCode, referralCode))
+        .limit(1)
+
+      if (referrer[0] && referrer[0].userId !== userId) {
+        await db
+          .insert(referrals)
+          .values({
+            referrerUserId: referrer[0].userId,
+            referredUserId: userId,
+            referralCode,
+            bonusGranted: true,
+          })
+          .onConflictDoUpdate({
+            target: referrals.referredUserId,
+            set: { bonusGranted: true },
+          })
+
+        // bonusTests on the referrer's row tracks paid referral count for milestone rewards
+        await db
+          .insert(payments)
+          .values({ userId: referrer[0].userId, bonusTests: 1 })
+          .onConflictDoUpdate({
+            target: payments.userId,
+            set: { bonusTests: sql`${payments.bonusTests} + 1` },
+          })
+
+        getPostHogClient().capture({
+          distinctId: referrer[0].userId,
+          event: 'referral_converted',
+          properties: { referred_user_id: userId },
+        })
+      }
     }
   }
 

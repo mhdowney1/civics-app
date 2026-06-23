@@ -148,7 +148,7 @@
     "badge": "One-time payment",
     "heading": "Unlock full access",
     "desc": "Everything you need to pass your civics test — practice as many times as you like.",
-    "price": "$10",
+    "price": "$12.99",
     "priceSub": "one-time · yours forever",
     "feature1": "Unlimited mock tests",
     "feature2": "Detailed progress analytics",
@@ -156,7 +156,7 @@
     "feature4": "Works offline, no subscription",
     "alreadyUnlocked": "Already unlocked?",
     "goToDashboard": "Go to dashboard",
-    "unlockButton": "Unlock for $10",
+    "unlockButton": "Unlock for $12.99",
     "redirecting": "Redirecting…"
   },
   "feedback": {
@@ -172,9 +172,9 @@
     "thanks": "Thanks for the feedback."
   },
   "share": {
-    "button": "Share your score →",
+    "button": "Share score + give a friend $2 off →",
     "copied": "Link copied!",
-    "text": "I scored {score}/{total} on the US civics test — {result}. Think you can beat me? Try it free:",
+    "text": "I scored {score}/{total} on the US civics test — {result}. Try it yourself — use my link for $2 off:",
     "pass": "pass",
     "fail": "fail"
   },

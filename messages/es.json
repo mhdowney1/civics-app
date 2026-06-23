@@ -148,7 +148,7 @@
     "badge": "Pago único",
     "heading": "Desbloquear acceso completo",
     "desc": "Todo lo que necesitas para aprobar tu examen de civismo — practica todas las veces que quieras.",
-    "price": "$10",
+    "price": "$12.99",
     "priceSub": "único · tuyo para siempre",
     "feature1": "Exámenes de práctica ilimitados",
     "feature2": "Análisis detallado del progreso",
@@ -156,7 +156,7 @@
     "feature4": "Funciona sin conexión, sin suscripción",
     "alreadyUnlocked": "¿Ya desbloqueado?",
     "goToDashboard": "Ir al panel",
-    "unlockButton": "Desbloquear por $10",
+    "unlockButton": "Desbloquear por $12.99",
     "redirecting": "Redirigiendo…"
   },
   "feedback": {
@@ -172,9 +172,9 @@
     "thanks": "Gracias por los comentarios."
   },
   "share": {
-    "button": "Compartir mi puntaje →",
+    "button": "Compartir puntaje + dar $2 de descuento →",
     "copied": "¡Enlace copiado!",
-    "text": "Obtuve {score}/{total} en el examen de civismo de EE.UU. — {result}. ¿Crees que puedes superarme? Inténtalo gratis:",
+    "text": "Obtuve {score}/{total} en el examen de civismo de EE.UU. — {result}. Inténtalo tú — usa mi enlace y obtén $2 de descuento:",
     "pass": "aprobado",
     "fail": "reprobado"
   },

@@ -11,8 +11,13 @@ export function CheckoutButton() {
   async function handleClick() {
     setLoading(true)
     track('checkout_initiated')
+    const refCode = localStorage.getItem('ref_code')
     try {
-      const res = await fetch('/api/checkout', { method: 'POST' })
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ referralCode: refCode ?? undefined }),
+      })
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
