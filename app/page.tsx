@@ -182,9 +182,9 @@ export default async function LandingPage() {
       </section>
 
       {/* The problem */}
-      <section className="mx-auto max-w-3xl px-5 pb-16">
+      <section className="mx-auto max-w-3xl px-5 pb-10 sm:pb-16">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
-          <div className="grid grid-cols-2 gap-6 sm:gap-16">
+          <div className="grid grid-cols-2 gap-4 sm:gap-16">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-muted">
                 Most apps
@@ -206,7 +206,7 @@ export default async function LandingPage() {
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-confident">
-                Your USCIS interview
+                Your interview
               </p>
               <ul className="mt-4 space-y-2.5 text-sm text-foreground">
                 <li className="flex items-start gap-2">
@@ -231,7 +231,7 @@ export default async function LandingPage() {
       </section>
 
       {/* Stats */}
-      <section className="mx-auto max-w-3xl px-5 pb-16">
+      <section className="mx-auto max-w-3xl px-5 pb-10 sm:pb-16">
         <div className="grid grid-cols-3 gap-3">
           <Fact value="128" label="Official questions" />
           <Fact value="Up to 20" label="Asked by the officer" />
@@ -240,7 +240,7 @@ export default async function LandingPage() {
       </section>
 
       {/* How it works */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
           How it works
         </p>
@@ -268,7 +268,7 @@ export default async function LandingPage() {
       </section>
 
       {/* Features */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
           Features
         </p>
@@ -283,7 +283,7 @@ export default async function LandingPage() {
       </section>
 
       {/* Pricing */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
           Pricing
         </p>
@@ -349,7 +349,7 @@ export default async function LandingPage() {
       </section>
 
       {/* 65/20 */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">
             65/20 Rule
@@ -366,7 +366,7 @@ export default async function LandingPage() {
       </section>
 
       {/* Founder story */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
           <div className="flex items-center gap-4">
             <Image src="/michael.jpg" alt="Michael Downey" width={56} height={56} className="rounded-full shrink-0" />
@@ -391,7 +391,7 @@ export default async function LandingPage() {
       {/* Testimonials — add this section once you have real quotes from users */}
 
       {/* FAQ */}
-      <section className="mx-auto max-w-3xl px-5 pb-20">
+      <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
           Common questions
         </p>
@@ -464,7 +464,7 @@ export default async function LandingPage() {
 function Fact({ value, label }: { value: string; label: string }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-5">
-      <div className="font-display text-2xl font-semibold text-foreground">
+      <div className="font-display text-xl font-semibold text-foreground sm:text-2xl">
         {value}
       </div>
       <div className="mt-1 text-xs uppercase tracking-wider text-muted">
