@@ -96,7 +96,7 @@ export function MockTest({ questions }: { questions: Question[] }) {
   const questionText = lang === 'es' ? (current.questionEs ?? current.question) : current.question
 
   return (
-    <div className="mx-auto flex min-h-[calc(100svh-64px)] max-w-2xl flex-col px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
+    <div className="mx-auto flex min-h-[calc(100svh-64px-env(safe-area-inset-top))] max-w-2xl flex-col px-5 pt-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] sm:pt-10 sm:pb-[calc(2.5rem+env(safe-area-inset-bottom))]">
       <header className="mb-4">
         <div className="flex items-center justify-between text-xs uppercase tracking-[0.18em] text-muted">
           <span>{t('progressLabel', { n: index + 1, total })}</span>
@@ -152,13 +152,13 @@ export function MockTest({ questions }: { questions: Question[] }) {
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
           <button
             onClick={() => record(false)}
-            className="rounded-2xl bg-needs-practice/10 px-6 py-6 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99]"
+            className="rounded-2xl bg-needs-practice/10 px-6 py-4 font-display text-lg font-semibold text-needs-practice ring-1 ring-needs-practice/30 transition hover:bg-needs-practice/15 active:scale-[0.99] sm:py-6"
           >
             {t('wrong')}
           </button>
           <button
             onClick={() => record(true)}
-            className="rounded-2xl bg-confident/10 px-6 py-6 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99]"
+            className="rounded-2xl bg-confident/10 px-6 py-4 font-display text-lg font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 active:scale-[0.99] sm:py-6"
           >
             {t('right')}
           </button>
