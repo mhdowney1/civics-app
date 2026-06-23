@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
 import { CaptureRefParam } from '@/components/share-score'
+import { LandingHeader } from '@/components/landing-header'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -125,31 +126,7 @@ export default async function LandingPage() {
         }}
       />
 
-      {/* Header */}
-      <header className="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
-        <div className="font-display text-lg font-semibold tracking-tight">
-          US Civics
-        </div>
-        <nav className="flex items-center gap-4 text-sm text-muted">
-          {isSignedIn ? (
-            <Link href="/dashboard" className="hover:text-foreground">
-              Dashboard →
-            </Link>
-          ) : (
-            <>
-              <Link href="/sign-in" className="hover:text-foreground">
-                Sign in
-              </Link>
-              <Link
-                href="/sign-up"
-                className="rounded-full bg-confident px-3 py-1.5 text-xs font-semibold text-black"
-              >
-                Sign up free
-              </Link>
-            </>
-          )}
-        </nav>
-      </header>
+      <LandingHeader />
 
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:pt-20">

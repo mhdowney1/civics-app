@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from 'next'
 import { Syne, DM_Sans } from 'next/font/google'
 import { cookies } from 'next/headers'
 import { ClerkProvider } from '@clerk/nextjs'
+import { NextIntlClientProvider } from 'next-intl'
 import { PostHogProvider } from '@/components/posthog-provider'
 import { OfflineSync } from '@/components/offline-sync'
 import { ServiceWorkerRegister } from '@/components/sw-register'
@@ -99,11 +100,13 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <body className="min-h-full bg-background text-foreground">
-          <PostHogProvider>
-            <OfflineSync />
-            <ServiceWorkerRegister />
-            {children}
-          </PostHogProvider>
+          <NextIntlClientProvider>
+            <PostHogProvider>
+              <OfflineSync />
+              <ServiceWorkerRegister />
+              {children}
+            </PostHogProvider>
+          </NextIntlClientProvider>
         </body>
       </html>
     </ClerkProvider>
