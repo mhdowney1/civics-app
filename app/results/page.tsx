@@ -44,7 +44,7 @@ export default async function ResultsPage({ searchParams }: Props) {
         href="/"
         className="mb-8 text-xs uppercase tracking-[0.18em] text-muted hover:text-foreground"
       >
-        ● US Civics Study
+        ● Civics Study
       </Link>
 
       <div className="w-full rounded-3xl border border-border bg-card p-8 text-center">

@@ -6,7 +6,7 @@ import { hasAccess } from '@/lib/server-access'
 import { ProgressView } from './progress-view'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Progress · US Civics Study' }
+export const metadata = { title: 'Progress · Civics Study' }
 
 export default async function ProgressPage() {
   const { userId } = await auth()

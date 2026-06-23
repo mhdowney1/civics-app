@@ -9,7 +9,7 @@ const jsonLd = {
   '@graph': [
     {
       '@type': 'WebApplication',
-      name: 'US Civics Study',
+      name: 'Civics Study',
       url: 'https://civicsstudy.com',
       applicationCategory: 'EducationalApplication',
       operatingSystem: 'Web',

@@ -20,22 +20,24 @@ export function LandingHeader() {
   return (
     <header className="mx-auto flex max-w-5xl items-center justify-between px-5 py-6">
       <div className="font-display text-lg font-semibold tracking-tight">
-        US Civics
+        Civics Study
       </div>
       <nav className="flex items-center gap-3 text-sm text-muted">
-        <LangSegment lang={lang} onToggle={toggleLang} />
-        <button
-          type="button"
-          onClick={() => setTheme(toggleTheme())}
-          className="rounded border border-border px-2 py-0.5 text-xs hover:border-foreground/40 hover:text-foreground"
-          aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
-        >
-          {theme === 'dark' ? '☀︎' : '☾'}
-        </button>
         {isSignedIn ? (
-          <Link href="/dashboard" className="hover:text-foreground">
-            Dashboard →
-          </Link>
+          <>
+            <LangSegment lang={lang} onToggle={toggleLang} />
+            <button
+              type="button"
+              onClick={() => setTheme(toggleTheme())}
+              className="rounded border border-border px-2 py-0.5 text-xs hover:border-foreground/40 hover:text-foreground"
+              aria-label={theme === 'dark' ? t('switchToLight') : t('switchToDark')}
+            >
+              {theme === 'dark' ? '☀︎' : '☾'}
+            </button>
+            <Link href="/dashboard" className="hover:text-foreground">
+              Dashboard →
+            </Link>
+          </>
         ) : (
           <>
             <Link href="/sign-in" className="hover:text-foreground">

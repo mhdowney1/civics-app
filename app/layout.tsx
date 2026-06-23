@@ -24,22 +24,22 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://civicsstudy.com'),
-  title: 'US Civics Study — 2026 Citizenship Test Prep',
+  title: 'Civics Study — 2026 Citizenship Test Prep',
   description:
     'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
-  applicationName: 'US Civics Study',
+  applicationName: 'Civics Study',
   alternates: { canonical: '/' },
   openGraph: {
-    title: 'US Civics Study — 2026 Citizenship Test Prep',
+    title: 'Civics Study — 2026 Citizenship Test Prep',
     description:
       'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
     type: 'website',
     url: 'https://civicsstudy.com',
-    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'US Civics Study — Citizenship Test Prep' }],
+    images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Civics Study — Citizenship Test Prep' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'US Civics Study — 2026 Citizenship Test Prep',
+    title: 'Civics Study — 2026 Citizenship Test Prep',
     description:
       'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
     images: ['/opengraph-image'],
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: 'black-translucent',
-    title: 'US Civics',
+    title: 'Civics Study',
     startupImage: ['/icons/apple-icon-180.png'],
   },
   icons: {

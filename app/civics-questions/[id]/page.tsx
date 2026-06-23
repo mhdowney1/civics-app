@@ -70,7 +70,7 @@ export default async function QuestionPage({
       />
       <main className="mx-auto max-w-2xl px-5 py-12">
         <nav className="mb-8 flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted">
-          <Link href="/" className="hover:text-foreground">US Civics Study</Link>
+          <Link href="/" className="hover:text-foreground">Civics Study</Link>
           <span>/</span>
           <Link href="/civics-questions" className="hover:text-foreground">All Questions</Link>
           <span>/</span>

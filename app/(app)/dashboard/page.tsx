@@ -13,7 +13,7 @@ import { getInterviewDate } from '@/lib/server-interview'
 import { DashboardUI } from './dashboard-ui'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Dashboard · US Civics Study' }
+export const metadata = { title: 'Dashboard · Civics Study' }
 
 export default async function DashboardPage({
   searchParams,

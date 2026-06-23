@@ -4,7 +4,7 @@ import { getAllTests } from '@/lib/server-tests'
 import { HistoryUI } from './history-ui'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Test history · US Civics Study' }
+export const metadata = { title: 'Test history · Civics Study' }
 
 export default async function TestHistoryPage() {
   const { userId } = await auth()

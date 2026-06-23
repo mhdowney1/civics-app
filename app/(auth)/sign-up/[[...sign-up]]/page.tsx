@@ -1,6 +1,6 @@
 import { SignUp } from '@clerk/nextjs'
 
-export const metadata = { title: 'Sign up · US Civics Study' }
+export const metadata = { title: 'Sign up · Civics Study' }
 
 const appearance = {
   variables: {

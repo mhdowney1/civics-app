@@ -4,7 +4,7 @@ import { QUESTIONS } from '@/lib/questions'
 import { CATEGORIES as CATEGORY_LIST } from '@/lib/types'
 
 export const metadata: Metadata = {
-  title: 'All 128 USCIS Civics Questions — US Civics Study',
+  title: 'All 128 USCIS Civics Questions — Civics Study',
   description:
     'Browse all 128 official USCIS civics questions for the US naturalization interview. Organized by category with accepted answers.',
   alternates: { canonical: '/civics-questions' },
@@ -24,7 +24,7 @@ export default function CivicsQuestionsPage() {
           href="/"
           className="text-xs uppercase tracking-[0.18em] text-muted hover:text-foreground"
         >
-          ← US Civics Study
+          ← Civics Study
         </Link>
         <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
           All 128 USCIS Civics Questions

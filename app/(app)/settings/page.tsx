@@ -4,7 +4,7 @@ import { getInterviewDate } from '@/lib/server-interview'
 import { SettingsUI } from './settings-ui'
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Settings · US Civics Study' }
+export const metadata = { title: 'Settings · Civics Study' }
 
 export default async function SettingsPage() {
   const { userId } = await auth()

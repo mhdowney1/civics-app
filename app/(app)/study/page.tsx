@@ -16,7 +16,7 @@ type SearchParams = Promise<{
 }>
 
 export const dynamic = 'force-dynamic'
-export const metadata = { title: 'Study · US Civics Study' }
+export const metadata = { title: 'Study · Civics Study' }
 
 export default async function StudyPage({
   searchParams,

@@ -2,8 +2,8 @@ import type { MetadataRoute } from 'next'
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: 'US Civics Study',
-    short_name: 'US Civics',
+    name: 'Civics Study',
+    short_name: 'Civics Study',
     description:
       'A calm, distraction-free study app for the 2026 USCIS civics test.',
     start_url: '/dashboard',

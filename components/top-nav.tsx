@@ -28,7 +28,7 @@ export function TopNav() {
           href={isSignedIn ? '/dashboard' : '/'}
           className="font-display text-lg font-semibold tracking-tight"
         >
-          US Civics
+          Civics Study
         </Link>
         <div className="flex items-center gap-4 text-sm text-muted">
           {isSignedIn ? (

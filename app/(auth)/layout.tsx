@@ -6,7 +6,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <header className="w-full border-b border-border">
         <div className="mx-auto flex max-w-3xl px-5 py-3">
           <Link href="/" className="font-display text-lg font-semibold tracking-tight">
-            US Civics
+            Civics Study
           </Link>
         </div>
       </header>
