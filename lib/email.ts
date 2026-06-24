@@ -8,14 +8,14 @@ function getResend() {
   return new Resend(process.env.RESEND_API_KEY)
 }
 
-export async function sendEmail(to: string, subject: string, html: string) {
+export async function sendEmail(to: string, subject: string, html: string, replyTo?: string) {
   const resend = getResend()
   if (!resend) {
     console.warn('[email] RESEND_API_KEY not set; skipping email to', to)
     return
   }
   try {
-    await resend.emails.send({ from: FROM, to, subject, html })
+    await resend.emails.send({ from: FROM, to, subject, html, ...(replyTo ? { replyTo } : {}) })
   } catch (err) {
     console.error('[email] Failed to send to', to, err)
   }
@@ -114,6 +114,17 @@ export function studyTipEmail(firstName: string | null): string {
     </ul>
     ${btn('Take a mock test →', `${BASE_URL}/test`)}
     <p style="margin:0;color:#999;font-size:14px;line-height:1.6;">Unlimited mock tests are available for a one-time $10 unlock — no subscription, no recurring charges.</p>
+  `)
+}
+
+export function contactFormEmail(userEmail: string, message: string): string {
+  return base(`
+    <h1 style="margin:0 0 8px;font-size:22px;font-weight:700;color:#0f0f0f;line-height:1.2;">New message from a user</h1>
+    <p style="margin:0 0 20px;color:#999;font-size:14px;">From: <strong style="color:#444;">${userEmail}</strong></p>
+    <div style="background:#f9f9f9;border-radius:8px;padding:20px 24px;margin:0 0 20px;">
+      <p style="margin:0;color:#333;font-size:15px;line-height:1.7;white-space:pre-wrap;">${message}</p>
+    </div>
+    <p style="margin:0;color:#999;font-size:13px;">Reply to this email to respond directly to the user.</p>
   `)
 }
 

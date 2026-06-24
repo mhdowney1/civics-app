@@ -12,13 +12,17 @@ interface Props {
   dailyGoal: number | null
   fontSize: string | null
   interviewDate: string | null
+  userEmail: string
 }
 
-export function SettingsUI({ zip: initialZip, dailyGoal: initialGoal, fontSize: initialFontSize, interviewDate }: Props) {
+export function SettingsUI({ zip: initialZip, dailyGoal: initialGoal, fontSize: initialFontSize, interviewDate, userEmail }: Props) {
   const t = useTranslations('settings')
   const locale = useLocale()
   const router = useRouter()
   const [, startTransition] = useTransition()
+
+  const [contactMessage, setContactMessage] = useState('')
+  const [contactStatus, setContactStatus] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle')
 
   const [zipInput, setZipInput] = useState(initialZip ?? '')
   const [zipError, setZipError] = useState('')
@@ -83,6 +87,23 @@ export function SettingsUI({ zip: initialZip, dailyGoal: initialGoal, fontSize: 
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ fontSize: size }),
     })
+  }
+
+  async function sendContact() {
+    if (!contactMessage.trim()) return
+    setContactStatus('sending')
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message: contactMessage }),
+      })
+      if (!res.ok) throw new Error()
+      setContactStatus('sent')
+      setContactMessage('')
+    } catch {
+      setContactStatus('error')
+    }
   }
 
   const interviewFormatted = interviewDate
@@ -170,6 +191,34 @@ export function SettingsUI({ zip: initialZip, dailyGoal: initialGoal, fontSize: 
         >
           {interviewFormatted ? t('interviewDateChange') : t('interviewDateSet')} →
         </Link>
+      </Section>
+
+      {/* Contact */}
+      <Section title="Contact us">
+        <p className="mb-3 text-sm text-muted">Have a question or feedback? Send us a message and we&apos;ll reply to {userEmail || 'your email'}.</p>
+        {contactStatus === 'sent' ? (
+          <p className="text-sm text-confident">Message sent — we&apos;ll be in touch soon.</p>
+        ) : (
+          <>
+            <textarea
+              value={contactMessage}
+              onChange={(e) => { setContactMessage(e.target.value); if (contactStatus === 'error') setContactStatus('idle') }}
+              placeholder="What's on your mind?"
+              rows={4}
+              className="mb-3 w-full resize-none rounded-lg border border-border bg-background px-3 py-2 text-sm focus:outline-none focus:ring-1 focus:ring-confident/40"
+            />
+            <button
+              onClick={sendContact}
+              disabled={contactStatus === 'sending' || !contactMessage.trim()}
+              className="rounded-lg bg-confident/10 px-3 py-1.5 text-sm font-semibold text-confident ring-1 ring-confident/30 transition hover:bg-confident/15 disabled:opacity-40"
+            >
+              {contactStatus === 'sending' ? 'Sending…' : 'Send message'}
+            </button>
+            {contactStatus === 'error' && (
+              <p className="mt-2 text-xs text-needs-practice">Something went wrong — please try again.</p>
+            )}
+          </>
+        )}
       </Section>
     </div>
   )

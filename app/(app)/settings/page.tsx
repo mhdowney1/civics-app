@@ -1,4 +1,4 @@
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { getUserSettings } from '@/lib/server-settings'
 import { getInterviewDate } from '@/lib/server-interview'
 import { SettingsUI } from './settings-ui'
@@ -10,10 +10,13 @@ export default async function SettingsPage() {
   const { userId } = await auth()
   if (!userId) return null
 
-  const [settings, interviewDate] = await Promise.all([
+  const [settings, interviewDate, user] = await Promise.all([
     getUserSettings(userId),
     getInterviewDate(userId),
+    currentUser(),
   ])
+
+  const userEmail = user?.emailAddresses?.[0]?.emailAddress ?? ''
 
   return (
     <SettingsUI
@@ -21,6 +24,7 @@ export default async function SettingsPage() {
       dailyGoal={settings.dailyGoal}
       fontSize={settings.fontSize}
       interviewDate={interviewDate}
+      userEmail={userEmail}
     />
   )
 }
