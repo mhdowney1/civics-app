@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { auth } from '@clerk/nextjs/server'
+import { getTranslations } from 'next-intl/server'
 import { CaptureRefParam } from '@/components/share-score'
 import { LandingHeader } from '@/components/landing-header'
 
@@ -64,51 +65,27 @@ const jsonLd = {
   ],
 }
 
-const features = [
-  {
-    title: 'Oral format, not multiple choice',
-    body: 'See the question, say your answer out loud, then check yourself. No options to tap. This is how the real interview works.',
-  },
-  {
-    title: 'Hear the question spoken',
-    body: 'Tap the speaker on any question to hear it read aloud. Train your ear for the exact phrasing a USCIS officer uses.',
-  },
-  {
-    title: 'Track what you know',
-    body: 'Mark each answer confident or needs practice. Your progress is saved and synced so you always know where you stand.',
-  },
-  {
-    title: 'Mock interview',
-    body: '20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview.',
-  },
-]
-
-const faqs = [
-  {
-    q: 'How many questions are on the USCIS civics test?',
-    a: 'There are 128 official USCIS civics questions. During your naturalization interview, the officer will ask up to 20 of them.',
-  },
-  {
-    q: 'How many do I need to get right to pass?',
-    a: 'You need to answer 12 out of 20 questions correctly to pass.',
-  },
-  {
-    q: 'Is the civics test oral or written?',
-    a: 'It is oral. A USCIS officer asks you questions and you answer out loud. There are no multiple choice options.',
-  },
-  {
-    q: 'What is the 65/20 rule?',
-    a: 'If you are 65 or older and have been a permanent resident for 20+ years, you only need to study 20 specially marked questions. The officer asks 10, and you need 6 correct to pass. The app has a dedicated mode for this.',
-  },
-  {
-    q: 'Do I need to create an account?',
-    a: 'No. You can try the app without an account. Creating a free account lets you save your progress and track which questions you have mastered.',
-  },
-]
-
 export default async function LandingPage() {
-  const { userId } = await auth()
+  const [{ userId }, t] = await Promise.all([
+    auth(),
+    getTranslations('landing'),
+  ])
   const isSignedIn = Boolean(userId)
+
+  const features = [
+    { title: t('features.oral.title'), body: t('features.oral.body') },
+    { title: t('features.audio.title'), body: t('features.audio.body') },
+    { title: t('features.track.title'), body: t('features.track.body') },
+    { title: t('features.mock.title'), body: t('features.mock.body') },
+  ]
+
+  const faqs = [
+    { q: t('faq.q1'), a: t('faq.a1') },
+    { q: t('faq.q2'), a: t('faq.a2') },
+    { q: t('faq.q3'), a: t('faq.a3') },
+    { q: t('faq.q4'), a: t('faq.a4') },
+    { q: t('faq.q5'), a: t('faq.a5') },
+  ]
 
   return (
     <main className="relative isolate min-h-screen overflow-hidden">
@@ -131,16 +108,14 @@ export default async function LandingPage() {
       {/* Hero */}
       <section className="mx-auto max-w-3xl px-5 pb-16 pt-12 sm:pt-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          2026 USCIS Naturalization Test
+          {t('hero.eyebrow')}
         </p>
         <h1 className="mt-4 font-display text-5xl font-semibold leading-[1.05] tracking-tight sm:text-6xl">
-          The civics test is oral.{' '}
-          <span className="text-confident">Practice like it.</span>
+          {t('hero.h1')}{' '}
+          <span className="text-confident">{t('hero.h1Accent')}</span>
         </h1>
         <p className="mt-6 max-w-xl text-lg text-muted">
-          All 128 official questions, one at a time — no multiple choice, no
-          clutter. Say your answer out loud, then check yourself. Free to start,
-          no subscription ever.
+          {t('hero.sub')}
         </p>
 
         <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -149,7 +124,7 @@ export default async function LandingPage() {
               href="/dashboard"
               className="rounded-2xl bg-confident px-6 py-3.5 font-display text-base font-semibold text-black transition hover:opacity-90"
             >
-              Go to dashboard →
+              {t('hero.ctaDashboard')}
             </Link>
           ) : (
             <>
@@ -157,25 +132,25 @@ export default async function LandingPage() {
                 href="/sign-up"
                 className="rounded-2xl bg-confident px-6 py-3.5 font-display text-base font-semibold text-black transition hover:opacity-90"
               >
-                Start studying — it&apos;s free →
+                {t('hero.ctaSignUp')}
               </Link>
               <Link
                 href="/study"
                 className="rounded-2xl border border-border bg-card px-6 py-3.5 font-display text-base font-semibold transition hover:border-foreground/40"
               >
-                Try without an account
+                {t('hero.ctaTry')}
               </Link>
             </>
           )}
         </div>
         {!isSignedIn && (
           <p className="mt-4 text-xs text-muted">
-            Already have an account?{' '}
+            {t('hero.alreadyHave')}{' '}
             <Link
               href="/sign-in"
               className="underline underline-offset-2 hover:text-foreground"
             >
-              Sign in
+              {t('hero.signIn')}
             </Link>
           </p>
         )}
@@ -187,45 +162,45 @@ export default async function LandingPage() {
           <div className="grid grid-cols-2 gap-4 sm:gap-16">
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-muted">
-                Most apps
+                {t('problem.mostApps')}
               </p>
               <ul className="mt-4 space-y-2.5 text-sm text-muted">
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-red-500/60">✕</span>
-                  Multiple choice options
+                  {t('problem.bad1')}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-red-500/60">✕</span>
-                  Tap to select an answer
+                  {t('problem.bad2')}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-red-500/60">✕</span>
-                  Nothing like the real test
+                  {t('problem.bad3')}
                 </li>
               </ul>
             </div>
             <div>
               <p className="text-xs uppercase tracking-[0.22em] text-confident">
-                Your interview
+                {t('problem.yourInterview')}
               </p>
               <ul className="mt-4 space-y-2.5 text-sm text-foreground">
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-confident">✓</span>
-                  Officer asks a question
+                  {t('problem.good1')}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-confident">✓</span>
-                  You answer out loud
+                  {t('problem.good2')}
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="mt-px shrink-0 text-confident">✓</span>
-                  No options. No hints.
+                  {t('problem.good3')}
                 </li>
               </ul>
             </div>
           </div>
           <p className="mt-6 border-t border-border pt-5 text-sm font-medium text-foreground">
-            This app is built for the second column.
+            {t('problem.conclusion')}
           </p>
         </div>
       </section>
@@ -233,36 +208,32 @@ export default async function LandingPage() {
       {/* Stats */}
       <section className="mx-auto max-w-3xl px-5 pb-10 sm:pb-16">
         <div className="grid grid-cols-3 gap-3">
-          <Fact value="128" label="Official questions" />
-          <Fact value="Up to 20" label="Asked by the officer" />
-          <Fact value="12 / 20" label="Needed to pass" />
+          <Fact value={t('stats.value1')} label={t('stats.label1')} />
+          <Fact value={t('stats.value2')} label={t('stats.label2')} />
+          <Fact value={t('stats.value3')} label={t('stats.label3')} />
         </div>
       </section>
 
       {/* How it works */}
       <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          How it works
+          {t('howItWorks.eyebrow')}
         </p>
         <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          Four steps. Just like the real interview.
+          {t('howItWorks.h2')}
         </h2>
         <ol className="mt-8 space-y-4 text-muted">
-          <Step n={1} title="See the question.">
-            One civics question at a time, big and clear — exactly the way a
-            USCIS officer reads it.
+          <Step n={1} title={t('howItWorks.step1Title')}>
+            {t('howItWorks.step1Body')}
           </Step>
-          <Step n={2} title="Say your answer out loud.">
-            No options to tap. Speak your answer — or tap the speaker to hear
-            the question first. The real test is oral, so practice that way.
+          <Step n={2} title={t('howItWorks.step2Title')}>
+            {t('howItWorks.step2Body')}
           </Step>
-          <Step n={3} title="Reveal and self-mark.">
-            Tap to reveal the answer. Got it? Mark it confident. Still shaky?
-            Mark it needs practice. Your progress is saved automatically.
+          <Step n={3} title={t('howItWorks.step3Title')}>
+            {t('howItWorks.step3Body')}
           </Step>
-          <Step n={4} title="Take a mock interview.">
-            20 random questions, oral-style, with a pass/fail result at the end
-            — the same format as your naturalization interview.
+          <Step n={4} title={t('howItWorks.step4Title')}>
+            {t('howItWorks.step4Body')}
           </Step>
         </ol>
       </section>
@@ -270,10 +241,10 @@ export default async function LandingPage() {
       {/* Features */}
       <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          Features
+          {t('features.eyebrow')}
         </p>
         <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          Built around the real exam format.
+          {t('features.h2')}
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {features.map((f) => (
@@ -285,27 +256,22 @@ export default async function LandingPage() {
       {/* Pricing */}
       <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          Pricing
+          {t('pricing.eyebrow')}
         </p>
         <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          Free to study. One-time to unlock.
+          {t('pricing.h2')}
         </h2>
         <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2">
           {/* Free tier */}
           <div className="rounded-3xl border border-border bg-card p-6">
-            <p className="text-xs uppercase tracking-[0.18em] text-muted">Free</p>
-            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">$0</p>
-            <p className="mt-1 text-sm text-muted">No account required</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-muted">{t('pricing.free.label')}</p>
+            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">{t('pricing.free.price')}</p>
+            <p className="mt-1 text-sm text-muted">{t('pricing.free.sub')}</p>
             <ul className="mt-6 space-y-3 text-sm">
-              {[
-                'All 128 official USCIS questions',
-                'Oral study mode',
-                '1 free mock test',
-                'Spanish language support',
-              ].map((f) => (
-                <li key={f} className="flex items-center gap-3">
+              {(['feature1', 'feature2', 'feature3', 'feature4'] as const).map((k) => (
+                <li key={k} className="flex items-center gap-3">
                   <span className="text-confident">✓</span>
-                  <span className="text-muted">{f}</span>
+                  <span className="text-muted">{t(`pricing.free.${k}`)}</span>
                 </li>
               ))}
             </ul>
@@ -313,25 +279,20 @@ export default async function LandingPage() {
               href="/study"
               className="mt-8 block rounded-2xl border border-border px-6 py-3.5 text-center font-display text-base font-semibold transition hover:border-foreground/40"
             >
-              Start studying free
+              {t('pricing.free.cta')}
             </Link>
           </div>
 
           {/* Paid tier */}
           <div className="rounded-3xl border border-confident/40 bg-confident/5 p-6">
-            <p className="text-xs uppercase tracking-[0.18em] text-confident">Unlock</p>
-            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">$12.99</p>
-            <p className="mt-1 text-sm text-muted">One-time · not a subscription</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-confident">{t('pricing.paid.label')}</p>
+            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">{t('pricing.paid.price')}</p>
+            <p className="mt-1 text-sm text-muted">{t('pricing.paid.sub')}</p>
             <ul className="mt-6 space-y-3 text-sm">
-              {[
-                'Everything in free',
-                'Unlimited mock tests',
-                'Detailed progress analytics',
-                'Works offline',
-              ].map((f) => (
-                <li key={f} className="flex items-center gap-3">
+              {(['feature1', 'feature2', 'feature3', 'feature4'] as const).map((k) => (
+                <li key={k} className="flex items-center gap-3">
                   <span className="text-confident">✓</span>
-                  <span>{f}</span>
+                  <span>{t(`pricing.paid.${k}`)}</span>
                 </li>
               ))}
             </ul>
@@ -339,12 +300,12 @@ export default async function LandingPage() {
               href="/sign-up"
               className="mt-8 block rounded-2xl bg-confident px-6 py-3.5 text-center font-display text-base font-semibold text-black transition hover:opacity-90"
             >
-              Get started →
+              {t('pricing.paid.cta')}
             </Link>
           </div>
         </div>
         <p className="mt-4 text-center text-xs text-muted">
-          Most civics apps charge $10+ / month. You pay $12.99 once here — then you&apos;re done.
+          {t('pricing.footnote')}
         </p>
       </section>
 
@@ -352,15 +313,13 @@ export default async function LandingPage() {
       <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <div className="rounded-3xl border border-border bg-card p-6 sm:p-8">
           <p className="text-xs uppercase tracking-[0.22em] text-muted">
-            65/20 Rule
+            {t('rule6520.eyebrow')}
           </p>
           <h2 className="mt-3 font-display text-2xl font-semibold tracking-tight sm:text-3xl">
-            65+ and a permanent resident for 20+ years?
+            {t('rule6520.h2')}
           </h2>
           <p className="mt-3 text-muted">
-            You only have to study the 20 starred questions. The officer asks
-            10, and you need 6 right to pass. The app has a dedicated 65/20
-            study mode.
+            {t('rule6520.body')}
           </p>
         </div>
       </section>
@@ -372,18 +331,13 @@ export default async function LandingPage() {
             <Image src="/michael.jpg" alt="Michael Downey" width={56} height={56} className="rounded-full shrink-0" />
             <div>
               <p className="font-display text-base font-semibold leading-tight">
-                Michael Downey
+                {t('founder.name')}
               </p>
-              <p className="text-xs text-muted">Creator, CivicsStudy.com</p>
+              <p className="text-xs text-muted">{t('founder.role')}</p>
             </div>
           </div>
           <blockquote className="mt-5 leading-relaxed text-muted">
-            &ldquo;In April 2026 I was studying for my own citizenship
-            interview. Every app I downloaded was multiple choice — that&apos;s
-            not how the test works. I found a YouTube channel where someone
-            would ask the question, pause, then give the answer. That was the
-            closest thing to real oral practice I could find. So I built
-            something better. I passed 12 out of 12 on May 20.&rdquo;
+            &ldquo;{t('founder.quote')}&rdquo;
           </blockquote>
         </div>
       </section>
@@ -393,10 +347,10 @@ export default async function LandingPage() {
       {/* FAQ */}
       <section className="mx-auto max-w-3xl px-5 pb-12 sm:pb-20">
         <p className="text-xs uppercase tracking-[0.22em] text-muted">
-          Common questions
+          {t('faq.eyebrow')}
         </p>
         <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-          FAQ
+          {t('faq.h2')}
         </h2>
         <dl className="mt-8 space-y-3">
           {faqs.map((faq) => (
@@ -418,23 +372,23 @@ export default async function LandingPage() {
         <section className="mx-auto max-w-3xl px-5 pb-24">
           <div className="rounded-3xl border border-confident/30 bg-confident/5 p-8 text-center sm:p-12">
             <h2 className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
-              Ready to practice?
+              {t('cta.h2')}
             </h2>
             <p className="mt-3 text-muted">
-              Start free. Unlock unlimited mock tests for $12.99 — one time, no subscription.
+              {t('cta.sub')}
             </p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <Link
                 href="/sign-up"
                 className="rounded-2xl bg-confident px-8 py-4 font-display text-base font-semibold text-black transition hover:opacity-90"
               >
-                Start studying — it&apos;s free →
+                {t('cta.signUp')}
               </Link>
               <Link
                 href="/study"
                 className="text-sm text-muted underline underline-offset-2 hover:text-foreground"
               >
-                Try without an account
+                {t('cta.try')}
               </Link>
             </div>
           </div>
@@ -443,10 +397,10 @@ export default async function LandingPage() {
 
       {/* Footer */}
       <footer className="mx-auto max-w-3xl px-5 pb-12 text-xs text-muted">
-        <span>Built for studying. Not affiliated with USCIS.</span>
+        <span>{t('footer.disclaimer')}</span>
         <span className="mx-2">·</span>
         <span>
-          Built by{' '}
+          {t('footer.builtBy')}{' '}
           <a
             href="https://vampcreatives.com"
             target="_blank"

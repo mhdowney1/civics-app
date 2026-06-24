@@ -225,5 +225,128 @@
       "ready": "You're ready. Confidence is high across all 128 questions.",
       "interview-soon": "Interview is close — prioritize your weakest questions now."
     }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "2026 USCIS Naturalization Test",
+      "h1": "The civics test is oral.",
+      "h1Accent": "Practice like it.",
+      "sub": "All 128 official questions, one at a time — no multiple choice, no clutter. Say your answer out loud, then check yourself. Free to start, no subscription ever.",
+      "ctaDashboard": "Go to dashboard →",
+      "ctaSignUp": "Start studying — it’s free →",
+      "ctaTry": "Try without an account",
+      "alreadyHave": "Already have an account?",
+      "signIn": "Sign in"
+    },
+    "problem": {
+      "mostApps": "Most apps",
+      "yourInterview": "Your interview",
+      "bad1": "Multiple choice options",
+      "bad2": "Tap to select an answer",
+      "bad3": "Nothing like the real test",
+      "good1": "Officer asks a question",
+      "good2": "You answer out loud",
+      "good3": "No options. No hints.",
+      "conclusion": "This app is built for the second column."
+    },
+    "stats": {
+      "value1": "128",
+      "label1": "Official questions",
+      "value2": "Up to 20",
+      "label2": "Asked by the officer",
+      "value3": "12 / 20",
+      "label3": "Needed to pass"
+    },
+    "howItWorks": {
+      "eyebrow": "How it works",
+      "h2": "Four steps. Just like the real interview.",
+      "step1Title": "See the question.",
+      "step1Body": "One civics question at a time, big and clear — exactly the way a USCIS officer reads it.",
+      "step2Title": "Say your answer out loud.",
+      "step2Body": "No options to tap. Speak your answer — or tap the speaker to hear the question first. The real test is oral, so practice that way.",
+      "step3Title": "Reveal and self-mark.",
+      "step3Body": "Tap to reveal the answer. Got it? Mark it confident. Still shaky? Mark it needs practice. Your progress is saved automatically.",
+      "step4Title": "Take a mock interview.",
+      "step4Body": "20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview."
+    },
+    "features": {
+      "eyebrow": "Features",
+      "h2": "Built around the real exam format.",
+      "oral": {
+        "title": "Oral format, not multiple choice",
+        "body": "See the question, say your answer out loud, then check yourself. No options to tap. This is how the real interview works."
+      },
+      "audio": {
+        "title": "Hear the question spoken",
+        "body": "Tap the speaker on any question to hear it read aloud. Train your ear for the exact phrasing a USCIS officer uses."
+      },
+      "track": {
+        "title": "Track what you know",
+        "body": "Mark each answer confident or needs practice. Your progress is saved and synced so you always know where you stand."
+      },
+      "mock": {
+        "title": "Mock interview",
+        "body": "20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Pricing",
+      "h2": "Free to study. One-time to unlock.",
+      "free": {
+        "label": "Free",
+        "price": "$0",
+        "sub": "No account required",
+        "feature1": "All 128 official USCIS questions",
+        "feature2": "Oral study mode",
+        "feature3": "1 free mock test",
+        "feature4": "Spanish language support",
+        "cta": "Start studying free"
+      },
+      "paid": {
+        "label": "Unlock",
+        "price": "$12.99",
+        "sub": "One-time · not a subscription",
+        "feature1": "Everything in free",
+        "feature2": "Unlimited mock tests",
+        "feature3": "Detailed progress analytics",
+        "feature4": "Works offline",
+        "cta": "Get started →"
+      },
+      "footnote": "Most civics apps charge $10+ / month. You pay $12.99 once here — then you’re done."
+    },
+    "rule6520": {
+      "eyebrow": "65/20 Rule",
+      "h2": "65+ and a permanent resident for 20+ years?",
+      "body": "You only have to study the 20 starred questions. The officer asks 10, and you need 6 right to pass. The app has a dedicated 65/20 study mode."
+    },
+    "founder": {
+      "name": "Michael Downey",
+      "role": "Creator, CivicsStudy.com",
+      "quote": "In April 2026 I was studying for my own citizenship interview. Every app I downloaded was multiple choice — that’s not how the test works. I found a YouTube channel where someone would ask the question, pause, then give the answer. That was the closest thing to real oral practice I could find. So I built something better. I passed 12 out of 12 on May 20."
+    },
+    "faq": {
+      "eyebrow": "Common questions",
+      "h2": "FAQ",
+      "q1": "How many questions are on the USCIS civics test?",
+      "a1": "There are 128 official USCIS civics questions. During your naturalization interview, the officer will ask up to 20 of them.",
+      "q2": "How many do I need to get right to pass?",
+      "a2": "You need to answer 12 out of 20 questions correctly to pass.",
+      "q3": "Is the civics test oral or written?",
+      "a3": "It is oral. A USCIS officer asks you questions and you answer out loud. There are no multiple choice options.",
+      "q4": "What is the 65/20 rule?",
+      "a4": "If you are 65 or older and have been a permanent resident for 20+ years, you only need to study 20 specially marked questions. The officer asks 10, and you need 6 correct to pass. The app has a dedicated mode for this.",
+      "q5": "Do I need to create an account?",
+      "a5": "No. You can try the app without an account. Creating a free account lets you save your progress and track which questions you have mastered."
+    },
+    "cta": {
+      "h2": "Ready to practice?",
+      "sub": "Start free. Unlock unlimited mock tests for $12.99 — one time, no subscription.",
+      "signUp": "Start studying — it’s free →",
+      "try": "Try without an account"
+    },
+    "footer": {
+      "disclaimer": "Built for studying. Not affiliated with USCIS.",
+      "builtBy": "Built by"
+    }
   }
 }

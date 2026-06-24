@@ -225,5 +225,128 @@
       "ready": "Estás listo. Tienes confianza en las 128 preguntas.",
       "interview-soon": "La entrevista se acerca — prioriza tus preguntas más difíciles ahora."
     }
+  },
+  "landing": {
+    "hero": {
+      "eyebrow": "Examen de Naturalización USCIS 2026",
+      "h1": "El examen cívico es oral.",
+      "h1Accent": "Practica como tal.",
+      "sub": "Las 128 preguntas oficiales, una a la vez — sin opciones múltiples, sin distractores. Di tu respuesta en voz alta, luego compruébate. Gratis para empezar, sin suscripción.",
+      "ctaDashboard": "Ir al panel →",
+      "ctaSignUp": "Empieza a estudiar — es gratis →",
+      "ctaTry": "Probar sin cuenta",
+      "alreadyHave": "¿Ya tienes una cuenta?",
+      "signIn": "Iniciar sesión"
+    },
+    "problem": {
+      "mostApps": "La mayoría de apps",
+      "yourInterview": "Tu entrevista",
+      "bad1": "Opciones de respuesta múltiple",
+      "bad2": "Tocas para seleccionar",
+      "bad3": "Nada como el examen real",
+      "good1": "El oficial hace una pregunta",
+      "good2": "Tú respondes en voz alta",
+      "good3": "Sin opciones. Sin pistas.",
+      "conclusion": "Esta app está diseñada para la segunda columna."
+    },
+    "stats": {
+      "value1": "128",
+      "label1": "Preguntas oficiales",
+      "value2": "Hasta 20",
+      "label2": "Las hace el oficial",
+      "value3": "12 / 20",
+      "label3": "Necesitas para aprobar"
+    },
+    "howItWorks": {
+      "eyebrow": "Cómo funciona",
+      "h2": "Cuatro pasos. Igual que la entrevista real.",
+      "step1Title": "Ve la pregunta.",
+      "step1Body": "Una pregunta cívica a la vez, grande y clara — exactamente como la lee un oficial de USCIS.",
+      "step2Title": "Di tu respuesta en voz alta.",
+      "step2Body": "Sin opciones que tocar. Di tu respuesta — o toca el altavoz para escuchar la pregunta primero. El examen real es oral, practica de esa manera.",
+      "step3Title": "Revela y evalúate.",
+      "step3Body": "Toca para revelar la respuesta. ¿La sabes? Márcala como seguro. ¿Aún inseguro? Márcala como necesita práctica. Tu progreso se guarda automáticamente.",
+      "step4Title": "Haz un examen de práctica.",
+      "step4Body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final — el mismo formato que tu entrevista de naturalización."
+    },
+    "features": {
+      "eyebrow": "Características",
+      "h2": "Diseñada alrededor del formato real del examen.",
+      "oral": {
+        "title": "Formato oral, no respuesta múltiple",
+        "body": "Ve la pregunta, di tu respuesta en voz alta, luego compruébate. Sin opciones que tocar. Así funciona la entrevista real."
+      },
+      "audio": {
+        "title": "Escucha la pregunta en voz alta",
+        "body": "Toca el altavoz en cualquier pregunta para escucharla. Entrena tu oído para la forma exacta en que habla un oficial de USCIS."
+      },
+      "track": {
+        "title": "Sigue tu progreso",
+        "body": "Marca cada respuesta como seguro o necesita práctica. Tu progreso se guarda y sincroniza para que siempre sepas dónde estás."
+      },
+      "mock": {
+        "title": "Entrevista de práctica",
+        "body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final — el mismo formato que tu entrevista de naturalización."
+      }
+    },
+    "pricing": {
+      "eyebrow": "Precios",
+      "h2": "Gratis para estudiar. Pago único para desbloquear.",
+      "free": {
+        "label": "Gratis",
+        "price": "$0",
+        "sub": "Sin cuenta requerida",
+        "feature1": "Las 128 preguntas oficiales de USCIS",
+        "feature2": "Modo de estudio oral",
+        "feature3": "1 examen de práctica gratis",
+        "feature4": "Soporte en español",
+        "cta": "Empieza a estudiar gratis"
+      },
+      "paid": {
+        "label": "Desbloquear",
+        "price": "$12.99",
+        "sub": "Único · no es una suscripción",
+        "feature1": "Todo lo de la versión gratuita",
+        "feature2": "Exámenes de práctica ilimitados",
+        "feature3": "Análisis detallado del progreso",
+        "feature4": "Funciona sin conexión",
+        "cta": "Empezar →"
+      },
+      "footnote": "La mayoría de apps cívicas cobran $10+ al mes. Aquí pagas $12.99 una vez y listo."
+    },
+    "rule6520": {
+      "eyebrow": "Regla 65/20",
+      "h2": "¿65+ años y residente permanente por 20+ años?",
+      "body": "Solo tienes que estudiar las 20 preguntas marcadas con estrella. El oficial hace 10 y necesitas 6 correctas para aprobar. La app tiene un modo de estudio 65/20 dedicado."
+    },
+    "founder": {
+      "name": "Michael Downey",
+      "role": "Creador, CivicsStudy.com",
+      "quote": "En abril de 2026 estaba estudiando para mi propia entrevista de ciudadanía. Cada app que descargué era de respuesta múltiple — así no funciona el examen. Encontré un canal de YouTube donde alguien hacía la pregunta, pausaba y luego daba la respuesta. Era lo más parecido a práctica oral real que encontré. Así que construí algo mejor. Aprobé 12 de 12 el 20 de mayo."
+    },
+    "faq": {
+      "eyebrow": "Preguntas frecuentes",
+      "h2": "FAQ",
+      "q1": "¿Cuántas preguntas tiene el examen cívico de USCIS?",
+      "a1": "Hay 128 preguntas cívicas oficiales de USCIS. Durante tu entrevista de naturalización, el oficial te hará hasta 20 de ellas.",
+      "q2": "¿Cuántas necesito responder correctamente para aprobar?",
+      "a2": "Necesitas responder correctamente 12 de las 20 preguntas para aprobar.",
+      "q3": "¿El examen cívico es oral o escrito?",
+      "a3": "Es oral. Un oficial de USCIS te hace preguntas y tú respondes en voz alta. No hay opciones de respuesta múltiple.",
+      "q4": "¿Qué es la regla 65/20?",
+      "a4": "Si tienes 65 años o más y has sido residente permanente durante 20+ años, solo necesitas estudiar 20 preguntas especialmente marcadas. El oficial hace 10 y necesitas 6 correctas para aprobar. La app tiene un modo dedicado para esto.",
+      "q5": "¿Necesito crear una cuenta?",
+      "a5": "No. Puedes probar la app sin cuenta. Crear una cuenta gratuita te permite guardar tu progreso y saber qué preguntas has dominado."
+    },
+    "cta": {
+      "h2": "¿Listo para practicar?",
+      "sub": "Empieza gratis. Desbloquea exámenes ilimitados por $12.99 — una vez, sin suscripción.",
+      "signUp": "Empieza a estudiar — es gratis →",
+      "try": "Probar sin cuenta"
+    },
+    "footer": {
+      "disclaimer": "Diseñada para estudiar. No afiliada a USCIS.",
+      "builtBy": "Creado por"
+    }
   }
 }

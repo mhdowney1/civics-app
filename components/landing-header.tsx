@@ -24,9 +24,9 @@ export function LandingHeader() {
         Civics Study
       </div>
       <nav className="flex items-center gap-3 text-sm text-muted">
+        <LangSegment lang={lang} onToggle={toggleLang} />
         {isSignedIn ? (
           <>
-            <LangSegment lang={lang} onToggle={toggleLang} />
             <button
               type="button"
               onClick={() => setTheme(toggleTheme())}
