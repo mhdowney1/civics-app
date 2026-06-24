@@ -62,7 +62,7 @@ export function DashboardUI({
         <div className="flex items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <p className="text-sm uppercase tracking-[0.18em] text-muted">
-              {t('welcomeBack')}
+              {studied === 0 ? t('welcome') : t('welcomeBack')}
             </p>
             {paid && (
               <span className="inline-flex items-center gap-1 rounded-full border border-confident/30 bg-confident/10 px-2.5 py-0.5 text-xs font-medium text-confident">
@@ -87,13 +87,13 @@ export function DashboardUI({
         totalQuestions={totalQuestions}
       />
 
+      {studied === 0 && <OnboardingCard t={t} />}
+
       <section className="mb-10 grid grid-cols-3 gap-3 sm:gap-4">
         <Stat label={t('confident')} value={confident} color="text-confident" />
         <Stat label={t('needsPractice')} value={needsPractice} color="text-needs-practice" />
         <Stat label={t('notStudied')} value={unseen} color="text-unseen" />
       </section>
-
-      {studied === 0 && <OnboardingCard t={t} />}
 
       <section className="mb-8">
         <h2 className="mb-3 font-display text-xl font-semibold">{t('studyModes')}</h2>

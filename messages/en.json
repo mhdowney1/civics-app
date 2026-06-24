@@ -98,6 +98,7 @@
     "backToDashboard": "← Back to dashboard"
   },
   "dashboard": {
+    "welcome": "Welcome",
     "welcomeBack": "Welcome back",
     "fullAccess": "✓ Full access",
     "greeting": "Hi, {firstName}.",
@@ -121,7 +122,7 @@
     "pass": "Pass",
     "fail": "Fail",
     "onboardingTitle": "Here's how it works",
-    "onboardingStep1": "Read the question and say your answer out loud — just like the real interview.",
+    "onboardingStep1": "Read the question and say your answer out loud, just like the real interview.",
     "onboardingStep2": "Tap 'Show answer' to reveal the correct answer and mark yourself.",
     "onboardingStep3": "Your progress saves automatically. Come back anytime to continue.",
     "onboardingCta": "Start your first session →"
@@ -148,7 +149,7 @@
   "billing": {
     "badge": "One-time payment",
     "heading": "Unlock full access",
-    "desc": "Everything you need to pass your civics test — practice as many times as you like.",
+    "desc": "Everything you need to pass your civics test. Practice as many times as you like.",
     "price": "$12.99",
     "priceSub": "one-time · yours forever",
     "feature1": "Unlimited mock tests",
@@ -163,9 +164,9 @@
   "feedback": {
     "titleMockTest": "How did it go?",
     "titleAll128": "How did it go?",
-    "titleSessionEnd": "Quick question — how's the study experience so far?",
+    "titleSessionEnd": "Quick question: how's the study experience so far?",
     "placeholderMockTest": "Was the mock test a fair reflection of the real exam? (optional)",
-    "placeholderAll128": "You've seen all 128 — what's missing or confusing? (optional)",
+    "placeholderAll128": "You've seen all 128. What's missing or confusing? (optional)",
     "placeholderSessionEnd": "Anything confusing or missing? (optional)",
     "skip": "Skip",
     "rateAria": "Rate {n} out of 5",
@@ -175,7 +176,7 @@
   "share": {
     "button": "Share score + give a friend $2 off →",
     "copied": "Link copied!",
-    "text": "I scored {score}/{total} on the US civics test — {result}. Try it yourself — use my link for $2 off:",
+    "text": "I scored {score}/{total} on the US civics test: {result}. Try it with my link for $2 off:",
     "pass": "pass",
     "fail": "fail"
   },
@@ -204,12 +205,12 @@
     "lastStudiedDaysAgo": "Last studied {ago} days ago"
   },
   "interview": {
-    "setDatePrompt": "Know your interview date? Add it to see your readiness countdown.",
+    "setDatePrompt": "Have your interview date? See your readiness countdown.",
     "setDate": "Set date",
     "setDateLabel": "Interview date",
     "save": "Save",
     "cancel": "Cancel",
-    "pastInterview": "Interview date has passed — how did it go?",
+    "pastInterview": "Your interview date has passed. How did it go?",
     "interviewToday": "Interview day! You've got this.",
     "daysUntil": "{n} days until your interview",
     "change": "Change",
@@ -217,13 +218,13 @@
     "toReview": "to review",
     "unseen": "unseen",
     "readiness": {
-      "starting": "You're just getting started — every question you study brings you closer.",
+      "starting": "You're just getting started. Every question brings you closer.",
       "foundation": "Good foundation! Focus on the categories you haven't touched yet.",
-      "momentum": "You're building momentum — half the questions are solid.",
+      "momentum": "You're building momentum. Half the questions are solid.",
       "strong": "Strong progress! Push through the remaining questions.",
-      "almost": "Almost there — just a few questions left to master.",
+      "almost": "Almost there. Just a few questions left to master.",
       "ready": "You're ready. Confidence is high across all 128 questions.",
-      "interview-soon": "Interview is close — prioritize your weakest questions now."
+      "interview-soon": "Your interview is close. Focus on your weakest questions now."
     }
   },
   "landing": {
@@ -231,9 +232,9 @@
       "eyebrow": "2026 USCIS Naturalization Test",
       "h1": "The civics test is oral.",
       "h1Accent": "Practice like it.",
-      "sub": "All 128 official questions, one at a time — no multiple choice, no clutter. Say your answer out loud, then check yourself. Free to start, no subscription ever.",
+      "sub": "All 128 official questions, one at a time. No multiple choice, no clutter. Say your answer out loud, then check yourself. Free to start, no subscription ever.",
       "ctaDashboard": "Go to dashboard →",
-      "ctaSignUp": "Start studying — it’s free →",
+      "ctaSignUp": "Start studying for free →",
       "ctaTry": "Try without an account",
       "alreadyHave": "Already have an account?",
       "signIn": "Sign in"
@@ -261,13 +262,13 @@
       "eyebrow": "How it works",
       "h2": "Four steps. Just like the real interview.",
       "step1Title": "See the question.",
-      "step1Body": "One civics question at a time, big and clear — exactly the way a USCIS officer reads it.",
+      "step1Body": "One civics question at a time, big and clear. Exactly the way a USCIS officer reads it.",
       "step2Title": "Say your answer out loud.",
-      "step2Body": "No options to tap. Speak your answer — or tap the speaker to hear the question first. The real test is oral, so practice that way.",
+      "step2Body": "No options to tap. Speak your answer, or tap the speaker to hear the question read aloud. The real test is oral, so practice that way.",
       "step3Title": "Reveal and self-mark.",
       "step3Body": "Tap to reveal the answer. Got it? Mark it confident. Still shaky? Mark it needs practice. Your progress is saved automatically.",
       "step4Title": "Take a mock interview.",
-      "step4Body": "20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview."
+      "step4Body": "20 random questions, oral-style, with a pass/fail result. The same format as your naturalization interview."
     },
     "features": {
       "eyebrow": "Features",
@@ -286,7 +287,7 @@
       },
       "mock": {
         "title": "Mock interview",
-        "body": "20 random questions, oral-style, with a pass/fail result at the end — the same format as your naturalization interview."
+        "body": "20 random questions, oral-style, with a pass/fail result. The same format as your naturalization interview."
       }
     },
     "pricing": {
@@ -312,7 +313,7 @@
         "feature4": "Works offline",
         "cta": "Get started →"
       },
-      "footnote": "Most civics apps charge $10+ / month. You pay $12.99 once here — then you’re done."
+      "footnote": "Most civics apps charge $10+ a month. You pay $12.99 once and you’re done."
     },
     "rule6520": {
       "eyebrow": "65/20 Rule",
@@ -340,8 +341,8 @@
     },
     "cta": {
       "h2": "Ready to practice?",
-      "sub": "Start free. Unlock unlimited mock tests for $12.99 — one time, no subscription.",
-      "signUp": "Start studying — it’s free →",
+      "sub": "Start free. Unlock unlimited mock tests for $12.99, one time, no subscription.",
+      "signUp": "Start studying for free →",
       "try": "Try without an account"
     },
     "footer": {

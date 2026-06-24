@@ -98,7 +98,8 @@
     "backToDashboard": "← Volver al panel"
   },
   "dashboard": {
-    "welcomeBack": "Bienvenido de nuevo",
+    "welcome": "Bienvenido/a",
+    "welcomeBack": "Bienvenido/a de nuevo",
     "fullAccess": "✓ Acceso completo",
     "greeting": "Hola, {firstName}.",
     "progressText": "{studied} de {total} preguntas estudiadas. Sigue adelante.",
@@ -148,7 +149,7 @@
   "billing": {
     "badge": "Pago único",
     "heading": "Desbloquear acceso completo",
-    "desc": "Todo lo que necesitas para aprobar tu examen de civismo — practica todas las veces que quieras.",
+    "desc": "Todo lo que necesitas para aprobar tu examen de civismo. Practica todas las veces que quieras.",
     "price": "$12.99",
     "priceSub": "único · tuyo para siempre",
     "feature1": "Exámenes de práctica ilimitados",
@@ -163,9 +164,9 @@
   "feedback": {
     "titleMockTest": "¿Cómo te fue?",
     "titleAll128": "¿Cómo te fue?",
-    "titleSessionEnd": "Pregunta rápida — ¿cómo va la experiencia de estudio hasta ahora?",
+    "titleSessionEnd": "Pregunta rápida: ¿cómo va la experiencia de estudio hasta ahora?",
     "placeholderMockTest": "¿Fue el examen de práctica un reflejo justo del examen real? (opcional)",
-    "placeholderAll128": "Ya viste las 128 — ¿qué falta o es confuso? (opcional)",
+    "placeholderAll128": "Ya viste las 128. ¿Qué falta o es confuso? (opcional)",
     "placeholderSessionEnd": "¿Algo confuso o que falte? (opcional)",
     "skip": "Omitir",
     "rateAria": "Calificar {n} de 5",
@@ -175,7 +176,7 @@
   "share": {
     "button": "Compartir puntaje + dar $2 de descuento →",
     "copied": "¡Enlace copiado!",
-    "text": "Obtuve {score}/{total} en el examen de civismo de EE.UU. — {result}. Inténtalo tú — usa mi enlace y obtén $2 de descuento:",
+    "text": "Obtuve {score}/{total} en el examen de civismo de EE.UU.: {result}. Usa mi enlace para obtener $2 de descuento:",
     "pass": "aprobado",
     "fail": "reprobado"
   },
@@ -209,7 +210,7 @@
     "setDateLabel": "Fecha de entrevista",
     "save": "Guardar",
     "cancel": "Cancelar",
-    "pastInterview": "La fecha de entrevista ya pasó — ¿cómo te fue?",
+    "pastInterview": "La fecha de entrevista ya pasó. ¿Cómo te fue?",
     "interviewToday": "¡Hoy es tu entrevista! Tú puedes.",
     "daysUntil": "{n} días para tu entrevista",
     "change": "Cambiar",
@@ -217,13 +218,13 @@
     "toReview": "para repasar",
     "unseen": "sin estudiar",
     "readiness": {
-      "starting": "Estás comenzando — cada pregunta que estudias te acerca más a tu meta.",
+      "starting": "Estás comenzando. Cada pregunta que estudias te acerca más a tu meta.",
       "foundation": "¡Buena base! Enfócate en las categorías que aún no has tocado.",
       "momentum": "¡Vas bien! Ya tienes la mitad de las preguntas dominadas.",
       "strong": "¡Gran progreso! Sigue con las preguntas que te faltan.",
       "almost": "¡Casi listo! Solo faltan unas pocas preguntas por dominar.",
       "ready": "Estás listo. Tienes confianza en las 128 preguntas.",
-      "interview-soon": "La entrevista se acerca — prioriza tus preguntas más difíciles ahora."
+      "interview-soon": "La entrevista se acerca. Prioriza tus preguntas más difíciles ahora."
     }
   },
   "landing": {
@@ -231,9 +232,9 @@
       "eyebrow": "Examen de Naturalización USCIS 2026",
       "h1": "El examen cívico es oral.",
       "h1Accent": "Practica como tal.",
-      "sub": "Las 128 preguntas oficiales, una a la vez — sin opciones múltiples, sin distractores. Di tu respuesta en voz alta, luego compruébate. Gratis para empezar, sin suscripción.",
+      "sub": "Las 128 preguntas oficiales, una a la vez. Sin opciones múltiples, sin distractores. Di tu respuesta en voz alta, luego compruébate. Gratis para empezar, sin suscripción.",
       "ctaDashboard": "Ir al panel →",
-      "ctaSignUp": "Empieza a estudiar — es gratis →",
+      "ctaSignUp": "Empieza a estudiar gratis →",
       "ctaTry": "Probar sin cuenta",
       "alreadyHave": "¿Ya tienes una cuenta?",
       "signIn": "Iniciar sesión"
@@ -261,13 +262,13 @@
       "eyebrow": "Cómo funciona",
       "h2": "Cuatro pasos. Igual que la entrevista real.",
       "step1Title": "Ve la pregunta.",
-      "step1Body": "Una pregunta cívica a la vez, grande y clara — exactamente como la lee un oficial de USCIS.",
+      "step1Body": "Una pregunta cívica a la vez, grande y clara. Exactamente como la lee un oficial de USCIS.",
       "step2Title": "Di tu respuesta en voz alta.",
-      "step2Body": "Sin opciones que tocar. Di tu respuesta — o toca el altavoz para escuchar la pregunta primero. El examen real es oral, practica de esa manera.",
+      "step2Body": "Sin opciones que tocar. Di tu respuesta, o toca el altavoz para escuchar la pregunta primero. El examen real es oral, practica de esa manera.",
       "step3Title": "Revela y evalúate.",
       "step3Body": "Toca para revelar la respuesta. ¿La sabes? Márcala como seguro. ¿Aún inseguro? Márcala como necesita práctica. Tu progreso se guarda automáticamente.",
       "step4Title": "Haz un examen de práctica.",
-      "step4Body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final — el mismo formato que tu entrevista de naturalización."
+      "step4Body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final. El mismo formato que tu entrevista de naturalización."
     },
     "features": {
       "eyebrow": "Características",
@@ -286,7 +287,7 @@
       },
       "mock": {
         "title": "Entrevista de práctica",
-        "body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final — el mismo formato que tu entrevista de naturalización."
+        "body": "20 preguntas aleatorias, estilo oral, con resultado de aprobado/reprobado al final. El mismo formato que tu entrevista de naturalización."
       }
     },
     "pricing": {
@@ -340,8 +341,8 @@
     },
     "cta": {
       "h2": "¿Listo para practicar?",
-      "sub": "Empieza gratis. Desbloquea exámenes ilimitados por $12.99 — una vez, sin suscripción.",
-      "signUp": "Empieza a estudiar — es gratis →",
+      "sub": "Empieza gratis. Desbloquea exámenes ilimitados por $12.99, una vez, sin suscripción.",
+      "signUp": "Empieza a estudiar gratis →",
       "try": "Probar sin cuenta"
     },
     "footer": {

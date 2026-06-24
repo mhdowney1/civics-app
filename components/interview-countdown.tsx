@@ -71,10 +71,10 @@ export function InterviewCountdown({ interviewDate, confident, needsPractice, to
     return (
       <div className="mb-8 flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3">
         <p className="text-sm text-muted">{t('setDatePrompt')}</p>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3 pl-3">
           <button
             onClick={() => setEditing(true)}
-            className="text-sm font-semibold text-confident hover:underline"
+            className="whitespace-nowrap text-sm font-semibold text-confident hover:underline"
           >
             {t('setDate')}
           </button>
