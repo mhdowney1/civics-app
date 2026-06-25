@@ -91,6 +91,8 @@ export default async function RootLayout({
           card: 'bg-card border border-border shadow-2xl',
           formButtonPrimary:
             'bg-confident text-black hover:opacity-90 font-semibold',
+          headerTitle: 'text-foreground',
+          headerSubtitle: 'text-muted',
         },
       }}
     >
