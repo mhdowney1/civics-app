@@ -1,20 +1,39 @@
-# US Civics Study — civicsstudy.com
+# Civics Study (civicsstudy.com)
 
-A free web app for studying the 128 official USCIS civics questions required for US naturalization.
+> Civics Study is the oral-format practice tool for the 128-question 2025 USCIS civics test. You hear or read one question at a time, answer out loud, then check yourself, the same way the real naturalization interview works. No multiple choice.
 
-## What it is
+## Key facts about the 2025 civics test
 
-An oral-style practice tool for the USCIS civics test. Users see one question at a time, think their answer, then self-mark as confident or needs practice. No multiple choice — designed to match the real interview format.
+- Applies to Form N-400 applications filed on or after October 20, 2025.
+- 128 official questions. The officer asks up to 20 and you need 12 correct to pass.
+- The officer stops once you reach 12 correct (pass) or 9 incorrect (fail).
+- The test is oral and in English, unless you qualify for an exemption.
+- 65/20 special consideration: if you are 65+ with 20+ years as a permanent resident, you study 20 marked questions, are asked 10 and need 6 correct, and may test in your own language.
 
 ## Features
 
-- All 128 official USCIS civics questions across 6 categories: Principles of American Government, System of Government, Rights and Responsibilities, Colonial Period and Independence, 1800s, Recent American History, Symbols, and Holidays
-- Mock test mode: 20 random questions, pass with 12 correct — mirrors the real test
-- Progress tracking: marks questions as confident or needs practice
-- 65/20 rule mode: dedicated study set of 20 starred questions for applicants aged 65+ with 20+ years as a permanent resident
-- Works offline (PWA)
-- Free to use
+- All 128 official USCIS civics questions, organized by category, with English and Spanish versions
+- Oral-style study: one question at a time, answer out loud, self-mark confident or needs practice
+- Audio playback of questions
+- Mock interviews that follow the real rules: up to 20 questions, stop at 12 correct or 9 wrong
+- Answers for your own senators, representative and governor by ZIP code
+- 65/20 mode with only the 20 marked questions
+- Progress tracking and interview-date countdown
+- Works offline as an installable web app
+- Free to start; optional one-time unlock, no subscription
 
-## Not affiliated with USCIS
+## Guides
 
-This is an independent study tool. It is not produced by or affiliated with US Citizenship and Immigration Services (USCIS) or any government agency.
+- [How to practice for the oral civics test](https://civicsstudy.com/guides/how-to-practice-oral-civics-test)
+- [What changed in the 2025 civics test](https://civicsstudy.com/guides/2025-civics-test-changes)
+- [How many questions are on the civics test](https://civicsstudy.com/guides/how-many-questions-on-civics-test)
+- [The 65/20 rule](https://civicsstudy.com/guides/65-20-rule)
+- [What happens if you fail the civics test](https://civicsstudy.com/guides/what-if-i-fail-the-civics-test)
+
+## Reference
+
+- [All 128 civics questions with official answers](https://civicsstudy.com/civics-questions)
+
+## About
+
+Built by Michael Downey (Vamp Creatives), who built it while studying for his own naturalization interview and passed in May 2026. Civics Study is an independent study tool and is not affiliated with USCIS or any government agency.

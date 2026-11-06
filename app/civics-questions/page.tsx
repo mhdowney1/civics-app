@@ -31,7 +31,14 @@ export default function CivicsQuestionsPage() {
         </h1>
         <p className="mt-3 text-muted">
           These are the official questions used in the US naturalization interview.
-          An officer will ask up to 10 — you need 6 correct to pass.
+          On the 2025 test an officer asks up to 20 and you need 12 correct to pass.
+        </p>
+        <p className="mt-2 text-sm text-muted">
+          New to the test?{' '}
+          <Link href="/guides" className="underline hover:text-foreground">
+            Read the civics test guides
+          </Link>
+          .
         </p>
         <Link
           href="/sign-up"

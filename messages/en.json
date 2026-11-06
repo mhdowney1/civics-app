@@ -347,7 +347,9 @@
     },
     "footer": {
       "disclaimer": "Built for studying. Not affiliated with USCIS.",
-      "builtBy": "Built by"
+      "builtBy": "Built by",
+      "guides": "Guides",
+      "questions": "All 128 questions"
     }
   }
 }

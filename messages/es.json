@@ -347,7 +347,9 @@
     },
     "footer": {
       "disclaimer": "Diseñada para estudiar. No afiliada a USCIS.",
-      "builtBy": "Creado por"
+      "builtBy": "Creado por",
+      "guides": "Guías",
+      "questions": "Las 128 preguntas"
     }
   }
 }

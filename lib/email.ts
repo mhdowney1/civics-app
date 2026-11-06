@@ -107,9 +107,9 @@ export function studyTipEmail(firstName: string | null): string {
     <h1 style="margin:0 0 8px;font-size:26px;font-weight:700;color:#0f0f0f;line-height:1.2;">A few things to help you pass, ${name}</h1>
     <p style="margin:0 0 16px;color:#444;font-size:16px;line-height:1.6;">You've been at this for a couple of weeks. Here are the most important things to know before your interview:</p>
     <ul style="margin:0 0 20px;padding-left:20px;color:#444;font-size:16px;line-height:1.8;">
-      <li><strong>The officer asks up to 10 questions</strong> — you need 6 correct to pass (60%).</li>
+      <li><strong>The officer asks up to 20 questions</strong> — you need 12 correct to pass (60%).</li>
       <li><strong>Any acceptable answer counts</strong> — most questions have multiple valid answers.</li>
-      <li><strong>The test stops early</strong> — once you hit 6 correct, you pass right there.</li>
+      <li><strong>The test stops early</strong> — once you hit 12 correct, you pass right there.</li>
       <li><strong>Speak clearly and confidently</strong> — it's okay to pause before answering.</li>
     </ul>
     ${btn('Take a mock test →', `${BASE_URL}/test`)}

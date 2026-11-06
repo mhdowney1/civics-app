@@ -11,12 +11,13 @@ const jsonLd = {
     {
       '@type': 'WebApplication',
       name: 'Civics Study',
+      publisher: { '@id': 'https://civicsstudy.com/#organization' },
       url: 'https://civicsstudy.com',
       applicationCategory: 'EducationalApplication',
       operatingSystem: 'Web',
       offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
       description:
-        'Oral-style practice for the 2026 USCIS naturalization civics test. 128 official questions, mock interview, audio playback, and progress tracking.',
+        'The oral-format practice tool for the 128-question 2025 USCIS civics test. Mock interviews that stop at 12 correct or 9 wrong, audio playback, and progress tracking.',
     },
     {
       '@type': 'FAQPage',
@@ -398,6 +399,14 @@ export default async function LandingPage() {
       {/* Footer */}
       <footer className="mx-auto max-w-3xl px-5 pb-12 text-xs text-muted">
         <span>{t('footer.disclaimer')}</span>
+        <span className="mx-2">·</span>
+        <Link href="/guides" className="underline underline-offset-2 hover:text-foreground">
+          {t('footer.guides')}
+        </Link>
+        <span className="mx-2">·</span>
+        <Link href="/civics-questions" className="underline underline-offset-2 hover:text-foreground">
+          {t('footer.questions')}
+        </Link>
         <span className="mx-2">·</span>
         <span>
           {t('footer.builtBy')}{' '}
