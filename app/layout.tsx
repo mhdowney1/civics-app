@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { PostHogProvider } from '@/components/posthog-provider'
 import { OfflineSync } from '@/components/offline-sync'
 import { ServiceWorkerRegister } from '@/components/sw-register'
+import { organizationJsonLd, jsonLdScript } from '@/lib/structured-data'
 import './globals.css'
 
 const syne = Syne({
@@ -26,13 +27,13 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://civicsstudy.com'),
   title: 'Civics Study — 2026 Citizenship Test Prep',
   description:
-    'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+    'The oral-format practice tool for the 128-question 2025 USCIS civics test. Answer out loud, take mock interviews, track progress. Free to start.',
   applicationName: 'Civics Study',
   alternates: { canonical: '/' },
   openGraph: {
     title: 'Civics Study — 2026 Citizenship Test Prep',
     description:
-      'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+      'The oral-format practice tool for the 128-question 2025 USCIS civics test. Answer out loud, take mock interviews, track progress. Free to start.',
     type: 'website',
     url: 'https://civicsstudy.com',
     images: [{ url: '/opengraph-image', width: 1200, height: 630, alt: 'Civics Study — Citizenship Test Prep' }],
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Civics Study — 2026 Citizenship Test Prep',
     description:
-      'Calm, oral-style practice for the USCIS civics test. 128 official questions, mock tests, and progress tracking. Free to use.',
+      'The oral-format practice tool for the 128-question 2025 USCIS civics test. Answer out loud, take mock interviews, track progress. Free to start.',
     images: ['/opengraph-image'],
   },
   appleWebApp: {
@@ -100,6 +101,10 @@ export default async function RootLayout({
         suppressHydrationWarning
       >
         <body className="min-h-full bg-background text-foreground">
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={jsonLdScript(organizationJsonLd)}
+          />
           <NextIntlClientProvider>
             <PostHogProvider>
               <OfflineSync />

@@ -130,9 +130,9 @@ export default async function QuestionPage({
           <h2 className="mb-2 font-display font-semibold">About this question</h2>
           <p className="text-sm text-muted leading-relaxed">
             This is one of 128 official civics questions the USCIS may ask during
-            the naturalization interview. During the test, the officer will ask up to
-            10 questions from this list — you need to answer at least 6 correctly to
-            pass.{' '}
+            the naturalization interview. On the 2025 test, the officer asks up to 20
+            questions from this list and you need 12 correct to pass. The officer
+            stops once you reach 12 correct or 9 incorrect.{' '}
             {question.starred && (
               <>
                 This question is part of the{' '}
