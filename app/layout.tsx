@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Syne, DM_Sans } from 'next/font/google'
+import localFont from 'next/font/local'
 import { cookies } from 'next/headers'
 import { ClerkProvider } from '@clerk/nextjs'
 import { NextIntlClientProvider } from 'next-intl'
@@ -9,17 +9,28 @@ import { ServiceWorkerRegister } from '@/components/sw-register'
 import { organizationJsonLd, jsonLdScript } from '@/lib/structured-data'
 import './globals.css'
 
-const syne = Syne({
+// Fonts are committed in app/fonts (latin subset, from @fontsource) rather than
+// fetched from Google at build time: that fetch fails intermittently on Vercel
+// and was breaking deploys.
+const syne = localFont({
   variable: '--font-syne',
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
+  src: [
+    { path: './fonts/syne-latin-500-normal.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/syne-latin-600-normal.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/syne-latin-700-normal.woff2', weight: '700', style: 'normal' },
+    { path: './fonts/syne-latin-800-normal.woff2', weight: '800', style: 'normal' },
+  ],
   display: 'swap',
 })
 
-const dmSans = DM_Sans({
+const dmSans = localFont({
   variable: '--font-dm-sans',
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  src: [
+    { path: './fonts/dm-sans-latin-400-normal.woff2', weight: '400', style: 'normal' },
+    { path: './fonts/dm-sans-latin-500-normal.woff2', weight: '500', style: 'normal' },
+    { path: './fonts/dm-sans-latin-600-normal.woff2', weight: '600', style: 'normal' },
+    { path: './fonts/dm-sans-latin-700-normal.woff2', weight: '700', style: 'normal' },
+  ],
   display: 'swap',
 })
 
