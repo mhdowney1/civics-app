@@ -1,11 +1,23 @@
 'use client'
 
+import { useState } from 'react'
 import Link from 'next/link'
 import { useTranslations } from 'next-intl'
+import dynamic from 'next/dynamic'
 import { CheckoutButton } from './checkout-button'
 
-export function BillingContent() {
+const ExpressUnlock = dynamic(() => import('@/components/express-unlock'), { ssr: false })
+
+export function BillingContent({
+  price,
+  expressEnabled,
+}: {
+  price: string
+  expressEnabled: boolean
+}) {
   const t = useTranslations('billing')
+  // null = still finding out whether this device has a wallet
+  const [walletsAvailable, setWalletsAvailable] = useState<boolean | null>(null)
 
   const features = [
     t('feature1'),
@@ -27,7 +39,7 @@ export function BillingContent() {
 
         <div className="my-8 text-center">
           <span className="font-display text-6xl font-semibold tracking-tight">
-            {t('price')}
+            {price}
           </span>
           <p className="mt-1 text-sm text-muted">{t('priceSub')}</p>
         </div>
@@ -41,7 +53,15 @@ export function BillingContent() {
           ))}
         </ul>
 
-        <CheckoutButton />
+        {expressEnabled && <ExpressUnlock onAvailabilityChange={setWalletsAvailable} />}
+
+        {walletsAvailable && (
+          <p className="my-4 text-center text-xs uppercase tracking-[0.18em] text-muted">
+            {t('orPayWithCard')}
+          </p>
+        )}
+
+        <CheckoutButton price={price} variant={walletsAvailable ? 'secondary' : 'primary'} />
       </div>
 
       <p className="mt-6 text-center text-xs text-muted">

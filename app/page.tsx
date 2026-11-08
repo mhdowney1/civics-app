@@ -4,6 +4,7 @@ import { auth } from '@clerk/nextjs/server'
 import { getTranslations } from 'next-intl/server'
 import { CaptureRefParam } from '@/components/share-score'
 import { LandingHeader } from '@/components/landing-header'
+import { LandingPriceText } from '@/components/price-text'
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -287,7 +288,7 @@ export default async function LandingPage() {
           {/* Paid tier */}
           <div className="rounded-3xl border border-confident/40 bg-confident/5 p-6">
             <p className="text-xs uppercase tracking-[0.18em] text-confident">{t('pricing.paid.label')}</p>
-            <p className="mt-3 font-display text-4xl font-semibold tracking-tight">{t('pricing.paid.price')}</p>
+            <p className="mt-3 font-display text-4xl font-semibold tracking-tight"><LandingPriceText messageKey="pricing.paid.price" /></p>
             <p className="mt-1 text-sm text-muted">{t('pricing.paid.sub')}</p>
             <ul className="mt-6 space-y-3 text-sm">
               {(['feature1', 'feature2', 'feature3', 'feature4'] as const).map((k) => (
@@ -306,7 +307,7 @@ export default async function LandingPage() {
           </div>
         </div>
         <p className="mt-4 text-center text-xs text-muted">
-          {t('pricing.footnote')}
+          <LandingPriceText messageKey="pricing.footnote" />
         </p>
       </section>
 
@@ -376,7 +377,7 @@ export default async function LandingPage() {
               {t('cta.h2')}
             </h2>
             <p className="mt-3 text-muted">
-              {t('cta.sub')}
+              <LandingPriceText messageKey="cta.sub" />
             </p>
             <div className="mt-8 flex flex-col items-center gap-3">
               <Link
