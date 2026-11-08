@@ -150,7 +150,6 @@
     "badge": "Pago único",
     "heading": "Desbloquear acceso completo",
     "desc": "Todo lo que necesitas para aprobar tu examen de civismo. Practica todas las veces que quieras.",
-    "price": "$12.99",
     "priceSub": "único · tuyo para siempre",
     "feature1": "Exámenes de práctica ilimitados",
     "feature2": "Análisis detallado del progreso",
@@ -158,8 +157,13 @@
     "feature4": "Funciona sin conexión, sin suscripción",
     "alreadyUnlocked": "¿Ya desbloqueado?",
     "goToDashboard": "Ir al panel",
-    "unlockButton": "Desbloquear por $12.99",
-    "redirecting": "Redirigiendo…"
+    "unlockButton": "Desbloquear por {price}",
+    "redirecting": "Redirigiendo…",
+    "orPayWithCard": "o",
+    "payWithCard": "Pagar con tarjeta",
+    "paymentFailed": "El pago no se completó. Inténtalo de nuevo o paga con tarjeta.",
+    "processingTitle": "Procesando el pago",
+    "processingDesc": "Estamos esperando que se confirme tu pago. Tu cuenta se desbloqueará automáticamente, normalmente en unos minutos."
   },
   "feedback": {
     "titleMockTest": "¿Cómo te fue?",
@@ -305,7 +309,7 @@
       },
       "paid": {
         "label": "Desbloquear",
-        "price": "$12.99",
+        "price": "{price}",
         "sub": "Único · no es una suscripción",
         "feature1": "Todo lo de la versión gratuita",
         "feature2": "Exámenes de práctica ilimitados",
@@ -313,7 +317,7 @@
         "feature4": "Funciona sin conexión",
         "cta": "Empezar →"
       },
-      "footnote": "La mayoría de apps cívicas cobran $10+ al mes. Aquí pagas $12.99 una vez y listo."
+      "footnote": "La mayoría de apps cívicas cobran $10+ al mes. Aquí pagas {price} una vez y listo."
     },
     "rule6520": {
       "eyebrow": "Regla 65/20",
@@ -341,7 +345,7 @@
     },
     "cta": {
       "h2": "¿Listo para practicar?",
-      "sub": "Empieza gratis. Desbloquea exámenes ilimitados por $12.99, una vez, sin suscripción.",
+      "sub": "Empieza gratis. Desbloquea exámenes ilimitados por {price}, una vez, sin suscripción.",
       "signUp": "Empieza a estudiar gratis →",
       "try": "Probar sin cuenta"
     },

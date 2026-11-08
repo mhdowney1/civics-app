@@ -150,7 +150,6 @@
     "badge": "One-time payment",
     "heading": "Unlock full access",
     "desc": "Everything you need to pass your civics test. Practice as many times as you like.",
-    "price": "$12.99",
     "priceSub": "one-time · yours forever",
     "feature1": "Unlimited mock tests",
     "feature2": "Detailed progress analytics",
@@ -158,8 +157,13 @@
     "feature4": "Works offline, no subscription",
     "alreadyUnlocked": "Already unlocked?",
     "goToDashboard": "Go to dashboard",
-    "unlockButton": "Unlock for $12.99",
-    "redirecting": "Redirecting…"
+    "unlockButton": "Unlock for {price}",
+    "redirecting": "Redirecting…",
+    "orPayWithCard": "or",
+    "payWithCard": "Pay with card",
+    "paymentFailed": "Payment didn’t go through. Try again or pay with card.",
+    "processingTitle": "Payment processing",
+    "processingDesc": "We’re waiting for your payment to clear. Your account unlocks automatically, usually within a few minutes."
   },
   "feedback": {
     "titleMockTest": "How did it go?",
@@ -305,7 +309,7 @@
       },
       "paid": {
         "label": "Unlock",
-        "price": "$12.99",
+        "price": "{price}",
         "sub": "One-time · not a subscription",
         "feature1": "Everything in free",
         "feature2": "Unlimited mock tests",
@@ -313,7 +317,7 @@
         "feature4": "Works offline",
         "cta": "Get started →"
       },
-      "footnote": "Most civics apps charge $10+ a month. You pay $12.99 once and you’re done."
+      "footnote": "Most civics apps charge $10+ a month. You pay {price} once and you’re done."
     },
     "rule6520": {
       "eyebrow": "65/20 Rule",
@@ -341,7 +345,7 @@
     },
     "cta": {
       "h2": "Ready to practice?",
-      "sub": "Start free. Unlock unlimited mock tests for $12.99, one time, no subscription.",
+      "sub": "Start free. Unlock unlimited mock tests for {price}, one time, no subscription.",
       "signUp": "Start studying for free →",
       "try": "Try without an account"
     },

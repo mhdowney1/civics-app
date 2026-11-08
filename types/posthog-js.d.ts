@@ -16,6 +16,9 @@ declare module 'posthog-js' {
     register(properties: Record<string, unknown>): void
     opt_in_capturing(): void
     opt_out_capturing(): void
+    getFeatureFlag(key: string): string | boolean | undefined
+    onFeatureFlags(callback: (flags: string[]) => void): () => void
+    get_property(key: string): unknown
   }
 
   const posthog: PostHog
